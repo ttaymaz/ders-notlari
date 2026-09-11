@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: "Ders Notları — Sinanpaşa MYO Bilgisayar Teknolojileri"
+message: "Bu materyali kullanırsanız lütfen aşağıdaki gibi atıf yapın."
+type: dataset
+authors:
+  - family-names: Taymaz
+    given-names: Turgay
+    affiliation: "Afyon Kocatepe Üniversitesi, Sinanpaşa Meslek Yüksekokulu"
+    email: turgaytaymaz@aku.edu.tr
+repository-code: "https://github.com/ttaymaz/ders-notlari"
+url: "https://github.com/ttaymaz/ders-notlari"
+license: CC-BY-NC-SA-4.0
+keywords:
+  - programlama temelleri
+  - C#
+  - .NET
+  - algoritma
+  - açık ders materyali
