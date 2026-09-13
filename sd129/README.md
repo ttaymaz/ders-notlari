@@ -4,8 +4,8 @@
 Öğr. Gör. Turgay Taymaz · Kısa adres: `tymz.org/sd129`
 Haftalık 3 saat · 3 AKTS
 
-Bu sayfa dersin kalıcı adresidir. Sınav takvimi, hafta planı ve tanıtım sunumu
-her dönem için ayrı tutulur; aşağıdan ilgili döneme geçin.
+Bu sayfa dersin kalıcı adresidir. Sınav takvimi ve hafta planı her dönem için
+ayrı tutulur; aşağıdan ilgili döneme geçin.
 
 ## Dönemler
 

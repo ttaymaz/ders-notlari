@@ -30,8 +30,9 @@ Ders içeriği ders kodundan bağımsız tutulur: aynı konu birden fazla derste
 kullanılır. Hangi konunun hangi haftada işlendiği ilgili dersin dönem
 sayfasında yazar.
 
-**Ders sunumları bu depoda paylaşılmamaktadır; derste kullanılan slaytlara
-öğrenciler ders sistemi üzerinden erişir.**
+**Derste kullanılan sunumlar sınıf içi materyaldir ve paylaşılmaz.** Ders
+notları sunumdaki her şeyi ve fazlasını içerir — sınava çalışırken **ders
+notunu** esas alınız.
 
 ## Örnek kodları çalıştırma
 

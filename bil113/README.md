@@ -4,8 +4,8 @@
 Öğr. Gör. Turgay Taymaz · Kısa adres: `tymz.org/bil113`
 Haftalık 4 saat · 4 AKTS
 
-Bu sayfa dersin kalıcı adresidir. Sınav takvimi, hafta planı ve tanıtım sunumu
-her dönem için ayrı tutulur; aşağıdan ilgili döneme geçin.
+Bu sayfa dersin kalıcı adresidir. Sınav takvimi ve hafta planı her dönem için
+ayrı tutulur; aşağıdan ilgili döneme geçin.
 
 ## Dönemler
 

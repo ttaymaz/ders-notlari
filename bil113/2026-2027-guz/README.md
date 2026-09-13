@@ -41,7 +41,7 @@ tutulur. Aşağıdaki tablo hangi haftada hangi konunun işlendiğini gösterir.
 
 ## Sunumlar
 
-Derste kullanılan sunumlar ders sistemi üzerinden paylaşılır. Ders notları
+Derste kullanılan sunumlar sınıf içi materyaldir ve paylaşılmaz. Ders notları
 sunumdaki her şeyi ve fazlasını içerir — sınava çalışırken **ders notunu**
 esas alınız.
 
