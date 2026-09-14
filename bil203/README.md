@@ -2,6 +2,7 @@
 
 **Bilgisayar Programcılığı Programı** · Sinanpaşa Meslek Yüksekokulu
 Öğr. Gör. Turgay Taymaz · Kısa adres: `tymz.org/bil203`
+Haftalık 4 saat · 4 AKTS
 
 Bu sayfa dersin kalıcı adresidir. Sınav takvimi ve hafta planı her dönem için
 ayrı tutulur; aşağıdan ilgili döneme geçin.
