@@ -2,6 +2,7 @@
 
 **İnternet ve Ağ Teknolojileri Programı** · Sinanpaşa Meslek Yüksekokulu
 Öğr. Gör. Turgay Taymaz · Kısa adres: `tymz.org/int215`
+Haftalık 2 saat · 2 AKTS
 
 Bu sayfa dersin kalıcı adresidir. Sınav takvimi ve hafta planı her dönem için
 ayrı tutulur; aşağıdan ilgili döneme geçin.
@@ -29,5 +30,6 @@ orada üst düzey ifadelerle yazdığımız kodu burada sınıflarla tasarlıyor
 
 ## Devamı
 
-Bahar döneminde **Windows Forms ve SQL Server** ile bir otomasyon yazılımı
-geliştirilir. Bu dönemde tasarlanan sınıflar o projenin temelidir.
+**SD222 — Görsel Programlama II** (bahar dönemi). Windows Forms ve SQL Server
+ile adım adım bir otomasyon yazılımı geliştirilir; bu dönemde tasarlanan
+sınıflar o projenin temelidir.

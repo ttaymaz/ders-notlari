@@ -25,5 +25,6 @@ orada üst düzey ifadelerle yazdığımız kodu burada sınıflarla tasarlıyor
 
 ## Devamı
 
-Bahar döneminde **Windows Forms ve SQL Server** ile bir otomasyon yazılımı
-geliştirilir. Bu dönemde tasarlanan sınıflar o projenin temelidir.
+**BİL206 — Nesne Tabanlı Programlama II** (bahar dönemi). Windows Forms ve
+SQL Server ile adım adım bir otomasyon yazılımı geliştirilir; bu dönemde
+tasarlanan sınıflar o projenin temelidir.

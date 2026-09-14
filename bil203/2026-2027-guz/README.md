@@ -56,6 +56,7 @@ esas alınız.
 
 ## Devamı
 
-Bahar döneminde **Windows Forms ve SQL Server** ile adım adım bir otomasyon
-yazılımı geliştirilir; ayrıca her öğrenci kendi otomasyonunu yazar. Bu dönemde
-tasarlanan sınıflar o projenin provasıdır.
+**BİL206 — Nesne Tabanlı Programlama II** (bahar dönemi). Windows Forms ve
+SQL Server ile adım adım bir otomasyon yazılımı geliştirilir; ayrıca her
+öğrenci kendi otomasyonunu yazar. Bu dönemde tasarlanan sınıflar o projenin
+provasıdır.
