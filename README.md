@@ -16,6 +16,8 @@ Bu depo, ders notlarının ve örnek kodların öğrenciye açık **yansımasıd
 | --- | ---- | ------- | ---------- |
 | [BİL113](bil113/) | Programlama Temelleri | Bilgisayar Programcılığı | `tymz.org/bil113` |
 | [SD129](sd129/) | Algoritma ve Programlama | İnternet ve Ağ Teknolojileri | `tymz.org/sd129` |
+| [BİL203](bil203/) | Nesne Tabanlı Programlama I | Bilgisayar Programcılığı | `tymz.org/bil203` |
+| [İNT215](int215/) | Görsel Programlama I | İnternet ve Ağ Teknolojileri | `tymz.org/int215` |
 
 Aktif dönem: **2026–2027 Güz**
 

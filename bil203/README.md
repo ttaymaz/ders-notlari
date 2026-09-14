@@ -1,0 +1,29 @@
+# BİL203 — Nesne Tabanlı Programlama I
+
+**Bilgisayar Programcılığı Programı** · Sinanpaşa Meslek Yüksekokulu
+Öğr. Gör. Turgay Taymaz · Kısa adres: `tymz.org/bil203`
+
+Bu sayfa dersin kalıcı adresidir. Sınav takvimi ve hafta planı her dönem için
+ayrı tutulur; aşağıdan ilgili döneme geçin.
+
+## Dönemler
+
+| Dönem | Durum | Sayfa |
+| ----- | ----- | ----- |
+| 2026–2027 Güz | **Aktif** | [takvim ve plan](2026-2027-guz/) |
+
+## İçerik
+
+Ders içeriği [`konular/`](../konular/) altında ders kodundan bağımsız tutulur.
+Aynı içerik birden fazla derste kullanılır; hangi konunun hangi haftada
+işlendiği her dönemin kendi sayfasında yazar.
+
+## Öncesi
+
+**Programlama Temelleri** (birinci sınıf güz dönemi). Bu ders onun devamıdır:
+orada üst düzey ifadelerle yazdığımız kodu burada sınıflarla tasarlıyoruz.
+
+## Devamı
+
+Bahar döneminde **Windows Forms ve SQL Server** ile bir otomasyon yazılımı
+geliştirilir. Bu dönemde tasarlanan sınıflar o projenin temelidir.
