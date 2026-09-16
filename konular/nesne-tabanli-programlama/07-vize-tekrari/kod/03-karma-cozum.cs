@@ -115,22 +115,24 @@ class OgrenciUye : Uye
     }
 }
 
-// --- PUANLAMA ÖLÇÜTLERİ (20 puan) ---
+// --- SINAVDA BU NASIL PUANLANIR? ---
 //
-//   kapsülleme ve kurallı özellik ......... 5
-//     private alan + set içinde kontrol + geçersiz değerde eski değer kalır
+// Bu çözüm sınavdaki İKİ sorunun toplamına karşılık gelir.
 //
-//   kurucu + this + statik sayaç .......... 5
-//     this ile atama, otomatik numara, sayacın static olması
+//   SORU 1 — tek sınıf (20 puan)        → yukarıdaki Uye sınıfı
+//     kapsülleme ....................... 10
+//       private alan + set içinde kontrol + geçersiz değerde eski değer kalır
+//     kuruluş .......................... 10
+//       kurucu, this ile atama, static sayaç, otomatik numara
 //
-//   kalıtım ve base kullanımı ............. 5
-//     ": Uye" ve ": base(...)" ile kurucu zinciri
+//   SORU 2 — kalıtım (20 puan)          → yukarıdaki OgrenciUye sınıfı
+//     kalıtım ve base .................. 10
+//       ": Uye" ve ": base(...)" ile kurucu zinciri
+//     ezme ve ToString ................. 10
+//       virtual/override çifti, base.ToplamBorc çağrısı, ToString ezilmesi
 //
-//   ezme (override) ve ToString ........... 5
-//     virtual/override çifti, base.ToplamBorc çağrısı, ToString ezilmesi
-//
-// Kısmi puan: her ölçüt kendi içinde değerlendirilir. Kalıtımı kurup
-// ezmeyi yapamadıysanız kalıtım puanını alırsınız.
+// Kısmi puan: her ölçüt kendi içinde parçalanır. Kalıtımı kurup ezmeyi
+// yapamadıysanız kalıtım puanını tam alırsınız.
 //
 // --- SIK KAÇIRILAN İKİ NOKTA ---
 //

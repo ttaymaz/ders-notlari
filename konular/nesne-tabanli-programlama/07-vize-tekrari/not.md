@@ -32,18 +32,24 @@ Bu bölümde **kod yazacaksınız.** Küçük sözdizimi hataları (noktalı vir
 
 **Nasıl hazırlanılır:** [`kod/02-sinif-yazma-provasi.cs`](kod/02-sinif-yazma-provasi.cs) gerçek bir sınav sorusudur. Önce kendiniz çözün, sonra [`kod/03-karma-cozum.cs`](kod/03-karma-cozum.cs) ile karşılaştırın.
 
+#### İki soru, iki ayrı beceri
+
+| Soru | Ne istenir | Ölçütler |
+| ---- | ---------- | -------- |
+| **1** | Tek bir sınıfı baştan kurmak | Kapsülleme **10** + Kuruluş **10** |
+| **2** | Temel ve türetilmiş sınıf yazmak | Kalıtım **10** + Ezme **10** |
+
+Birinci soru ilk dört haftayı (`private` alan, kurallı `set`, kurucu, `this`, statik üye), ikinci soru beşinci ve altıncı haftayı (`: base(...)`, `virtual`/`override`, `base.Metot()`, `ToString`) ölçer.
+
 #### Kısmi puan nasıl veriliyor?
 
-Her kod yazma sorusu dört ölçüte bölünür:
+Her ölçüt kendi içinde parçalanır. Örnekler:
 
-| Ölçüt | Puan |
-| ----- | :--: |
-| Kapsülleme ve kurallı özellik | 5 |
-| Kurucu, `this`, statik üye | 5 |
-| Kalıtım ve `base` kullanımı | 5 |
-| Ezme (`override`) ve `ToString` | 5 |
+- `set` içine kontrol yazıp `return` koymayı unuttuysanız o ölçütten **puanın bir kısmını** alırsınız — kural farkındalığı var, uygulaması eksik
+- `virtual` yazmayı unutup `override` yazdıysanız ezme ölçütünden **puanın bir kısmını** alırsınız
+- Kalıtımı kurup ezmeyi yapamadıysanız **kalıtım puanını tam** alırsınız
 
-Kalıtımı kurup ezmeyi yapamadıysanız kalıtım puanını alırsınız. **Boş bırakmayın** — kurduğunuz her doğru parça puan getirir.
+**Boş bırakmayın** — kurduğunuz her doğru parça puan getirir. Çalışmayan kod sıfır değildir; bu bölümde ölçülen şey tasarımdır.
 
 ### Sınav Düzeni
 

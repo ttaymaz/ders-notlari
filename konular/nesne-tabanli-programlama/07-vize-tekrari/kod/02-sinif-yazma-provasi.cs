@@ -28,11 +28,11 @@
 //      döndürsün (temel sınıfın hesabını yeniden yazmayın, çağırın)
 //    - ToString(): "1001 - Mehmet Demir (öğrenci)" biçiminde
 //
-// PUANLAMA (20 puan)
-//    kapsülleme ve kurallı özellik ......... 5
-//    kurucu + this + statik sayaç .......... 5
-//    kalıtım ve base kullanımı ............. 5
-//    ezme (override) ve ToString ........... 5
+// NOT: Bu prova, sınavdaki İKİ soruyu tek problemde birleştirir.
+// Gerçek sınavda bunlar ayrı ayrı sorulur:
+//    Soru 1 — tek sınıf  : kapsülleme 10 + kuruluş (kurucu/this/static) 10
+//    Soru 2 — kalıtım    : kalıtım ve base 10 + ezme ve ToString 10
+// Burada ikisini birlikte çözerek her iki soruya da hazırlanıyorsunuz.
 // =====================================================================
 
 Uye u1 = new Uye("Ayşe Yılmaz", 800m);
