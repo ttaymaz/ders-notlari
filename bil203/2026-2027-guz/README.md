@@ -30,9 +30,9 @@ Ders notu ve örnek kod bağlantıları, o hafta yayımlandıkça tabloya ekleni
 | 2 | Sınıfın yapısı: alanlar, metotlar ve kurucu metotlar | [not](../../konular/nesne-tabanli-programlama/02-alanlar-metotlar-kurucular/not.md) | [kod](../../konular/nesne-tabanli-programlama/02-alanlar-metotlar-kurucular/kod/) |
 | 3 | Kapsülleme: erişim belirleyiciler ve özellikler | [not](../../konular/nesne-tabanli-programlama/03-kapsulleme/not.md) | [kod](../../konular/nesne-tabanli-programlama/03-kapsulleme/kod/) |
 | 4 | Statik üyeler ve `this` anahtar kelimesi | [not](../../konular/nesne-tabanli-programlama/04-statik-uyeler-ve-this/not.md) | [kod](../../konular/nesne-tabanli-programlama/04-statik-uyeler-ve-this/kod/) |
-| 5 | Kalıtım: temel sınıf ve türetilmiş sınıf | — | — |
-| 6 | Kalıtımda metot ezme ve `base` anahtar kelimesi | — | — |
-| 7 | Ara sınav öncesi genel tekrar ve sınav provası | — | — |
+| 5 | Kalıtım: temel sınıf ve türetilmiş sınıf | [not](../../konular/nesne-tabanli-programlama/05-kalitim/not.md) | [kod](../../konular/nesne-tabanli-programlama/05-kalitim/kod/) |
+| 6 | Kalıtımda metot ezme ve `base` anahtar kelimesi | [not](../../konular/nesne-tabanli-programlama/06-metot-ezme/not.md) | [kod](../../konular/nesne-tabanli-programlama/06-metot-ezme/kod/) |
+| 7 | Ara sınav öncesi genel tekrar ve sınav provası | [not](../../konular/nesne-tabanli-programlama/07-vize-tekrari/not.md) | [kod](../../konular/nesne-tabanli-programlama/07-vize-tekrari/kod/) |
 | 8 | **Ara sınav haftası** | | |
 | 9 | Polimorfizm (çok biçimlilik) | — | — |
 | 10 | Soyutlama: soyut sınıflar ve soyut metotlar | — | — |
