@@ -21,27 +21,26 @@ Sınavların soru yapısı 7. haftada, ara sınav provasıyla birlikte duyurulur
 
 Ders içeriği [`konular/`](../../konular/) altında ders kodundan bağımsız olarak
 tutulur. Aşağıdaki tablo hangi haftada hangi konunun işlendiğini gösterir.
-Her haftanın ders notu ve örnek kod bağlantıları, o hafta yayımlandıkça bu
-tabloya eklenir.
+Ders notu ve örnek kod bağlantıları, o hafta yayımlandıkça tabloya eklenir.
 
-| Hafta | Konu |
-| :---: | ---- |
-| 0 | Ders tanıtımı ve yol haritası |
-| 1 | Prosedürel programlamadan nesne tabanlı programlamaya geçiş: sınıf ve nesne |
-| 2 | Sınıfın yapısı: alanlar, metotlar ve kurucu metotlar |
-| 3 | Kapsülleme: erişim belirleyiciler ve özellikler |
-| 4 | Statik üyeler ve `this` anahtar kelimesi |
-| 5 | Kalıtım: temel sınıf ve türetilmiş sınıf |
-| 6 | Kalıtımda metot ezme ve `base` anahtar kelimesi |
-| 7 | Ara sınav öncesi genel tekrar ve sınav provası |
-| 8 | **Ara sınav haftası** |
-| 9 | Polimorfizm (çok biçimlilik) |
-| 10 | Soyutlama: soyut sınıflar ve soyut metotlar |
-| 11 | Arayüzler ve kalıtımdan farkları |
-| 12 | Değer ve referans tipleri: `struct` ile `class` karşılaştırması |
-| 13 | Koleksiyonlar ve jenerikler: `List<T>`, `Dictionary<TKey, TValue>` |
-| 14 | Kapsamlı sınıf tasarımı: nesne tabanlı ilkelerin birlikte kullanımı |
-| 15 | Dönem özeti ve final öncesi genel tekrar |
+| Hafta | Konu | Ders notu | Örnek kod |
+| :---: | ---- | :-------: | :-------: |
+| 0 | Ders tanıtımı ve yol haritası | — | — |
+| 1 | Prosedürel programlamadan nesne tabanlıya geçiş: sınıf ve nesne | [not](../../konular/nesne-tabanli-programlama/01-sinif-ve-nesne/not.md) | [kod](../../konular/nesne-tabanli-programlama/01-sinif-ve-nesne/kod/) |
+| 2 | Sınıfın yapısı: alanlar, metotlar ve kurucu metotlar | [not](../../konular/nesne-tabanli-programlama/02-alanlar-metotlar-kurucular/not.md) | [kod](../../konular/nesne-tabanli-programlama/02-alanlar-metotlar-kurucular/kod/) |
+| 3 | Kapsülleme: erişim belirleyiciler ve özellikler | [not](../../konular/nesne-tabanli-programlama/03-kapsulleme/not.md) | [kod](../../konular/nesne-tabanli-programlama/03-kapsulleme/kod/) |
+| 4 | Statik üyeler ve `this` anahtar kelimesi | [not](../../konular/nesne-tabanli-programlama/04-statik-uyeler-ve-this/not.md) | [kod](../../konular/nesne-tabanli-programlama/04-statik-uyeler-ve-this/kod/) |
+| 5 | Kalıtım: temel sınıf ve türetilmiş sınıf | — | — |
+| 6 | Kalıtımda metot ezme ve `base` anahtar kelimesi | — | — |
+| 7 | Ara sınav öncesi genel tekrar ve sınav provası | — | — |
+| 8 | **Ara sınav haftası** | | |
+| 9 | Polimorfizm (çok biçimlilik) | — | — |
+| 10 | Soyutlama: soyut sınıflar ve soyut metotlar | — | — |
+| 11 | Arayüzler ve kalıtımdan farkları | — | — |
+| 12 | Değer ve referans tipleri: `struct` ile `class` karşılaştırması | — | — |
+| 13 | Koleksiyonlar ve jenerikler: `List<T>`, `Dictionary<TKey, TValue>` | — | — |
+| 14 | Kapsamlı sınıf tasarımı: nesne tabanlı ilkelerin birlikte kullanımı | — | — |
+| 15 | Dönem özeti ve final öncesi genel tekrar | — | — |
 
 ## Sunumlar
 
