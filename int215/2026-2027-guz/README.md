@@ -41,10 +41,10 @@ Ders notu ve örnek kod bağlantıları, o hafta yayımlandıkça tabloya ekleni
 | 6 | Kalıtımda metot ezme ve `base` anahtar kelimesi | [not](../../konular/nesne-tabanli-programlama/06-metot-ezme/not.md) | [kod](../../konular/nesne-tabanli-programlama/06-metot-ezme/kod/) |
 | 7 | Ara sınav öncesi genel tekrar ve sınav provası | [not](../../konular/nesne-tabanli-programlama/07-vize-tekrari/not.md) | [kod](../../konular/nesne-tabanli-programlama/07-vize-tekrari/kod/) |
 | 8 | **Ara sınav haftası** | | |
-| 9 | Polimorfizm (çok biçimlilik) | — | — |
-| 10 | Soyutlama: soyut sınıflar ve soyut metotlar | — | — |
-| 11 | Arayüzler ve kalıtımdan farkları | — | — |
-| 12 | Değer ve referans tipleri: `struct` ile `class` karşılaştırması | — | — |
+| 9 | Polimorfizm (çok biçimlilik) | [not](../../konular/nesne-tabanli-programlama/09-polimorfizm/not.md) | [kod](../../konular/nesne-tabanli-programlama/09-polimorfizm/kod/) |
+| 10 | Soyutlama: soyut sınıflar ve soyut metotlar | [not](../../konular/nesne-tabanli-programlama/10-soyutlama/not.md) | [kod](../../konular/nesne-tabanli-programlama/10-soyutlama/kod/) |
+| 11 | Arayüzler ve kalıtımdan farkları | [not](../../konular/nesne-tabanli-programlama/11-arayuzler/not.md) | [kod](../../konular/nesne-tabanli-programlama/11-arayuzler/kod/) |
+| 12 | Değer ve referans tipleri: `struct` ile `class` karşılaştırması | [not](../../konular/nesne-tabanli-programlama/12-deger-ve-referans-tipleri/not.md) | [kod](../../konular/nesne-tabanli-programlama/12-deger-ve-referans-tipleri/kod/) |
 | 13 | Koleksiyonlar ve jenerikler: `List<T>`, `Dictionary<TKey, TValue>` | — | — |
 | 14 | Kapsamlı sınıf tasarımı: nesne tabanlı ilkelerin birlikte kullanımı | — | — |
 | 15 | Dönem özeti ve final öncesi genel tekrar | — | — |
