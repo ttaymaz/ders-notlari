@@ -2,7 +2,7 @@
 
 Bu hafta yeni bir konu işlemiyoruz.
 
-Hedefimiz üç şey: dönemin ilk yarısında öğrendiklerimizin haritasını çıkarmak, sınav formatını netleştirmek ve gerçek sınav sorularının aynısı biçimde örnekler çözmek.
+Hedefimiz üç şey: dönemin ilk yarısında öğrendiklerimizin haritasını çıkarmak, sınav formatını netleştirmek ve sınavdakiyle aynı formatta örnekler çözmek.
 
 Sınav tarihi ve saati ders sayfanızda duyurulmaktadır.
 

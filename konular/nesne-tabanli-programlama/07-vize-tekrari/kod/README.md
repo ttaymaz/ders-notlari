@@ -3,7 +3,7 @@
 | Dosya | Konu | Şema |
 | ----- | ---- | ---- |
 | `01-cikti-tahmini.cs` | **Bölüm A provası** — on bölüm, çıktıyı tahmin edin | `01-konu-haritasi.svg` |
-| `02-sinif-yazma-provasi.cs` | **Bölüm B provası** — gerçek bir sınav sorusu | `02-sinif-tasarim-adimlari.svg` |
+| `02-sinif-yazma-provasi.cs` | **Bölüm B provası** — sınavdakiyle aynı formatta bir soru | `02-sinif-tasarim-adimlari.svg` |
 | `03-karma-cozum.cs` | Provanın çözümü ve puanlama ölçütleri | — |
 
 > `02` dosyasını çözmeden `03`'e bakmayın. Çözümü okumak, çözmek değildir.

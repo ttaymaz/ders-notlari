@@ -2,7 +2,7 @@
 
 Bu hafta yeni bir konu işlemiyoruz.
 
-Hedefimiz üç şey: dönemin ilk yarısında öğrendiklerimizin haritasını çıkarmak, sınav formatını netleştirmek ve gerçek sınav sorularının aynısı biçimde örnekler çözmek.
+Hedefimiz üç şey: dönemin ilk yarısında öğrendiklerimizin haritasını çıkarmak, sınav formatını netleştirmek ve sınavdakiyle aynı formatta örnekler çözmek.
 
 Sınav tarihi ve saati ders sayfanızda duyurulmaktadır.
 
@@ -30,7 +30,7 @@ Her soru **20 puan** değerindedir ve **kısmi puan verilir** — yarım kalan b
 
 Bu bölümde **kod yazacaksınız.** Küçük sözdizimi hataları (noktalı virgül, büyük-küçük harf) puan kaybettirmez; değerlendirilen şey tasarımın doğruluğudur.
 
-**Nasıl hazırlanılır:** [`kod/02-sinif-yazma-provasi.cs`](kod/02-sinif-yazma-provasi.cs) gerçek bir sınav sorusudur. Önce kendiniz çözün, sonra [`kod/03-karma-cozum.cs`](kod/03-karma-cozum.cs) ile karşılaştırın.
+**Nasıl hazırlanılır:** [`kod/02-sinif-yazma-provasi.cs`](kod/02-sinif-yazma-provasi.cs) sınavdakiyle **aynı formatta** bir sorudur (sınavda bu soru çıkmayacaktır). Önce kendiniz çözün, sonra [`kod/03-karma-cozum.cs`](kod/03-karma-cozum.cs) ile karşılaştırın.
 
 #### İki soru, iki ayrı beceri
 
@@ -165,7 +165,7 @@ Bu haftanın kodları [`kod/`](kod/) klasöründe:
 | Dosya | Konu |
 | ----- | ---- |
 | [`01-cikti-tahmini.cs`](kod/01-cikti-tahmini.cs) | **Bölüm A provası** — on bölüm, çıktıyı önce tahmin edin |
-| [`02-sinif-yazma-provasi.cs`](kod/02-sinif-yazma-provasi.cs) | **Bölüm B provası** — gerçek bir sınav sorusu |
+| [`02-sinif-yazma-provasi.cs`](kod/02-sinif-yazma-provasi.cs) | **Bölüm B provası** — sınavdakiyle aynı formatta bir soru |
 | [`03-karma-cozum.cs`](kod/03-karma-cozum.cs) | Provanın çözümü ve puanlama ölçütleri |
 
 > `02` dosyasını çözmeden `03`'e bakmayın. Çözümü okumak, çözmek değildir.

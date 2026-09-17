@@ -251,7 +251,7 @@ Bu haftanın kodları [`kod/`](kod/) klasöründe:
 
 Önümüzdeki hafta yeni konu yok: **ara sınav öncesi genel tekrar ve sınav provası** yapacağız.
 
-İlk altı haftanın haritasını çıkaracak, sınav formatını netleştirecek ve gerçek sınav sorularının aynısı biçimde örnekler çözeceğiz.
+İlk altı haftanın haritasını çıkaracak, sınav formatını netleştirecek ve sınavdakiyle aynı formatta örnekler çözeceğiz.
 
 Bu haftaya kadar eksik kalan bir konunuz varsa, tekrar haftasından önce gözden geçirin — provada hepsini birlikte kullanacağız.
 
