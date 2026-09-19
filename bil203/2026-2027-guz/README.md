@@ -38,7 +38,7 @@ Ders notu ve örnek kod bağlantıları, o hafta yayımlandıkça tabloya ekleni
 | 10 | Soyutlama: soyut sınıflar ve soyut metotlar | [not](../../konular/nesne-tabanli-programlama/10-soyutlama/not.md) | [kod](../../konular/nesne-tabanli-programlama/10-soyutlama/kod/) |
 | 11 | Arayüzler ve kalıtımdan farkları | [not](../../konular/nesne-tabanli-programlama/11-arayuzler/not.md) | [kod](../../konular/nesne-tabanli-programlama/11-arayuzler/kod/) |
 | 12 | Değer ve referans tipleri: `struct` ile `class` karşılaştırması | [not](../../konular/nesne-tabanli-programlama/12-deger-ve-referans-tipleri/not.md) | [kod](../../konular/nesne-tabanli-programlama/12-deger-ve-referans-tipleri/kod/) |
-| 13 | Koleksiyonlar ve jenerikler: `List<T>`, `Dictionary<TKey, TValue>` | — | — |
+| 13 | Koleksiyonlar ve jenerikler: `List<T>`, `Dictionary<TKey, TValue>` | [not](../../konular/nesne-tabanli-programlama/13-koleksiyonlar-ve-jenerikler/not.md) | [kod](../../konular/nesne-tabanli-programlama/13-koleksiyonlar-ve-jenerikler/kod/) |
 | 14 | Kapsamlı sınıf tasarımı: nesne tabanlı ilkelerin birlikte kullanımı | — | — |
 | 15 | Dönem özeti ve final öncesi genel tekrar | — | — |
 
