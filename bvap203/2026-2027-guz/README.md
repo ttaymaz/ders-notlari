@@ -12,8 +12,8 @@ Kısa adres: `tymz.org/bvap203`
 
 | Sınav | Ağırlık | Tarih | Biçim |
 | ----- | :-----: | ----- | ----- |
-| Ara Sınav | %40 | *duyurulacak* | Tamamı test |
-| Final | %60 | *duyurulacak* | Uygulama projesi |
+| Ara Sınav | %40 | 09–13 Kasım 2026 | Tamamı test |
+| Final | %60 | 04–15 Ocak 2027 | Uygulama projesi |
 
 Ara ödev yoktur. **Final projesi dönem içinde birikir:** her haftanın
 laboratuvarı projenin bir parçasını üretir, teslim tek seferde yapılır.
