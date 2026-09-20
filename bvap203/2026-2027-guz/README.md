@@ -28,7 +28,7 @@ Ders notu bağlantıları, o hafta yayımlandıkça tabloya eklenir.
 | Hafta | Konu | Ders notu |
 | :---: | ---- | :-------: |
 | 0 | Ders tanıtımı, ortam ve hesap açma | — |
-| 1 | Bulut nedir? Kendi makinenin sınırı | — |
+| 1 | Bulut nedir? Kendi makinenin sınırı | [not](../../konular/bulut-bilisim/01-bulut-nedir/not.md) |
 | 2 | Hizmet modelleri: IaaS, PaaS, SaaS | — |
 | 3 | Çalışma alanı, not defteri ve nesne depolama | — |
 | 4 | *planlanıyor* | — |
