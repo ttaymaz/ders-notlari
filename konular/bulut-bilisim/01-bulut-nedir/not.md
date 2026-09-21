@@ -7,8 +7,8 @@ portalından indirilmiş, sıradan bir CSV dosyası. Şehri kaplayan konum
 ızgarasının her hücresi için, her saat başı bir ölçüm satırı tutuyor.
 
 Aralık ayına ait dosyanın boyutu **96,9 MB**. Telefonunuzdaki tek bir video
-bundan büyüktür. Üstelik bu yalnızca bir ay; ocak dosyasıyla birlikte
-toplam yaklaşık 237 MB ediyor.
+bundan büyüktür. Üstelik bu yalnızca bir ay; ocak dosyası 134,9 MB, ikisi
+birlikte 232 MB ediyor.
 
 Yani ortada devasa bir dosya yok. O hâlde sorun ne?
 
@@ -49,8 +49,17 @@ Aralık dosyasında **1.266.396 satır** var. Aralık ayı 744 saat sürer; deme
 ki her saat için şehrin yaklaşık 1.700 noktasında ölçüm yapılmış.
 
 Sayıya dikkat edin: sınırın yalnızca **yüzde yirmi** üstündeyiz. Dosyanın dev
-olması gerekmiyor — bir milyon satırı aşmak, iki aylık sıradan bir ölçüm
-kaydı için yeterli. Üstelik bu tek ay; ocak eklendiğinde sayı ikiye katlanıyor.
+olması gerekmiyor — bir aylık sıradan bir ölçüm kaydı bir milyon satırı
+aşmaya yetiyor.
+
+Ocak dosyasında ise **1.763.963** satır var. İkisi birlikte **3.030.359**
+satır eder: Excel'in sınırının neredeyse üç katı.
+
+Burada akla hemen şu geliyor: *"O hâlde bölerim."* Bölebilirsiniz — üç ayrı
+çalışma sayfası açarsınız. Ama bölünmüş veri artık tek bir tablo değildir:
+"aralık ve ocakta en yoğun saat hangisiydi" sorusunu cevaplamak için üç
+sayfayı birlikte hesaplamanız gerekir ve bunun kolay bir yolu yoktur.
+**Bölmek sorunu çözmez, ertelemektir.**
 
 ### Bellek sınırı
 
@@ -149,10 +158,15 @@ Bulut hakkında sık karşılaşılan üç yanlış:
 
 İkinci satırı deneyerek göreceksiniz. Not defterinde (notebook) sıradan bir
 Python satırı anında çalışır; ama veriye dokunan **ilk** komut kırk saniye
-kadar sürer. O bekleme, işi bölecek makinelerin sizin için ayağa
-kaldırılmasıdır. Kendi bilgisayarınızda böyle bir bekleme yoktur — çünkü
-makine zaten açıktır ve yalnızca sizindir. Bedava olan şey hız değil,
-**büyüyebilmektir.**
+kadar sürer. **Aynı komutu hemen tekrar çalıştırın: on iki saniyeye iner.**
+
+Aradaki otuz saniye, işi bölecek makinelerin sizin için ayağa
+kaldırılmasıdır — ve bu ders için altın değerinde bir ölçümdür, çünkü
+"kaynak havuzu" dediğimiz şeyin saniye cinsinden karşılığı tam olarak budur.
+Makineler size ait değil; her oturumda yeniden isteniyor.
+
+Kendi bilgisayarınızda böyle bir bekleme yoktur — çünkü makine zaten açıktır
+ve yalnızca sizindir. Bedava olan şey hız değil, **büyüyebilmektir.**
 
 ---
 
@@ -199,7 +213,8 @@ print(trafik.count())
 ```
 
 Bu satır, ikinci bölümde verdiğimiz sayıyı — Excel'in açamadığı
-1.266.396'yı — yaklaşık kırk saniyede ekrana yazar. `trafik` bir dosya adı
+1.266.396'yı — ilk çalıştırmada kırk, ısınmış bir oturumda on iki saniyede
+ekrana yazar. `trafik` bir dosya adı
 değil; veriye verdiğimiz addır. `count()` ise sayma işini **tek başına
 yapmaz** — işi bölüp birden çok makineye dağıtır, sonuçları toplar ve size
 tek bir sayı döndürür.
