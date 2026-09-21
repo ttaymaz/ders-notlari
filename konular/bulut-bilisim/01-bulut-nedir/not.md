@@ -197,7 +197,8 @@ kullanırsınız — ama büyümez ve ölçülmez.
 
 ## 7. Bu Derste Neyi Kullanacağız?
 
-Bu dönem boyunca tek bir ortamda çalışacağız ve ortam **tarayıcıdan** açılıyor:
+Bu dönem boyunca tek bir ortamda çalışacağız: **Databricks Free Edition.**
+Ortam **tarayıcıdan** açılıyor:
 
 - Bilgisayarınıza hiçbir şey kurmuyorsunuz
 - Çalışma alanınız (workspace) hesabınıza bağlı; evden de laboratuvardan da
@@ -225,7 +226,109 @@ gelmiyor.**
 
 ---
 
-## 8. İyi Pratikler ve Sık Yapılan Hatalar
+## 8. Laboratuvar: Ortamı Açmak
+
+Bu haftanın uygulaması ilk derste yapıldı. Derste olamadıysanız veya
+tekrarlamak isterseniz adımlar aşağıda. **Bu adımlar bir kez yapılır;**
+dönem boyunca aynı hesapla devam edeceksiniz.
+
+### 8.1. Hesap açma
+
+Adres: **`databricks.com/learn/free-edition`** → *Sign up for Free Edition*
+
+Açılan sayfada **iki kart** görürsünüz. Doğru olanı seçmek önemli:
+
+| Kart | Ne verir | Bizim için |
+| ---- | -------- | ---------- |
+| **Work** — *Start a trial* | 14 günlük deneme, 400 $ kredi | **Seçmeyin.** Dönem ortasında süresi biter |
+| **Personal** — *Get Free Edition* | Süresiz ücretsiz sürüm | **Bunu seçin** |
+
+Ardından giriş bilgilerinizi girersiniz:
+
+1. **Okul e-posta adresinizi** yazın
+2. Gelen kutunuza düşen **tek kullanımlık kodu** girin
+
+> **Yalnızca okul e-postası çalışır.** Databricks ayrıca Google ve Microsoft
+> hesabıyla giriş sunar, ama üniversitenin e-posta altyapısı bu iki
+> sağlayıcının üzerinde değildir; o düğmeler okul adresinizle çalışmaz. Kod
+> webmail'inize gelir — **okul e-postasına giremiyorsanız ortama da
+> giremezsiniz.** Bu durumdaysanız derse gelmeden önce çözün.
+
+Giriş yaptıktan sonra **sağ üst → hesap simgesi → Workspace** ile çalışma
+alanınızın açıldığını doğrulayın.
+
+### 8.2. İlk not defteri
+
+1. Sol menü → **New → Notebook**
+2. Sağ üstten dili **Python** seçin
+3. İlk hücreye tek satır yazın ve **Shift + Enter** ile çalıştırın
+
+```python
+print("Merhaba bulut")
+```
+
+Bu satır neredeyse anında döner; arka planda hazır bir makineye bağlısınız.
+Asıl bekleme **veriye dokununca** başlıyor — onu ilerleyen haftalarda
+göreceksiniz.
+
+Not defterinizi **kaydetmeniz gerekmez**, kendiliğinden kalır.
+
+### 8.3. Veriyi görmek
+
+Dersin veri kümesi çalışma alanına önceden yüklendi. Yeni bir hücrede:
+
+```python
+dbutils.fs.ls("/Volumes/workspace/default/trafik/")
+```
+
+Çıktı şudur:
+
+```text
+[FileInfo(path='dbfs:/Volumes/workspace/default/trafik/traffic_density_202412.csv',
+          name='traffic_density_202412.csv',
+          size=101566492, modificationTime=1790003821000),
+ FileInfo(path='dbfs:/Volumes/workspace/default/trafik/traffic_density_202501.csv',
+          name='traffic_density_202501.csv',
+          size=141440536, modificationTime=1790003825000)]
+```
+
+Okuması rahat değil ama üç şey söylüyor. Üçüne de dikkat edin:
+
+**1. İki dosya var, birleştirilmiş değiller.** Aralık ve ocak ayrı duruyor.
+Derste Excel'de açmayı denediğimiz, bunlardan yalnızca **aralık** olanıydı.
+
+**2. Boyut bayt cinsinden.** `size=101566492` — bu sayıyı okunur hale getirmek
+size düşüyor. Bölün:
+
+```
+101.566.492 ÷ 1024 ÷ 1024 = 96,9 MB
+141.440.536 ÷ 1024 ÷ 1024 = 134,9 MB
+                             ───────
+                             231,8 MB
+```
+
+Bu sayıları tanıdınız mı? Dersin başında verdiğimiz rakamlar bunlar. Artık
+onları bana güvenerek değil, **kendiniz ölçerek** biliyorsunuz. Bir dosyayla
+karşılaştığınızda yapılacak ilk iş buydu.
+
+**3. Yolun başına `dbfs:` eklenmiş.** Biz `/Volumes/...` yazdık, çıktı
+`dbfs:/Volumes/...` döndürdü. Şaşırmayın, aynı yer. Neden iki farklı yazım
+olduğunu **üçüncü haftada** konuşacağız.
+
+Bugün **yalnızca bakıyoruz** — dosyayı açmıyoruz, satır saymıyoruz. Onlar
+gelecek haftaların işi.
+
+> `/Volumes/...` yolunun ne anlama geldiğini ve verinin neden orada
+> durduğunu da üçüncü haftada konuşacağız. Şimdilik "veri burada" demek yeterli.
+
+### Bu bölümün hedefi
+
+Tek bir şey: **dersten çıkarken çalışan bir çalışma alanınız olsun.** Yukarıdaki
+üç adımı tamamladıysanız bu haftanın uygulaması bitmiştir.
+
+---
+
+## 9. İyi Pratikler ve Sık Yapılan Hatalar
 
 **İyi pratikler**
 
@@ -252,7 +355,7 @@ gelmiyor.**
 
 ---
 
-## 9. İsteğe Bağlı Ev Uygulaması
+## 10. İsteğe Bağlı Ev Uygulaması
 
 Kod yazmayı gerektirmez; gözlem ve muhakeme ister.
 
