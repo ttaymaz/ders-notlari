@@ -2,12 +2,15 @@
 
 Bu derse bir tanımla değil, bir dosyayla başlıyoruz.
 
-Elimizde bir büyükşehrin **iki aylık saatlik trafik yoğunluğu** kaydı var:
-açık veri portalından indirilmiş, sıradan bir CSV dosyası. Boyutu yaklaşık
-**237 MB**. İçinde her yol kesiti için, her saat başı bir ölçüm satırı var.
+Elimizde bir büyükşehrin **saatlik trafik yoğunluğu** kaydı var: açık veri
+portalından indirilmiş, sıradan bir CSV dosyası. Şehri kaplayan konum
+ızgarasının her hücresi için, her saat başı bir ölçüm satırı tutuyor.
 
-Bu dosya bir fotoğraf albümü kadar yer kaplıyor. Telefonunuzda bundan
-büyüğü var. O hâlde sorun ne?
+Aralık ayına ait dosyanın boyutu **96,9 MB**. Telefonunuzdaki tek bir video
+bundan büyüktür. Üstelik bu yalnızca bir ay; ocak dosyasıyla birlikte
+toplam yaklaşık 237 MB ediyor.
+
+Yani ortada devasa bir dosya yok. O hâlde sorun ne?
 
 Sorun şu: **bu dosyayı bilgisayarınızda açamıyorsunuz.**
 
@@ -42,13 +45,16 @@ Excel'in bir çalışma sayfası en fazla **1.048.576 satır** tutabilir. Bu say
 keyfî değildir: 2<sup>20</sup>, yani programın satır numarasını saklamak için
 ayırdığı yerin doğal sınırı. Sütun sınırı da benzer biçimde 16.384'tür.
 
-Bizim dosyamızda milyonlarca satır var. Kesin sayıyı derste birlikte
-göreceğiz — ama sınırı aştığı kesin, çünkü iki ayda 1.488 saat var ve her
-saatte binlerce yol kesiti ölçülüyor.
+Aralık dosyasında **1.266.396 satır** var. Aralık ayı 744 saat sürer; demek
+ki her saat için şehrin yaklaşık 1.700 noktasında ölçüm yapılmış.
+
+Sayıya dikkat edin: sınırın yalnızca **yüzde yirmi** üstündeyiz. Dosyanın dev
+olması gerekmiyor — bir milyon satırı aşmak, iki aylık sıradan bir ölçüm
+kaydı için yeterli. Üstelik bu tek ay; ocak eklendiğinde sayı ikiye katlanıyor.
 
 ### Bellek sınırı
 
-Diskteki 237 MB, bellekte **çok daha fazla** yer kaplar. Excel dosyayı olduğu
+Diskteki 96,9 MB, bellekte **çok daha fazla** yer kaplar. Excel dosyayı olduğu
 gibi tutmaz; her hücreyi biçimiyle, tipiyle, formülüyle birlikte bellekte
 canlandırır. Kabaca üç-dört katı bir yer gerekir.
 
@@ -116,7 +122,7 @@ Bu dersin ayırt edici noktası burasıdır. Buluta veri koymak, veriyi uzaktaki
 bir diske koymak demek değildir. Asıl kiralanan şey **işlem gücüdür**: veriyi
 okuyup hesaplayacak makineler.
 
-Bizim 237 MB'lık dosyamız zaten diskinize sığıyordu. Sığmayan şey işti.
+Bizim dosyamız zaten diskinize sığıyordu. Sığmayan şey işti.
 
 ---
 
@@ -141,10 +147,12 @@ Bulut hakkında sık karşılaşılan üç yanlış:
 | "Bulut her işi hızlandırır" | Küçük işler bulutta **daha yavaştır**; kurulum süresi eklenir |
 | "Bulut sınırsızdır" | Ölçülür ve faturalanır; sınırsız olan tek şey fatura olabilir |
 
-İkinci satırı deneyerek göreceksiniz: ilk not defterinizi (notebook)
-çalıştırdığınızda birkaç saniye beklersiniz. O bekleme, size bir makine
-ayrılmasıdır. Kendi bilgisayarınızda böyle bir bekleme yoktur — çünkü makine
-zaten açıktır ve yalnızca sizindir.
+İkinci satırı deneyerek göreceksiniz. Not defterinde (notebook) sıradan bir
+Python satırı anında çalışır; ama veriye dokunan **ilk** komut kırk saniye
+kadar sürer. O bekleme, işi bölecek makinelerin sizin için ayağa
+kaldırılmasıdır. Kendi bilgisayarınızda böyle bir bekleme yoktur — çünkü
+makine zaten açıktır ve yalnızca sizindir. Bedava olan şey hız değil,
+**büyüyebilmektir.**
 
 ---
 
@@ -190,10 +198,11 @@ olacak. Bugün yalnızca bakıyoruz, yazmıyoruz:
 print(trafik.count())
 ```
 
-Bu satır, kendi bilgisayarınızın açamadığı dosyanın kaç satır olduğunu
-söyler. `trafik` bir dosya adı değil; veriye verdiğimiz addır. `count()` ise
-sayma işini **tek başına yapmaz** — işi bölüp birden çok makineye dağıtır,
-sonuçları toplar ve size tek bir sayı döndürür.
+Bu satır, ikinci bölümde verdiğimiz sayıyı — Excel'in açamadığı
+1.266.396'yı — yaklaşık kırk saniyede ekrana yazar. `trafik` bir dosya adı
+değil; veriye verdiğimiz addır. `count()` ise sayma işini **tek başına
+yapmaz** — işi bölüp birden çok makineye dağıtır, sonuçları toplar ve size
+tek bir sayı döndürür.
 
 Bu cümlenin her parçasını ilerleyen haftalarda tek tek açacağız. Bugün
 bilmeniz gereken tek şey şu: **satırın kısalığı, işin küçüklüğü anlamına
