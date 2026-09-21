@@ -19,6 +19,7 @@ Bu depo, ders notlarının ve örnek kodların öğrenciye açık **yansımasıd
 | [BİL203](bil203/) | Nesne Tabanlı Programlama I | Bilgisayar Programcılığı | `tymz.org/bil203` |
 | [İNT215](int215/) | Görsel Programlama I | İnternet ve Ağ Teknolojileri | `tymz.org/int215` |
 | [BVAP203](bvap203/) | Bulut Bilişim | Büyük Veri Analistliği | `tymz.org/bvap203` |
+| [YBS403](ybs403/) | Sistem Analizi ve Tasarımı | Yönetim Bilişim Sistemleri | `tymz.org/ybs403` |
 
 Aktif dönem: **2026–2027 Güz**
 
