@@ -59,7 +59,7 @@ Türetilmiş sınıf metodu ezmezse temel sınıfın versiyonunu kullanmaya deva
 
 ### Aşırı yükleme ile karıştırmayın
 
-Geçen yıl **aşırı yüklemeyi** (overloading) öğrenmiştiniz. İkisi farklı şeylerdir:
+İkinci haftada kurucuları **aşırı yüklemiştik** (overloading). Ezme ile sürekli karıştırılır; ikisi farklı şeylerdir:
 
 | | Aşırı yükleme | Ezme |
 | --- | --- | --- |

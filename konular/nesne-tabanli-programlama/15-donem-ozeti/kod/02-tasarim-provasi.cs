@@ -179,7 +179,10 @@ class Sube
 
 // --- Kendinizi değerlendirin ---
 //
-// Bu problem sınavda 25 puan değerinde olurdu. Ölçütler:
+// Bu prova 25 puan üzerinden değerlendirilir. Gerçek sınavda parçalar
+// 1., 2. ve 4. soruya dağılır; o soruların her biri 20 puandır.
+//
+// Ölçütler:
 //
 //   Soyut sınıf doğru kurulmuş (abstract, private set)          5
 //   abstract / virtual seçimi doğru                              5

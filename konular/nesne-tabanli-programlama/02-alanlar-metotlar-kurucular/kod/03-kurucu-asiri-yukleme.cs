@@ -1,9 +1,9 @@
 // Kurucu metotların aşırı yüklenmesi.
 //
-// Geçen yıl aşırı yüklemeyi öğrenirken metotları "static class" kutusuna
-// koymak zorunda kalmıştık: yerel fonksiyonlar aşırı yüklenemiyordu.
-// Şimdi o kutunun ne olduğunu biliyoruz — bir SINIF. Ve sınıfın içinde
-// aşırı yükleme doğal olarak çalışıyor; kurucular dahil.
+// Aşırı yükleme: aynı adı taşıyan birden fazla metot yazmak ve doğru
+// olanı derleyiciye seçtirmek. Bir TİP ÜYESİ özelliğidir — metodun bir
+// sınıfın içinde olması gerekir. Artık sınıf yazdığımıza göre kurucular
+// da bu kuralın içinde.
 //
 // Çalıştırmak için:  dotnet run 03-kurucu-asiri-yukleme.cs
 
@@ -63,9 +63,9 @@ class Urun
 
 // --- İMZA KURALLARI DEĞİŞMEDİ ---
 //
-// Geçen yıl öğrendiğimiz kural burada da geçerli: iki kurucunun
-// imzası farklı olmalı. Yani parametrelerin SAYISI, TİPİ veya
-// SIRASI değişmeli.
+// Kural metotlarda ne ise kurucularda da odur: iki kurucunun imzası
+// farklı olmalı. Yani parametrelerin SAYISI, TİPİ veya SIRASI
+// değişmeli.
 //
 // Şunu yazamazsınız — aynı imza, derleme hatası:
 //

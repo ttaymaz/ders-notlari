@@ -181,8 +181,11 @@ class Sube
 }
 
 // =====================================================================
-// PUANLAMA ÖLÇÜTLERİ (25 puan)
+// PUANLAMA ÖLÇÜTLERİ (prova: 25 puan)
 // =====================================================================
+//
+//   Gerçek sınavda bu parçalar 1., 2. ve 4. soruya dağılır ve o
+//   soruların her biri 20 puandır. Buradaki 25, provanın kendi ölçeği.
 //
 //   1. Soyut sınıf doğru kurulmuş                                5
 //      abstract sınıf + üç özellik private set + protected kurucu

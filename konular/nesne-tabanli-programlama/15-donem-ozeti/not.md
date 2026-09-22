@@ -10,7 +10,7 @@ Dönemin son dersine geldik. Bu hafta yeni bir konu işlemiyoruz.
 
 **Kapsam:** 1. haftadan 14. haftaya kadar **tüm** konular.
 **Ağırlık:** Genel ortalamanın **%60**'ı.
-**Format:** **4 klasik soru × 25 puan**, kısmi puan verilir.
+**Format:** **5 klasik soru × 20 puan**, kısmi puan verilir.
 
 Sınav tarihi ve saati ders sayfanızda duyurulmaktadır.
 
@@ -22,10 +22,11 @@ Sınav tarihi ve saati ders sayfanızda duyurulmaktadır.
 | **2** | **Kalıtım, ezme ve polimorfizm** — hiyerarşi kurma | 5–6, 9 |
 | **3** | Verilen kodda **hataları bulup düzeltme** | 1–14 |
 | **4** | **Tasarım kararı ve koleksiyonlar** — gerekçelendirme | 10–14 |
+| **5** | **Dosyadan koleksiyona** — satırı nesneye çevirmek | 13 |
 
-> **Vizeden farkı:** Vizede çoktan seçmeli bir bölüm vardı. Finalde yok — dört sorunun dördü de klasik. Buna karşılık **kısmi puan** her soruda geçerli: yarım kalan bir çözüm de puan alır.
+> **Vizeden farkı:** Vizede çoktan seçmeli bir bölüm vardı. Finalde yok — beş sorunun beşi de klasik. Buna karşılık **kısmi puan** her soruda geçerli: yarım kalan bir çözüm de puan alır.
 
-![Finalin dört sorusu](assets/02-final-yapisi.svg)
+![Finalin beş sorusu](assets/02-final-yapisi.svg)
 
 ### Ağırlık Merkezi
 
@@ -156,7 +157,7 @@ Her üye için tek soru: **bütün türlerde var mı, aynı mı çalışıyor, g
 
 ## 5. Final Provası
 
-Üç prova dosyası var; üçü de **sınavdakiyle aynı formatta**, farklı senaryolarla.
+Prova dosyaları **sınavdakiyle aynı formatta**, farklı senaryolarla hazırlandı.
 
 ### Bölüm A provası — çıktı tahmini
 
@@ -172,7 +173,7 @@ Yanıldığınız blok, dönmeniz gereken haftayı gösterir — eşleme `kod/RE
 
 Çözümü ve **puanlama ölçütlerini** `kod/03-prova-cozumu.cs` içinde bulacaksınız. Çözmeden bakmayın.
 
-> Bu prova sınavın **üç sorusunu tek problemde** birleştirir. Gerçek sınavda bunlar ayrı ayrı sorulur ve her biri 25 puandır.
+> Bu prova sınavın **üç sorusunu tek problemde** birleştirir. Gerçek sınavda bunlar ayrı ayrı sorulur ve her biri 20 puandır.
 
 ### 3. soru provası — hata avı
 
@@ -193,6 +194,19 @@ Yanıldığınız blok, dönmeniz gereken haftayı gösterir — eşleme `kod/RE
 
 Yedinci hatayı derleyici bulamaz: program derlenir, çalışır ve *Collection was modified* diyerek çöker. Sekizinci hatayı ise ne derleyici ne de çalışma zamanı bulur — program sessizce yanlış çalışır. Dönem boyunca konuştuğumuz **mantık ve tasarım hatası** budur.
 </details>
+
+### 5. soru provası — dosyadan koleksiyona
+
+Bu sorunun provası 13. haftanın kendi dosyalarıdır:
+
+| Dosya | Neyin provası |
+| ----- | ------------- |
+| `13-koleksiyonlar-ve-jenerikler/kod/05-dosyadan-koleksiyona.cs` | Satırı nesneye çevirmek |
+| `13-koleksiyonlar-ve-jenerikler/kod/06-koleksiyonu-kaydetme.cs` | Nesneyi satıra çevirmek |
+| `13-koleksiyonlar-ve-jenerikler/kod/hatali/02-satiri-nesneye-cevirme.cs` | Üç ayrıştırma tuzağı |
+
+Hatalı dosyadaki **üçüncü** hatayı bulabiliyorsanız bu soruya hazırsınız: program
+çökmeden, hata vermeden bir satırı kaybediyor. Bulmanın tek yolu **saymaktır.**
 
 ---
 

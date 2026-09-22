@@ -1,8 +1,9 @@
 // Aynı görünen iki atama, farklı sonuç.
 //
 // Birinci haftada "iki değişken aynı nesneyi gösterirse ne olur" sorusunu
-// ertelemiştik. Geçen yıl da dizilerde "değiştirdim ama dışarıda değişmemiş"
-// şaşkınlığını yaşamıştınız. Hepsinin tek bir cevabı var.
+// ertelemiştik. Bir diziyi metoda gönderip içeride değiştirdiğinizde
+// dışarıdakinin de değişmesi de aynı sorunun başka bir yüzü.
+// Hepsinin tek bir cevabı var.
 //
 // Şema: assets/01-kopya-mi-referans-mi.svg
 // Çalıştırmak için:  dotnet run 01-atama-farki.cs
@@ -101,9 +102,9 @@ struct Nokta
 //   Değer tipi   : int, double, bool, char, decimal, struct, enum
 //   Referans tipi: class, dizi, string, interface, delegate
 //
-// Dizinin referans tipi olması, geçen yılki şaşkınlığın cevabıdır:
-// bir diziyi metoda gönderip içeriğini değiştirdiğinizde dışarıdaki
-// dizi de değişiyordu. Çünkü dizi bir referans tipidir.
+// Dizinin referans tipi olması şunu açıklar: bir diziyi metoda gönderip
+// içeriğini değiştirdiğinizde dışarıdaki dizi de değişir. Metoda giden
+// şey dizinin kendisi değil, ADRESİDİR.
 //
 // --- DİKKAT: string ---
 //

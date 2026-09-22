@@ -4,7 +4,7 @@ Bu hafta iki borç ödüyoruz.
 
 **Birincisi geçen üç haftadan:** kurucularda `urunAdi`, `baslangicStogu` gibi zorlama isimler kullandık. Sebebi alan adıyla parametre adının çakışmasıydı. Bu hafta çakışmayı çözen anahtar kelimeyi öğreneceğiz.
 
-**İkincisi geçen yıldan:** aşırı yükleme haftasında metotlarımızı `static class` kutusuna koymuş ve *"ikinci sınıfta ayrıntısıyla öğreneceksiniz"* demiştik. Sıra geldi.
+**İkincisi çok daha eskiden:** `Console.WriteLine` yazarken bir `Console` nesnesi üretmediniz. `Math.Sqrt(16)` çağırırken bir `Math` nesnesi kurmadınız. Bunun nasıl olduğunu bugüne kadar hiç sormadık. Sıra geldi.
 
 ---
 
@@ -241,11 +241,11 @@ static class Hesap
 
 | Kelime | Gerçek anlamı |
 | ------ | ------------- |
-| `class` | Üyeleri bir arada tutan tip. Aşırı yükleme bir **tip üyesi** özelliğidir; yerel fonksiyonlar tip üyesi değildir, bu yüzden aşırı yüklenemiyorlardı |
+| `class` | Üyeleri bir arada tutan tip. Aşırı yükleme bir **tip üyesi** özelliğidir; metodun bir tipin içinde olması gerekir |
 | `static` | "Bu üye nesneye değil sınıfa aittir." İki farklı "hesap nesnesi" olmasının anlamı yoktu |
 | `public` | Sınıfın dışından erişilebilir — üçüncü haftada gördük |
 
-Geçen yıl "şimdilik böyle kabul edin" dediğimiz her şeyin karşılığı buydu.
+Dönemin ilk gününden beri `Console.WriteLine` yazarken kullandığınız şey buydu.
 
 ---
 
@@ -278,7 +278,7 @@ Bu haftanın kodları [`kod/`](kod/) klasöründe:
 | [`01-this-isim-cakismasi.cs`](kod/01-this-isim-cakismasi.cs) | `ad = ad;` neden çalışmaz |
 | [`02-kurucu-zinciri.cs`](kod/02-kurucu-zinciri.cs) | `: this(...)` ile tekrarı bitirmek |
 | [`03-statik-uyeler.cs`](kod/03-statik-uyeler.cs) | Paylaşılan sayaç, statik metot kuralı |
-| [`04-matematiksel-islemler.cs`](kod/04-matematiksel-islemler.cs) | Statik sınıf ve geçen yılın kutusu |
+| [`04-matematiksel-islemler.cs`](kod/04-matematiksel-islemler.cs) | Statik sınıf: `Math` gibi bir tip yazmak |
 
 ---
 

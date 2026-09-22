@@ -249,7 +249,7 @@ Bu haftanın kodları [`kod/`](kod/) klasöründe:
 
 ## Gelecek Hafta
 
-Dönem boyunca yazdığımız her tip bir **sınıftı** ve sınıflar `new` ile üretiliyordu. Ama geçen yıldan beri `int`, `double`, `bool` kullanıyorsunuz ve onları `new` ile üretmiyorsunuz.
+Dönem boyunca yazdığımız her tip bir **sınıftı** ve sınıflar `new` ile üretiliyordu. Ama ilk günden beri `int`, `double`, `bool` kullanıyorsunuz ve onları `new` ile üretmiyorsunuz.
 
 Şu davranışı hiç düşündünüz mü?
 

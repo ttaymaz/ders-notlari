@@ -2,7 +2,7 @@
 
 | Dosya | Konu | Şema |
 | ----- | ---- | ---- |
-| `01-prosedurel-ogrenci.cs` | Geçen yılın yöntemi ve üç sınırı | `01-prosedurel-vs-nesne.svg` (sol) |
+| `01-prosedurel-ogrenci.cs` | Prosedürel yöntem ve üç sınırı | `01-prosedurel-vs-nesne.svg` (sol) |
 | `02-nesne-ogrenci.cs` | Aynı program, nesnelerle | `01-prosedurel-vs-nesne.svg` (sağ) |
 | `03-kitap-sinifi.cs` | Kütüphane otomasyonunun ilk sınıfı | `02-sinif-ve-nesneler.svg` |
 | `04-nesneler-bagimsiz.cs` | Her nesnenin kendi verisi vardır | — |

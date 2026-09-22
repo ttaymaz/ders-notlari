@@ -5,7 +5,7 @@
 | `01-this-isim-cakismasi.cs` | `ad = ad;` neden çalışmaz | `01-this-isim-cakismasi.svg` |
 | `02-kurucu-zinciri.cs` | `: this(...)` ile tekrarı bitirmek | — |
 | `03-statik-uyeler.cs` | Paylaşılan sayaç, statik metot kuralı | `02-statik-vs-ornek.svg` |
-| `04-matematiksel-islemler.cs` | Statik sınıf ve geçen yılın kutusu | — |
+| `04-matematiksel-islemler.cs` | Statik sınıf: `Math` gibi bir tip yazmak | — |
 
 ## Çalıştırma
 

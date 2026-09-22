@@ -63,7 +63,7 @@ Bu değerler kurucu çalışmadan **önce** atanır.
 
 ## 2. Metotlar: Nesnenin Davranışı
 
-Metotları geçen yıl öğrendiniz; değişen tek şey artık bir sınıfın içinde olmaları.
+Metot yazmak yeni değil; değişen tek şey artık bir sınıfın içinde olmaları.
 
 ```csharp
 public decimal ToplamDeger()
@@ -118,7 +118,7 @@ Urun klavye = new Urun("Klavye", 750m, 12);
 | Bir alanı unutmak **sessiz hata** üretir | Argüman eksikse **derlenmez** |
 | "Bir ürün için ne gerekir?" cevabı dağınık | Cevap kurucunun imzasında yazar |
 
-En önemlisi ikinci satır: hata **derleme zamanına** taşındı. Geçen yıl öğrendiğiniz ayrımın tam uygulaması — derleyicinin yakaladığı hata, çalışırken ortaya çıkan hatadan her zaman iyidir.
+En önemlisi ikinci satır: hata **derleme zamanına** taşındı. Derleme zamanı ile çalışma zamanı ayrımının tam uygulaması — derleyicinin yakaladığı hata, çalışırken ortaya çıkan hatadan her zaman iyidir.
 
 ---
 
@@ -180,9 +180,9 @@ public Defter()
 
 ## 6. Kurucuların Aşırı Yüklenmesi
 
-Geçen yıl aşırı yüklemeyi öğrenirken metotları `static class` kutusuna koymak zorunda kalmıştık — yerel fonksiyonlar aşırı yüklenemiyordu.
+**Aşırı yükleme** (overloading): aynı adı taşıyan birden fazla metot yazmak ve doğru olanı derleyiciye seçtirmek. Kavrama daha önce rastlamış olabilirsiniz.
 
-Şimdi o kutunun ne olduğunu biliyoruz: **bir sınıf.** Ve sınıfın içinde aşırı yükleme doğal olarak çalışır. Kurucular da dahil:
+Aşırı yükleme bir **tip üyesi** özelliğidir — metodun bir sınıfın içinde olması gerekir. Artık sınıf yazdığımıza göre kurucular için de geçerli:
 
 ```csharp
 public Urun(string ad, decimal fiyat, int stok) { ... }
@@ -200,7 +200,7 @@ Urun u3 = new Urun("Monitör");
 
 ### İmza kuralları değişmedi
 
-Geçen yılki kural aynen geçerli: iki kurucunun parametrelerinin **sayısı, tipi veya sırası** farklı olmalıdır. Parametre **adı** imzaya dahil değildir:
+Kural şudur: iki kurucunun parametrelerinin **sayısı, tipi veya sırası** farklı olmalıdır. Parametre **adı** imzaya dahil değildir:
 
 ```csharp
 public Urun(string ad, decimal fiyat)      { }

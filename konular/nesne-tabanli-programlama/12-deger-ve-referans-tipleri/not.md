@@ -22,7 +22,7 @@ Bu haftanın konusu, dönem boyunca biriken üç sorunun ortak cevabı:
 
 - **Birinci hafta:** *"İki değişken aynı nesneyi gösterirse ne olur?"*
 - **Birinci hafta:** *"`new Ogrenci[3]` neden nesne üretmiyor?"*
-- **Geçen yıl:** *"Diziyi metoda gönderdim, içeride değiştirdim, dışarıda da değişti — neden?"*
+- **Her dönem sorulur:** *"Diziyi metoda gönderdim, içeride değiştirdim, dışarıda da değişti — neden?"*
 
 ---
 
@@ -44,7 +44,7 @@ Bu haftanın konusu, dönem boyunca biriken üç sorunun ortak cevabı:
 | `struct`, `enum` | `string` |
 | `DateTime`, `TimeSpan` | `interface`, `List<T>` |
 
-> **Dizinin referans tipi olması**, geçen yılki şaşkınlığın cevabıdır: bir diziyi metoda gönderip içeriğini değiştirdiğinizde dışarıdaki dizi de değişiyordu.
+> **Dizinin referans tipi olması**, üçüncü sorunun cevabıdır: bir diziyi metoda gönderip içeriğini değiştirdiğinizde dışarıdaki dizi de değişir. Dizi bir nesnedir; metoda giden şey o nesnenin adresidir.
 
 ---
 
@@ -295,11 +295,11 @@ Bu haftanın kodları [`kod/`](kod/) klasöründe:
 
 ## Gelecek Hafta
 
-Bu haftaya kadar nesneleri hep **dizilerde** tuttuk. Dizinin bir sınırı var: boyutu baştan belirlenir ve sonradan değişmez.
+Bu haftaya kadar nesneleri hep **dizilerde** tuttuk ve hepsini bellekte tuttuk. İkisinin de bir sınırı var: dizinin boyutu baştan belirlenir, bellekteki her şey ise program kapanınca silinir.
 
-Bir kütüphaneye yeni kitap eklemek istediğinizde ne yapıyorsunuz? Daha büyük bir dizi açıp hepsini kopyalamak mı?
+Gelecek hafta iki soruyu birden cevaplıyoruz. Büyüyebilen koleksiyonlar — **`List<T>` ve `Dictionary<TKey, TValue>`**, o `<T>` işaretinin ne anlama geldiği — ve bir **dosyadaki metin satırının** nasıl nesneye dönüştüğü.
 
-Gelecek hafta büyüyebilen koleksiyonları göreceğiz: **`List<T>` ve `Dictionary<TKey, TValue>`** — ve o `<T>` işaretinin ne anlama geldiğini.
+Bu haftanın konusu orada bir kez daha karşınıza çıkacak: aynı nesne hem listede hem sözlükte durduğunda kaç tane nesne vardır?
 
 ---
 

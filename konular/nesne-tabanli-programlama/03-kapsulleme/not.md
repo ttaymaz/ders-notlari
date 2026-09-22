@@ -324,7 +324,7 @@ public Urun(string urunAdi, decimal urunFiyati)
 
 Parametre adlarını alan adlarından farklı seçtik, çünkü ikisi aynı olsaydı hangisini kastettiğimiz belirsiz kalırdı. `urunAdi`, `baslangicStogu` gibi zorlama isimler bu yüzden çıktı.
 
-Gelecek hafta bu sorunu çözen anahtar kelimeyi göreceğiz: **`this`**. Aynı hafta, geçen yıldan kalan son borcu da ödeyeceğiz — `static` gerçekte ne demek?
+Gelecek hafta bu sorunu çözen anahtar kelimeyi göreceğiz: **`this`**. Aynı hafta uzun süredir ertelediğimiz soruyu da cevaplayacağız: `Console.WriteLine` neden bir nesne olmadan çalışıyor — yani `static` gerçekte ne demek?
 
 ---
 

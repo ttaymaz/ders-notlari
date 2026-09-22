@@ -1,5 +1,5 @@
 // ÖNCE: Prosedürel yaklaşım — veri bir yanda, onu işleyen metotlar başka yanda.
-// Geçen yıl programlarımızı tam olarak böyle yazıyorduk.
+// Bir veriyi tutmak için dizi, onu işlemek için ayrı metotlar: tanıdık bir düzen.
 //
 // Şema: assets/01-prosedurel-vs-nesne.svg (üst kutu)
 // Çalıştırmak için:  dotnet run 01-prosedurel-ogrenci.cs

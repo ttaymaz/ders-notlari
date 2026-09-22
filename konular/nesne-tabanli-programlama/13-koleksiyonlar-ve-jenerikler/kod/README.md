@@ -6,7 +6,10 @@
 | `02-liste-temelleri.cs` | Ekleme, silme, arama, gezme, sıralama | — |
 | `03-liste-ve-polimorfizm.cs` | `List<Demirbas>` — 9. haftanın raporu, büyüyebilen listeyle | — |
 | `04-sozluk.cs` | `Dictionary<TKey, TValue>` ve güvenli erişim | `02-liste-mi-sozluk-mu.svg` |
+| `05-dosyadan-koleksiyona.cs` | Metin satırını nesneye çevirmek | — |
+| `06-koleksiyonu-kaydetme.cs` | Nesneyi satıra çevirmek — kaydetmek de polimorfik | — |
 | `hatali/01-foreach-icinde-silme.cs` | **Kasıtlı hatalı** — gezerken silmek | — |
+| `hatali/02-satiri-nesneye-cevirme.cs` | **Kasıtlı hatalı** — üç ayrıştırma tuzağı | — |
 
 ## Çalıştırma
 
@@ -14,8 +17,11 @@
 dotnet run 01-dizinin-duvari.cs
 ```
 
-`hatali/` klasöründeki dosya **çalışma zamanında çöker.** Bu beklenen
+`hatali/` klasöründeki dosyalar **çalışma zamanında çöker.** Bu beklenen
 davranıştır; hatayı bulup düzeltmek alıştırmanın kendisidir.
+
+`05` ve `06` çalıştıkları klasörde birer `.txt` dosyası oluşturur. Bu dosyalar
+depoya girmez; silerseniz program bir sonraki çalıştırmada yenisini üretir.
 
 ## Denemeniz için
 
@@ -37,3 +43,13 @@ davranıştır; hatayı bulup düzeltmek alıştırmanın kendisidir.
   hangisi hangi durumda doğru seçim?
 - `hatali/01-foreach-icinde-silme.cs` dosyasındaki üç çözümü sırayla açın.
   Üçü de aynı sonucu veriyor mu? Hangisini kendi kodunuzda kullanırsınız?
+- `05-dosyadan-koleksiyona.cs` çalıştıktan sonra `demirbas.txt` dosyasını bir
+  metin düzenleyicide açın, yeni bir satır ekleyin ve programı tekrar
+  çalıştırın. Kodda tek satır değiştirmeden koleksiyon büyüdü mü?
+- Aynı dosyada `int.TryParse` yerine `int.Parse` yazın. Bozuk satırda ne
+  oluyor? Hangisi sizin verinize uygun — çökmek mi, atlayıp devam etmek mi?
+- `06-koleksiyonu-kaydetme.cs` içinde `Kitap` sınıfının `Satir()` metodunu
+  silin. Program derleniyor ve çalışıyor — ama dosyaya ne yazılıyor?
+- `hatali/02-satiri-nesneye-cevirme.cs` dosyasındaki iki çökmeyi düzeltin.
+  Program hatasız çalıştığında kaç demirbaş okuyor? Dosyada kaç veri satırı
+  var? İkisi tutmuyorsa üçüncü hata hâlâ duruyor demektir.

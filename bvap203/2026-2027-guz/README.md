@@ -23,26 +23,26 @@ Projenin nasıl değerlendirileceği ve teslim biçimi dönem ortasında duyurul
 
 Ders içeriği [`konular/`](../../konular/) altında ders kodundan bağımsız olarak
 tutulur. Aşağıdaki tablo hangi haftada hangi konunun işlendiğini gösterir.
-Ders notu bağlantıları, o hafta yayımlandıkça tabloya eklenir.
+Ders notu ve not defteri bağlantıları, o hafta yayımlandıkça tabloya eklenir.
 
-| Hafta | Konu | Ders notu |
-| :---: | ---- | :-------: |
-| 0 | Ders tanıtımı, ortam ve hesap açma | — |
-| 1 | Bulut nedir? Kendi makinenin sınırı | [not](../../konular/bulut-bilisim/01-bulut-nedir/not.md) |
-| 2 | Hizmet modelleri: IaaS, PaaS, SaaS | — |
-| 3 | Çalışma alanı, not defteri ve nesne depolama | — |
-| 4 | *planlanıyor* | — |
-| 5 | *planlanıyor* | — |
-| 6 | *planlanıyor* | — |
-| 7 | *planlanıyor* | — |
-| 8 | **Ara sınav haftası** | |
-| 9 | *planlanıyor* | — |
-| 10 | *planlanıyor* | — |
-| 11 | *planlanıyor* | — |
-| 12 | *planlanıyor* | — |
-| 13 | *planlanıyor* | — |
-| 14 | *planlanıyor* | — |
-| 15 | *planlanıyor* | — |
+| Hafta | Konu | Ders notu | Not defteri |
+| :---: | ---- | :-------: | :---------: |
+| 0 | Ders tanıtımı, ortam ve hesap açma | — | — |
+| 1 | Bulut nedir? Kendi makinenin sınırı | [not](../../konular/bulut-bilisim/01-bulut-nedir/not.md) | — |
+| 2 | Hizmet modelleri: IaaS, PaaS, SaaS | [not](../../konular/bulut-bilisim/02-hizmet-modelleri/not.md) | — |
+| 3 | Çalışma alanı, not defteri ve nesne depolama | [not](../../konular/bulut-bilisim/03-nesne-depolama/not.md) | [kod](../../konular/bulut-bilisim/03-nesne-depolama/kod/) |
+| 4 | *planlanıyor* | — | — |
+| 5 | *planlanıyor* | — | — |
+| 6 | *planlanıyor* | — | — |
+| 7 | *planlanıyor* | — | — |
+| 8 | **Ara sınav haftası** | | |
+| 9 | *planlanıyor* | — | — |
+| 10 | *planlanıyor* | — | — |
+| 11 | *planlanıyor* | — | — |
+| 12 | *planlanıyor* | — | — |
+| 13 | *planlanıyor* | — | — |
+| 14 | *planlanıyor* | — | — |
+| 15 | *planlanıyor* | — | — |
 
 > Tanıtım ve 1. hafta **aynı oturumda** işlenir: ilk dersin ikinci yarısı
 > hesap açma ve ilk not defteri için ayrılmıştır.

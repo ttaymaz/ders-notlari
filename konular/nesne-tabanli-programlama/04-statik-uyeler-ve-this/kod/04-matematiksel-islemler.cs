@@ -1,4 +1,4 @@
-// Statik sınıf: geçen yıldan kalan son borcun ödendiği yer.
+// Statik sınıf: Math ve Console'un neden nesnesiz çalıştığının cevabı.
 //
 // Aşırı yükleme haftasında metotlarımızı "static class Hesap" kutusuna
 // koymuş ve şu notu düşmüştük:
@@ -69,7 +69,7 @@ static class MatematikselIslemler
         return true;
     }
 
-    // Aşırı yükleme — geçen yılki kural burada da aynen geçerli
+    // Aşırı yükleme — kural statik sınıfın içinde de aynen geçerli
     public static double Ortalama(int a, int b)
     {
         return (a + b) / 2.0;
