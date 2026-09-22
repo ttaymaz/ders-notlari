@@ -1,47 +1,49 @@
 # Prosedürel Programlamadan Nesne Tabanlıya: Sınıf ve Nesne
 
-Geçen yıl, aşırı yükleme haftasında metotlarımızı küçük bir kutuya koymak zorunda kalmıştık:
+`class` kelimesini daha önce gördünüz. Belki her programın başında bir kap
+olarak, belki bir veri düğümü tanımlarken:
 
 ```csharp
-static class Hesap
+class Dugum
 {
-    public static int Topla(int a, int b) { return a + b; }
-    public static int Topla(int a, int b, int c) { return a + b + c; }
+    public int Veri;
+    public Dugum Sonraki;
 }
 ```
 
-O kutunun yanına şu notu düşmüştük:
+İkisinde de sınıf **konu değildi, araçtı.** Yazdınız, çalıştı, geçtiniz.
 
-> *"Bunları şimdi ezberlemeyin. İkinci sınıfta nesne tabanlı programlamada her birinin ne anlama geldiğini ayrıntısıyla öğreneceksiniz."*
-
-Bu dönem o kutuyu açıyoruz. `class`, `static`, `public` — üçünün de ne olduğunu, neden var olduklarını ve ne zaman kullanılacağını göreceğiz.
-
-Ama işe kelimelerin tanımıyla başlamayacağız. Önce şu soruyu cevaplayacağız: **geçen yılki yazma biçimimizin nesi eksikti?**
+Bu dönem sınıfın kendisi konu oluyor. Ve işe kelimelerin tanımıyla
+başlamayacağız; önce şu soruyu cevaplayacağız: **sınıf yazmak tek başına
+neyi çözmez?**
 
 ---
 
-## 1. Geçen Yıl Neden `class` Yazmadık?
+## 1. Sınıf Yazmak ile Nesne Tabanlı Düşünmek
 
-Birinci sınıfta programlarımızı **üst düzey ifadelerle** yazdık. Dosyayı açtık, doğrudan kodu yazdık:
+Bir sınıf yazmış olmak, nesne tabanlı program yazdığınız anlamına gelmez.
+`Dugum` örneğine bakın: içinde iki alan var, ikisi de `public`, davranış
+yok. O sınıf bir **kutudur** — veriyi bir arada tutar, başka bir iddiası
+yoktur.
 
-```csharp
-int sayi = 10;
-Console.WriteLine(sayi * 2);
-```
+Nesne tabanlı tasarım üç soruyu sorar ve o kutu hiçbirini sormaz:
 
-Bu, C#'ın sunduğu bir kolaylıktır ve gerçek bir tercihtir — oyuncak bir sözdizimi değildir. Küçük programlar için en okunaklı biçim budur.
+1. Bu veriyi **kim değiştirebilmeli?**
+2. Bu veriyle ilgili **işler nerede durmalı?**
+3. Benzer iki tür arasındaki **ortaklık nereye yazılmalı?**
 
-`class` kalıbını bilinçli olarak erteledik. Sebebi şuydu: **bir kavramı, ona ihtiyaç duymadan öğretmek ezber üretir.** İlk haftada "her programın başına `class Program` yaz, içine `static void Main` koy, şimdilik anlamını sorma" deseydik, yıl boyunca anlamını sormadan yazardınız.
+Bu dönem boyunca cevapladığımız sorular bunlar. `class` anahtar kelimesi
+zaten elinizde; eksik olan onu **ne zaman ve nasıl böleceğiniz.**
 
-Bu dönem o ihtiyacı üreteceğiz. Sonra kavramı getireceğiz.
-
-> **Üst düzey ifadeler kaybolmuyor.** Bu dönem de dosyalarımız doğrudan kodla başlayacak. Sınıflarımızı o kodun **altına** yazacağız. Yani programın giriş noktası aynı kalıyor, yanına yeni bir bölüm ekleniyor.
+> **Yazım biçimi:** Bu dönem dosyalarımız doğrudan kodla başlayacak,
+> sınıflarımızı o kodun **altına** yazacağız. Programın giriş noktası sade
+> kalıyor, yanına yeni bir bölüm ekleniyor.
 
 ---
 
 ## 2. Prosedürel Bir Program ve Sınırları
 
-Geçen yılın bilgisiyle yazılmış bir program düşünün: üç öğrencinin adı, vize ve final notu tutulacak, ortalama hesaplanıp durumu yazdırılacak.
+Yalnızca diziler ve metotlarla yazılmış bir program düşünün: üç öğrencinin adı, vize ve final notu tutulacak, ortalama hesaplanıp durumu yazdırılacak.
 
 ```csharp
 string[] adlar = { "Ayşe Yılmaz", "Mehmet Demir", "Zeynep Kaya" };
@@ -65,7 +67,7 @@ for (int i = 0; i < adlar.Length; i++)
 }
 ```
 
-Bu kod **çalışıyor** ve geçen yılın standartlarına göre iyi yazılmış: metotlar ayrılmış, tekrar yok, isimler anlaşılır.
+Bu kod **çalışıyor** ve prosedürel ölçütlere göre iyi yazılmış: metotlar ayrılmış, tekrar yok, isimler anlaşılır.
 
 Sorun kodun yanlış olması değil. Sorun, **büyüdüğünde ne olacağı**.
 
@@ -279,7 +281,7 @@ Bu haftanın kodları [`kod/`](kod/) klasöründe:
 
 | Dosya | Konu |
 | ----- | ---- |
-| [`01-prosedurel-ogrenci.cs`](kod/01-prosedurel-ogrenci.cs) | Geçen yılın yöntemi ve üç sınırı |
+| [`01-prosedurel-ogrenci.cs`](kod/01-prosedurel-ogrenci.cs) | Prosedürel yöntem ve üç sınırı |
 | [`02-nesne-ogrenci.cs`](kod/02-nesne-ogrenci.cs) | Aynı program, nesnelerle |
 | [`03-kitap-sinifi.cs`](kod/03-kitap-sinifi.cs) | Kütüphane otomasyonunun ilk sınıfı |
 | [`04-nesneler-bagimsiz.cs`](kod/04-nesneler-bagimsiz.cs) | Her nesnenin kendi verisi vardır |
@@ -306,7 +308,7 @@ Ana programda üç ürün üretin, birkaç giriş-çıkış yapın ve sonucu yaz
 
 1. `ToplamDeger()` adında, `Fiyat * StokAdedi` döndüren bir metot ekleyin.
 2. Beş ürünü bir dizide toplayın ve döngüyle toplam stok değerini hesaplayın.
-3. Aynı programı diziler ve metotlarla (geçen yılın yöntemiyle) yazmayı deneyin. Hangisi daha uzun sürdü? Hangisine ürün eklemek daha kolay?
+3. Aynı programı yalnızca diziler ve metotlarla yazmayı deneyin. Hangisi daha uzun sürdü? Hangisine ürün eklemek daha kolay?
 
 ---
 
