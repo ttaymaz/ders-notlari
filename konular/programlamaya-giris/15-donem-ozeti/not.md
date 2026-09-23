@@ -326,6 +326,6 @@ Bu hafta yeni kaynak yoktur. 1. haftadan 14. haftaya kadar olan ders notlarını
 
 ---
 
-*Öğr. Gör. Turgay Taymaz · Afyon Kocatepe Üniversitesi, Sinanpaşa MYO*
+*Öğr. Gör. Turgay Taymaz · Afyon Kocatepe Üniversitesi*
 *Bu materyal CC BY-NC-SA 4.0 ile lisanslanmıştır. Kullanırken kaynak gösteriniz.*
 *Kaynak: https://github.com/ttaymaz/ders-notlari*

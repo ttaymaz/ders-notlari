@@ -391,6 +391,6 @@ Milyonlarca veri içinde arama yapmanın gerçekte ne kadar sürdüğünü ölç
 
 ---
 
-*Öğr. Gör. Turgay Taymaz · Afyon Kocatepe Üniversitesi, Sinanpaşa MYO*
+*Öğr. Gör. Turgay Taymaz · Afyon Kocatepe Üniversitesi*
 *Bu materyal CC BY-NC-SA 4.0 ile lisanslanmıştır. Kullanırken kaynak gösteriniz.*
 *Kaynak: https://github.com/ttaymaz/ders-notlari*

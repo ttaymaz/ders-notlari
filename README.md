@@ -1,7 +1,6 @@
 # Ders Notları — Öğr. Gör. Turgay Taymaz
 
-Afyon Kocatepe Üniversitesi · Sinanpaşa Meslek Yüksekokulu
-Bilgisayar Teknolojileri Bölümü
+Afyon Kocatepe Üniversitesi
 
 Bu depo, ders notlarının ve örnek kodların öğrenciye açık **yansımasıdır**.
 İçerik ayrı bir kaynak depoda üretilir ve buraya otomatik olarak kopyalanır.
@@ -20,6 +19,7 @@ Bu depo, ders notlarının ve örnek kodların öğrenciye açık **yansımasıd
 | [İNT215](int215/) | Görsel Programlama I | İnternet ve Ağ Teknolojileri | `tymz.org/int215` |
 | [BVAP203](bvap203/) | Bulut Bilişim | Büyük Veri Analistliği | `tymz.org/bvap203` |
 | [YBS403](ybs403/) | Sistem Analizi ve Tasarımı | Yönetim Bilişim Sistemleri | `tymz.org/ybs403` |
+| [BM313](bm313/) | İşletim Sistemleri | Bilgisayar Mühendisliği | `tymz.org/bm313` |
 
 Aktif dönem: **2026–2027 Güz**
 

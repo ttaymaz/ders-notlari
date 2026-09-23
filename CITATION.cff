@@ -1,11 +1,11 @@
 cff-version: 1.2.0
-title: "Ders Notları — Sinanpaşa MYO Bilgisayar Teknolojileri"
+title: "Ders Notları — Öğr. Gör. Turgay Taymaz"
 message: "Bu materyali kullanırsanız lütfen aşağıdaki gibi atıf yapın."
 type: dataset
 authors:
   - family-names: Taymaz
     given-names: Turgay
-    affiliation: "Afyon Kocatepe Üniversitesi, Sinanpaşa Meslek Yüksekokulu"
+    affiliation: "Afyon Kocatepe Üniversitesi"
     email: turgaytaymaz@aku.edu.tr
 repository-code: "https://github.com/ttaymaz/ders-notlari"
 url: "https://github.com/ttaymaz/ders-notlari"
@@ -15,4 +15,8 @@ keywords:
   - C#
   - .NET
   - algoritma
+  - nesne tabanlı programlama
+  - bulut bilişim
+  - sistem analizi ve tasarımı
+  - işletim sistemleri
   - açık ders materyali
