@@ -19,7 +19,7 @@ Birinci haftadan itibaren Python 3 ve OSTEP simülatörleri gerekir; ikinci haft
 
 ## Haftalık Plan
 
-Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/) altında ders kodundan bağımsız olarak tutulur. Ders notu bağlantıları o hafta yayımlandıkça tabloya eklenir. OSTEP sütunu haftanın ileri okumasıdır.
+Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/) altında ders kodundan bağımsız olarak tutulur. OSTEP sütunu haftanın ileri okumasıdır.
 
 | Hafta | Konu | OSTEP | Ders notu |
 | :---: | ---- | :---: | :-------: |
