@@ -28,7 +28,7 @@ Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/
 | 3 | CPU zamanlama 1: FIFO, SJF, STCF, Round Robin | 7 | [not](../../konular/isletim-sistemleri/03-cpu-zamanlama/not.md) |
 | 4 | CPU zamanlama 2: MLFQ, orantılı pay, çok çekirdekli sistemlere bakış | 8–10 | [not](../../konular/isletim-sistemleri/04-mlfq-ve-orantili-pay/not.md) |
 | 5 | Bellek 1: adres uzayı, adres çevirme, segmentasyon | 13, 15, 16 | [not](../../konular/isletim-sistemleri/05-adres-uzayi-ve-segmentasyon/not.md) · [kod](../../konular/isletim-sistemleri/05-adres-uzayi-ve-segmentasyon/kod/) |
-| 6 | Bellek 2: sayfalama ve TLB | 18, 19 | — |
+| 6 | Bellek 2: sayfalama ve TLB | 18, 19 | [not](../../konular/isletim-sistemleri/06-sayfalama-ve-tlb/not.md) · [kod](../../konular/isletim-sistemleri/06-sayfalama-ve-tlb/kod/) |
 | 7 | Bellek 3: takas, sayfa hatası, sayfa değiştirme algoritmaları | 21, 22 | — |
 | 8 | **Ara Sınav Haftası** | | |
 | 9 | İş parçacıkları, yarış durumu ve kilitler | 26–28 | — |
