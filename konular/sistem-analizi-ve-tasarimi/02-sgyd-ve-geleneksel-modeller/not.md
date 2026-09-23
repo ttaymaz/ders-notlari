@@ -46,7 +46,7 @@ Farklı metodolojiler bu aşamaları farklı adlarla veya farklı döngüsel hı
    - Yazılan modüllerin hem tek başlarına (birim testi) hem de bir araya geldiklerinde (entegrasyon ve sistem testi) doğru çalışıp çalışmadığı denetlenir. Sistemin şartnamedeki gereksinimleri karşıladığı **Kullanıcı Kabul Testleri (UAT)** ile doğrulanır.
 6. **Canlıya Geçiş ve Bakım (Deployment & Maintenance):**
    - Sistemin canlı sunuculara kurulması, eski verilerin taşınması (migrasyon), kullanıcıların eğitilmesi ve sistemin teslim edilmesidir.
-   - **Bakım Gerçeği:** Bir yazılımın toplam ömür boyu sahip olma maliyetinin (TCO) yaklaşık **%60 ile %70'i** canlıya geçtikten sonraki bakım aşamasında harcanır. Bakım dört şekilde karşımıza çıkar:
+   - **Bakım Gerçeği:** Kaynaklar farklı oranlar verse de bir yazılımın ömür boyu maliyetinin çoğunlukla **yarısından fazlası** canlıya geçtikten sonraki bakım aşamasında harcanır; sık alıntılanan aralık %40–80'dir. Bakım dört türe ayrılır (ISO/IEC 14764):
      - *Düzeltici Bakım:* Canlıda ortaya çıkan hataların giderilmesi.
      - *Uyarlayıcı Bakım:* Yeni işletim sistemi, tarayıcı veya değişen yasalara uyum sağlanması.
      - *Mükemmelleştirici Bakım:* Kullanıcılardan gelen yeni performans ve arayüz iyileştirme talepleri.
@@ -58,34 +58,38 @@ Aşağıdaki şema, bu aşamalar arasındaki doğrusal geçişi ve aşamalar ile
 
 ---
 
-## 3. Barry Boehm'in Hata Maliyeti Kuralı (Cost of Change)
+## 3. Hata Maliyeti: Hata Ne Kadar Geç Bulunursa O Kadar Pahalı
 
-Yazılım mühendisliğinin öncülerinden Barry Boehm tarafından ortaya konan ve onlarca ampirik araştırmayla doğrulanan kural şudur:
+Yazılım mühendisliğinin öncülerinden Barry Boehm, *Software Engineering Economics* (1981) kitabında büyük projelerden derlediği verilerle şu gözlemi yaygınlaştırdı:
 
-> **Boehm Kuralı:** Bir gereksinim veya tasarım hatasını tespit edip düzeltmenin maliyeti, SGYD aşamaları ilerledikçe **üssel (katlanarak)** artar.
+> Bir gereksinim hatasını düzeltmenin maliyeti, hatanın bulunduğu aşama ilerledikçe **katlanarak** artar.
 
-Rakamları somutlaştıralım:
+Boehm'in büyük projeler için verdiği göreli oranlar kabaca şöyledir: gereksinim aşamasında **1**, tasarımda **5**, kodlamada **10**, geliştirme testinde **20**, kabul testinde **50**, canlı kullanımda **100 ve üzeri**.
 
-- **Analiz Aşamasında Fark Edilen Hata ($1\times$):** Kütüphanecinin "bir üye en fazla 3 kitap alabilir" dediğini yanlış anlayıp 5 kitap yazmışsınız. Analiz toplantısında kütüphaneci "hayır, 3 kitap olacak" der. Çözüm: Şartnamedeki "5" rakamını silip "3" yazarsınız. **Süre: 10 saniye. Maliyet: 0 TL.**
-- **Tasarım Aşamasında Fark Edilen Hata ($5\times - 10\times$):** Yanlış kurala göre veritabanı kısıtlaması (constraint) ve arayüz uyarı kutuları çizilmiştir. Çözüm: Şemayı ve ekran tasarımını güncellemek gerekir. **Süre: Birkaç saat.**
-- **Kodlama Aşamasında Fark Edilen Hata ($20\times$):** Geliştirici 5 kitaba göre kontroller, fonksiyonlar ve döngüler yazmıştır. Çözüm: Kodların bulunması, silinmesi, yeniden yazılması ve derlenmesi gerekir. **Süre: Birkaç gün.**
-- **Test Aşamasında Fark Edilen Hata ($50\times$):** Test uzmanı senaryoyu çalıştırır ve sistem hata verir. Geliştiriciye geri döner, geliştirici kodu düzeltir, tekrar derlenir, tekrar teste girer. **Süre: 1-2 hafta.**
-- **Canlı Kullanımda Fark Edilen Hata ($100\times+$):** Sistem canlıdadır. Yüzlerce öğrenci 5'er kitap alıp götürmüş, kütüphanede kitap kalmamış, kütüphane müdürü rektörlüğe şikayet etmiş, sistem durdurulmuş, canlı veritabanı bozulmuştur. Çözüm: Acil yama (hotfix), canlı veritabanı temizliği, kurumsal itibar kaybı, fazla mesai ücretleri ve hukuki kriz yönetimi. **Maliyet: On binlerce lira ve haftalarca kaos.**
+Bu sayıları bir doğa yasası gibi okumayın. Boehm ve Basili 2001'de yaptıkları değerlendirmede büyük sistemler için yüz kat farkın sık görüldüğünü, ancak küçük ve kritik olmayan sistemlerde oranın **beşe bir** civarına indiğini belirttiler. Orandan çok **yön** önemlidir: hata ne kadar geç bulunursa, o hataya dayanarak üretilmiş o kadar çok belge, kod ve veri yeniden elden geçer.
 
-Sistem analizinin ve modellemenin asıl ekonomik gerekçesi budur: **Hataları inşa etmeden önce, kağıt üzerindeyken yakalamak ve yok etmek.**
+Kütüphane örneğiyle somutlaştıralım:
+
+- **Analizde bulunan hata (1x):** Kütüphaneci "öğrenci en fazla 3 nüsha alabilir" demiş, analist 5 yazmıştır. Toplantıda fark edilir, şartnamedeki sayı düzeltilir. Süre dakikalar, maliyet neredeyse sıfırdır.
+- **Tasarımda bulunan hata (5x):** Yanlış sayıya göre veritabanı kısıtı ve ekran uyarısı çizilmiştir. Şema ve ekran tasarımı birlikte güncellenir. Süre birkaç saattir.
+- **Kodlamada bulunan hata (10x):** Geliştirici 5 nüshaya göre denetimler yazmıştır. Kodun bulunması, değiştirilmesi, yeniden derlenmesi gerekir. Süre birkaç gündür.
+- **Testte bulunan hata (20x – 50x):** Test senaryosu patlar; hata geliştiriciye döner, kod düzeltilir, test yeniden koşulur, belgeler güncellenir. Süre bir iki haftadır.
+- **Canlıda bulunan hata (100x ve üzeri):** Sistem çalışmaktadır ve öğrenciler 5'er nüsha götürmüştür. Kodu düzeltmek yetmez; fazla nüshaların geri istenmesi, verinin temizlenmesi, duyuru yapılması ve kurumsal itibar kaybı da maliyete eklenir.
+
+Sistem analizinin asıl ekonomik gerekçesi budur: **hatayı inşa etmeden, kâğıt üzerindeyken yakalamak.**
 
 ---
 
 ## 4. Geleneksel Metodoloji 1: Şelale (Waterfall) Modeli
 
-1970 yılında Dr. Winston W. Royce tarafından tanımlanan Şelale Modeli, yazılım mühendisliğinin ilk resmi ve en bilinen süreç modelidir.
+Şelale modeli genellikle Winston W. Royce'un 1970 tarihli *Managing the Development of Large Software Systems* makalesine dayandırılır. Ancak Royce bu makalede sıralı akışı çizdikten hemen sonra saf hâlinin **riskli ve başarısızlığa açık** olduğunu yazmış, aşamalar arasına geri besleme ve erken prototip eklenmesini önermiştir. "Şelale" adı modele sonradan, 1970'lerin ortasında verilmiştir. Yani yaygın bilinen katı şelale, Royce'un önerdiği değil eleştirdiği modeldir; buna rağmen sözleşmeli ve sabit kapsamlı projelerde hâlâ kullanılır.
 
 ![Şelale Modeli](assets/02-selale-modeli.svg)
 
 ### Modelin Yapısı ve Çalışma Mantığı
 Şelale modeli, adını bir şelaleden aşağı dökülen suyun basamak basamak ilerlemesinden alır; su nasıl geriye doğru akamazsa, bu modelde de bir aşama bitmeden diğerine geçilemez.
 
-1. **Sıralı ve Doğrusal Akış:** Gereksinimler $\rightarrow$ Tasarım $\rightarrow$ Kodlama $\rightarrow$ Test $\rightarrow$ Bakım adımları katı bir sıra izler.
+1. **Sıralı ve Doğrusal Akış:** Gereksinimler → Tasarım → Kodlama → Test → Bakım adımları katı bir sıra izler.
 2. **Aşama Dondurma ve Onay Kapıları (Milestones / Sign-offs):** Bir aşama tamamlandığında kapsamlı bir doküman üretilir. Bu doküman paydaşlar tarafından imzalanır ve o aşama resmi olarak **"dondurulur" (freeze)**. Örneğin Analiz aşaması bittikten sonra müşteri yeni bir istek getiremez.
 3. **Dokümantasyon Hakimiyeti:** Projenin ilerlemesi üretilen belgelerle ölçülür. Kodlama başlamadan önce yüzlerce sayfalık sistem tasarım şartnameleri hazır olur.
 
@@ -114,15 +118,17 @@ V-Modelinin felsefesi iki temel mühendislik sorusuna dayanır:
 
 ### Modelin Yapısı ve Paralel Eşleşme
 Model adını V harfi şeklindeki görsel yapısından alır:
-- **Sol Kanat (Geliştirme / İniş):** İhtiyaç Analizi $\rightarrow$ Sistem Tasarımı $\rightarrow$ Mimari Tasarım $\rightarrow$ Modül Tasarımı basamaklarıyla soyuttan somuta iner.
+- **Sol Kol (Geliştirme / İniş):** İhtiyaç Analizi → Sistem Tasarımı → Mimari Tasarım → Modül Tasarımı basamaklarıyla soyuttan somuta iner.
 - **V'nin Dibi:** Kodlama aşamasıdır.
-- **Sağ Kanat (Test / Çıkış):** Birim Testi $\rightarrow$ Entegrasyon Testi $\rightarrow$ Sistem Testi $\rightarrow$ Kullanıcı Kabul Testi (UAT) basamaklarıyla somuttan kullanıcıya çıkar.
+- **Sağ Kol (Test / Çıkış):** Birim Testi → Entegrasyon Testi → Sistem Testi → Kullanıcı Kabul Testi (UAT) basamaklarıyla somuttan kullanıcıya çıkar.
 
-V-Modelinin devrim niteliğindeki kuralı şudur: **Sağ kanattaki test senaryoları, sol kanattaki geliştirme aşaması devam ederken yazılır!**
-- İhtiyaç analizi yapılırken $\rightarrow$ Kullanıcı Kabul Testi (UAT) kriterleri belirlenir.
-- Sistem tasarımı yapılırken $\rightarrow$ Sistem Performans ve Güvenlik Testi planı yazılır.
-- Mimari tasarım yapılırken $\rightarrow$ Entegrasyon Testi senaryoları hazırlanır.
-- Modül tasarımı yapılırken $\rightarrow$ Birim Testi (Unit Test) kodları yazılır.
+V-Modelinin temel kuralı şudur: **Sağ koldaki test durumları, sol koldaki tasarım yapılırken yazılır.**
+- İhtiyaç analizi yapılırken → Kullanıcı Kabul Testi (UAT) kriterleri belirlenir.
+- Sistem tasarımı yapılırken → Sistem Performans ve Güvenlik Testi planı yazılır.
+- Mimari tasarım yapılırken → Entegrasyon Testi senaryoları hazırlanır.
+- Modül tasarımı yapılırken → Birim Testi (Unit Test) durumları yazılır.
+
+> **Sık yapılan sadeleştirme:** "Sol kol doğrulama, sağ kol geçerleme" sözü tam doğru değildir. Birim, entegrasyon ve sistem testleri ürünü bir *belirtime* karşı denetlediği için çoğunlukla **doğrulamadır**; kullanıcının gerçek ihtiyacına karşı yapılan **kabul testi** ise geçerlemenin açık örneğidir. Doğrulanmış ama geçerlenmemiş bir sistem mümkündür: kod tasarıma birebir uyar ama tasarım yanlış ihtiyaca göre yapılmıştır.
 
 ### Değerlendirme ve Kullanım Alanları
 - **Avantajı:** Hatalar henüz geliştirme aşamasındayken, test senaryosu tasarımı sayesinde kağıt üzerinde yakalanır. Kalite güvencesi en üst düzeydedir.
@@ -133,12 +139,12 @@ V-Modelinin devrim niteliğindeki kuralı şudur: **Sağ kanattaki test senaryol
 
 ## 6. Geleneksel Metodoloji 3: Spiral (Sarmal) Model
 
-1988 yılında Barry Boehm tarafından geliştirilen Spiral Model, Şelale modelinin sistemli disiplini ile tekrarlı prototiplemenin esnekliğini birleştiren **risk odaklı** bir yaklaşımdır.
+Barry Boehm'in 1986'da tanıttığı ve 1988'deki *A Spiral Model of Software Development and Enhancement* makalesiyle yaygınlaşan Spiral Model, Şelale modelinin sistemli disiplini ile tekrarlı prototiplemenin esnekliğini birleştiren **risk odaklı** bir yaklaşımdır.
 
 ![Spiral Model](assets/04-spiral-model.svg)
 
 ### Spiral Hareket ve Dört Kadran
-Model, merkezdeki bir noktadan dışarıya doğru genişleyen spiral halkalar şeklinde ilerler. Her spiral halkası yazılımın bir sürümünü veya aşamasını temsil eder. Spiralin her turu dört ana çeyrekten (kadrandan) geçer:
+Model, merkezdeki bir noktadan dışarıya doğru genişleyen spiral halkalar şeklinde ilerler. Her halka yazılımın bir sürümünü veya aşamasını temsil eder; spiralin yarıçapı o ana kadar **birikmiş maliyeti** gösterir. Spiralin her turu dört ana çeyrekten (kadrandan) geçer:
 
 1. **Kadran 1 (Hedefler ve Kısıtlar):** Bu döngüde neyi başarmak istiyoruz? Alternatif çözümler nelerdir? Bütçe ve teknik kısıtlar nelerdir?
 2. **Kadran 2 (Risk Analizi ve Prototip):** Bizi en çok korkutan, projeyi batırabilecek riskler nelerdir? (Örn: Veritabanı saniyede 10 bin işlemi kaldırabilir mi? Arayüzü kullanıcı anlayabilir mi?). Bu riskleri gidermek için **hızlı bir prototip** üretilir ve test edilir.
@@ -183,9 +189,9 @@ Dönem boyunca takip ettiğimiz Kütüphane Otomasyonu projemizi üniversite yö
 Bu projede Şelale modelinin gerçek hayatta patlak veren üç tipik krizi yaşanır:
 
 1. **Değişen Gereksinim Krizi (4. Ayda):**
-   Üniversite yönetimi yeni bir mobil uygulama yaptırmıştır ve rektörlük *"Öğrenciler kütüphaneye girmeden cep telefonundan karekod okutarak ödünç alabilsin, sistem bunu desteklesin"* talimatı verir. Şelale modeli gereği analiz aşaması aylar önce dondurulmuştur! Geliştirici ekip *"Sözleşmede bu yok, veritabanı buna göre çizilmedi"* der. Sonuç: Proje doğduğu gün eskiyen bir teknolojiye mahkum olur.
+   Üniversite yönetimi yeni bir mobil uygulama yaptırmıştır ve Rektörlük *"Öğrenciler kütüphaneye girmeden cep telefonundan karekod okutarak ödünç alabilsin, sistem bunu desteklesin"* talimatı verir. Şelale modeli gereği analiz aşaması aylar önce dondurulmuştur! Geliştirici ekip *"Sözleşmede bu yok, veritabanı buna göre çizilmedi"* der. Sonuç: Proje doğduğu gün eskiyen bir teknolojiye mahkum olur.
 2. **Geç Fark Edilen Tasarım Hatası (8. Ayda):**
-   Test ekibi sistemi denerken fark eder: Kütüphanede aynı romandan 5 adet fiziksel kopya vardır. Ancak şartnameyi yazan analist kitapları sadece **ISBN** numarasıyla modellemiş, her fiziksel kopyaya ayrı bir **Demirbaş/Barkod No** tanımlamamıştır! Sistem, hangi kopyanın kimde olduğunu ayırt edemez. Bu hata test aşamasında fark edildiği için; veritabanı şeması, SQL sorguları ve yazılan tüm ödünç verme fonksiyonları çöpe gider (Boehm'in $50\times$ kuralı!).
+   Test ekibi sistemi denerken fark eder: Kütüphanede aynı romanın 5 nüshası vardır. Ancak şartnameyi yazan analist kitapları yalnızca **ISBN** ile modellemiş, her nüshaya ayrı bir **barkod numarası** tanımlamamıştır. Kitap bir eserdir, nüsha ise onun raftaki fiziksel kopyasıdır; ödünç verilen şey nüshadır. Sistem, hangi nüshanın kimde olduğunu ayırt edemez. Bu hata test aşamasında fark edildiği için; veritabanı şeması, SQL sorguları ve yazılan tüm ödünç verme fonksiyonları çöpe gider (Boehm'in oranlarıyla test aşaması: 20–50 kat).
 3. **Kullanıcı Şoku ve Direnci (9. Ayda):**
    Kütüphaneciler 9 ay boyunca çalışan hiçbir ekran görmemiştir. Canlıya geçiş günü arayüzü açtıklarında şok olurlar: Bir kitabı ödünç vermek için ekranda 4 farklı pencere açıp 6 kez onay düğmesine basmaları gerekmektedir. Kütüphaneci *"Eski karton fişle 10 saniyede hallediyordum, bu sistem beni 2 dakika bekletiyor!"* diyerek sistemi protesto eder ve masanın altında eski deftere kayıt tutmaya devam eder!
 
@@ -193,7 +199,19 @@ Bu projede Şelale modelinin gerçek hayatta patlak veren üç tipik krizi yaşa
 
 ---
 
-## 9. İyi Pratikler ve Sık Yapılan Hatalar
+## 9. Dönem Projenize Yansıması
+
+Takımınız kendi projesi için bir süreç modeli seçmeli ve seçimini iki üç cümleyle gerekçelendirmelidir:
+
+1. Gereksinimleriniz ne kadar net? Kullanıcılarınıza dönem içinde erişebilecek misiniz?
+2. Projenizin en büyük riski nedir: teknik belirsizlik mi, kullanıcı kabulü mü, takvim mi?
+3. Bir hatanın bedeli ne kadar ağır? İnsan sağlığı veya para söz konusu mu?
+
+Bu gerekçe, 4. haftadaki fizibilite raporunda takvim ve risk değerlendirmesine girer. Takım listesi ve proje konusu da bu hafta kesinleşmelidir.
+
+---
+
+## 10. İyi Pratikler ve Sık Yapılan Hatalar
 
 | Hata | Neden Tehlikeli? | Doğru Pratik |
 | :--- | :--- | :--- |
@@ -203,10 +221,10 @@ Bu projede Şelale modelinin gerçek hayatta patlak veren üç tipik krizi yaşa
 
 ---
 
-## 10. Kendinizi Deneyin (Bölüm Sonu Soruları)
+## 11. Kendinizi Deneyin (Bölüm Sonu Soruları)
 
 1. **Soru 1 (Model Seçimi):** Bir biyomedikal firması için hastaların kalp atışlarını takip eden ve acil durumda otomatik ilaç dozu enjekte eden bir yoğun bakım cihazı yazılımı geliştireceksiniz. Bu projede Şelale mi, V-Modeli mi yoksa Spiral Model mi tercih edersiniz? Gerekçenizi hata maliyeti ve insan hayatı riski açısından açıklayınız.
-2. **Soru 2 (Boehm Kuralı):** Kütüphane otomasyonunda "kitap kopyalarının tekil barkodla tutulması gerektiği" kuralı; a) Analiz aşamasında fark edilseydi, b) Canlıya geçtikten 3 ay sonra fark edilseydi ne gibi maliyet ve zaman farkları doğardı?
+2. **Soru 2 (Hata Maliyeti):** Kütüphane otomasyonunda "her nüshanın tekil bir barkodla tutulması gerektiği" kuralı; a) analiz aşamasında fark edilseydi, b) canlıya geçtikten 3 ay sonra fark edilseydi ne gibi maliyet ve zaman farkları doğardı?
 3. **Soru 3 (Spiral Mantığı):** Daha önce yapay zeka tabanlı yüz tanıma sistemiyle kütüphaneye turnikeden geçiş projesi yapmamış bir ekip bu işe girecektir. Spiral modelin 2. kadranı (Risk Analizi ve Prototip) bu ekibi nasıl bir felaketten korur?
 
 ---

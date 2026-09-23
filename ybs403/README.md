@@ -31,4 +31,4 @@ Temel programlama ve veritabanı mantığı. Bu derste kod yazmaktan ziyade, yaz
 ## Değerlendirme
 
 - **Ara Sınav (%40):** 8. haftada gerçekleştirilir. İlk 7 haftanın planlama ve gereksinim analizi konularını kapsar; **tamamı çoktan seçmeli test** sorularından oluşur.
-- **Dönem Projesi (%60):** Final sınavı yerine geçer. Dönem boyunca aşamalı teslimlerle (Fizibilite, Gereksinim Analizi, Detaylı Tasarım) olgunlaştırılan projenin 14. ve 15. haftalarda 15–20 dakikalık canlı sunumu, teknik raporu ve prototip gösterimidir.
+- **Dönem Projesi (%60):** Yarıyıl sonunda ayrıca yazılı sınav yapılmaz. Dönem boyunca aşamalı teslimlerle (Fizibilite, Gereksinim Analizi, Detaylı Tasarım) olgunlaştırılan projenin 14. ve 15. haftalarda 15–20 dakikalık canlı sunumu, teknik raporu ve prototip gösterimidir.

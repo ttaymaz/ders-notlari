@@ -4,13 +4,13 @@
 
 **Ders:** YBS403 Sistem Analizi ve Tasarımı  
 **Öğretim Elemanı:** Öğr. Gör. Turgay Taymaz  
-**Ağırlık:** Ders başarı notunun %60'ı — **final sınavı yerine geçer**
+**Ağırlık:** Ders başarı notunun %60'ı — **yarıyıl sonunda ayrıca yazılı sınav yapılmaz**
 
 ---
 
 ## 1. Projenin Amacı ve Felsefesi
 
-Dönem projesinin amacı, 3–4 kişilik takımlar halinde gerçek dünyadaki bir iş problemini veya ihtiyacını seçerek, bir bilgi sisteminin fikir aşamasından nihai tasarımına kadar olan tüm **Sistem Geliştirme Yaşam Döngüsü (SGYD)** adımlarını uygulamaktır.
+Dönem projesinin amacı, 3–5 kişilik takımlar halinde gerçek dünyadaki bir iş problemini veya ihtiyacını seçerek, bir bilgi sisteminin fikir aşamasından nihai tasarımına kadar olan tüm **Sistem Geliştirme Yaşam Döngüsü (SGYD)** adımlarını uygulamaktır.
 
 Bu projede temel ölçüt, sadece "diyagram çizmiş olmak" değildir. Asıl beklenen;
 - Hazırlanan modellerin (Use Case, DFD, ERD, Sınıf, Sequence) birbiriyle **tutarlı** olması,
@@ -45,7 +45,7 @@ Dönem projesi son haftada tek seferde yazılan bir ödev değildir; dönem boyu
 
 ---
 
-## 4. Final Sunumu Kuralları (14. ve 15. Haftalar)
+## 4. Proje Sunumu Kuralları (14. ve 15. Haftalar)
 
 Toplam 10–11 takım iki haftaya dengeli biçimde paylaştırılır (Hafta başına 5 veya 6 takım). Her takıma **15–20 dakika** (12–15 dk sunum + 5 dk soru-cevap) süre ayrılmıştır.
 

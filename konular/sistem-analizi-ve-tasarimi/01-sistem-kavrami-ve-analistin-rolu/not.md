@@ -27,7 +27,7 @@ Gündelik hayatta "sistem" kelimesini çok sık kullanırız: "eğitim sistemi",
 Bir yığın tuğla, çimento ve demir tek başına bir sistem değildir; sadece bir malzeme yığınıdır. Ancak bu malzemeler bir mimari plan doğrultusunda, belirli kurallarla bir araya getirildiğinde bir "bina sistemi" oluşur. Sistem kavramını anlamak için üç temel ilkeyi kavramamız gerekir:
 
 1. **Ortak Amaç:** Bir sistemi oluşturan her parçanın varlık sebebi, sistemin genel amacına hizmet etmektir. Amacı olmayan bir yapı sistem sayılamaz.
-2. **Sinerji İlkesi ($1 + 1 > 2$):** Parçalar tek başlarına üretemeyecekleri değeri, sistem içinde bir araya geldiklerinde üretirler. Bir otomobilin motoru, tekerlekleri, şanzımanı ve direksiyonu tek başlarına bir insanı A noktasından B noktasına taşıyamaz; ancak birbirlerine bağlandıklarında bir ulaşım işlevi kazanırlar.
+2. **Sinerji İlkesi (1 + 1 > 2):** Parçalar tek başlarına üretemeyecekleri değeri, sistem içinde bir araya geldiklerinde üretirler. Bir otomobilin motoru, tekerlekleri, şanzımanı ve direksiyonu tek başlarına bir insanı A noktasından B noktasına taşıyamaz; ancak birbirlerine bağlandıklarında bir ulaşım işlevi kazanırlar.
 3. **Alt Sistemler (Subsystems):** Her sistem daha büyük bir "üst sistemin" (suprasystem) parçasıdır ve kendi içinde daha küçük "alt sistemlere" ayrılır. Örneğin bir üniversite bilgi sistemi; Öğrenci İşleri Alt Sistemi, Personel/Bordro Alt Sistemi ve Kütüphane Alt Sistemi gibi modüllerden meydana gelir.
 
 ---
@@ -55,7 +55,7 @@ Sistem analistleri, karşılaştıkları problemin doğasını anlamak için sis
 
 ### Açık ve Kapalı Sistemler
 - **Açık Sistemler:** Dış çevresiyle sürekli madde, enerji ve bilgi alışverişi yapan sistemlerdir. Yaşayan organizmalar, şirketler ve tüm kurumsal yazılımlar açık sistemdir. Açık sistemler çevrelerindeki değişimlere (yeni kanunlar, kullanıcı beklentileri, pazar krizleri) uyum sağlayabildikleri sürece hayatta kalırlar.
-- **Kapalı Sistemler:** Çevresiyle hiçbir etkileşimi olmayan, kendi içine kapalı sistemlerdir. Termodinamik yasaları gereği kapalı sistemler zamanla kendi enerjilerini tüketir ve düzensizliğe (**entropi**) sürüklenirler. Bilişim dünyasında "çevreye kapalı" bir yazılım düşünülemez.
+- **Kapalı Sistemler:** Çevresiyle hiçbir etkileşimi olmayan, kendi içine kapalı sistemlerdir. Genel sistem kuramında kapalı sistemlerin zamanla düzensizliğe (**entropi**) sürüklendiği kabul edilir; dışarıdan enerji ve bilgi almayan bir yapı kendini yenileyemez. (Fizikte "kapalı" ve "yalıtılmış" sistem ayrı kavramlardır; burada genel sistem kuramının kullanımını izliyoruz.) Bilişim dünyasında "çevreye kapalı" bir yazılım düşünülemez.
 
 ### Fiziksel ve Kavramsal Sistemler
 - **Fiziksel Sistemler:** Dokunulabilir, somut varlıklardan oluşur (sunucu kasaları, ağ kabloları, veri depolama üniteleri, bilgisayar terminalleri).
@@ -67,18 +67,20 @@ Sistem analistleri, karşılaştıkları problemin doğasını anlamak için sis
 
 ---
 
-## 4. Veriden Bilgiye, Bilgiden Karara: DIKW Piramidi
+## 4. Veriden Karara: DIKW Basamakları
 
-Bilgi sistemlerinin varlık sebebi teknoloji kullanmak değil, karar vericilere rehberlik etmektir. Bu süreç dört aşamalı bir piramit olarak modellenir:
+Bilgi sistemlerinin varlık sebebi teknoloji kullanmak değil, karar vericilere rehberlik etmektir. Bu yolculuk literatürde **DIKW** (data, information, knowledge, wisdom) basamaklarıyla anlatılır. Türkçede "bilgi" kelimesi hem *information* hem *knowledge* karşılığı kullanıldığı için bu derste *information* için **enformasyon** diyoruz:
 
-1. **Veri (Data):** İşlenmemiş, bağlamından kopuk, ham gerçekler ve sembollerdir.
+1. **Veri (Data):** İşlenmemiş, bağlamından kopuk semboller ve ölçümlerdir.
    - *Örnek:* `34`, `A`, `102`
-2. **Bilgi (Information):** Düzenlenmiş, yapılandırılmış ve belirli bir bağlama oturtulmuş veridir. "Kim, ne, nerede, ne zaman?" sorularına cevap verir.
-   - *Örnek:* *"34 numaralı koltukta oturan A sınıfı bilet sahibi yolcunun uçuş numarası TK102'dir."*
-3. **İçgörü / Bilgelik (Intelligence / Knowledge):** Bilginin analiz edilmesi, eğilimlerin ve kalıpların anlaşılmasıdır. "Nasıl ve neden?" sorularını cevaplar.
-   - *Örnek:* *"Son 6 aydır cuma günleri TK102 seferinde A sınıfı koltuklar kalkıştan 48 saat önce tamamen dolmaktadır."*
-4. **Karar ve Eylem (Decision & Action):** Elde edilen içgörüye dayanarak kurumsal bir adım atılmasıdır.
-   - *Örnek:* *"Cuma günkü TK102 seferi için dinamik fiyatlandırma kuralını devreye al ve uçak tipini geniş gövdeli modele yükselt."*
+2. **Enformasyon (Information):** Düzenlenmiş ve bir bağlama oturtulmuş veridir. "Kim, ne, nerede, ne zaman?" sorularına cevap verir.
+   - *Örnek:* *"TK102 seferinde 34A koltuğu satılmıştır."*
+3. **Bilgi (Knowledge):** Enformasyonun analiz edilmesiyle ortaya çıkan örüntü ve neden-sonuç kavrayışıdır. "Nasıl ve neden?" sorularını cevaplar.
+   - *Örnek:* *"Son altı aydır cuma günleri TK102'nin ön sıraları kalkıştan 48 saat önce doluyor; talep hafta sonu dönüşünden geliyor."*
+4. **Bilgelik (Wisdom):** Bilgiye dayanarak doğru eylemi seçebilmektir. Kurumsal hayatta karşılığı karar ve eylemdir.
+   - *Örnek:* *"Cuma seferleri için fiyatlandırma kuralını değiştir ve daha büyük uçak ata."*
+
+Kütüphanede aynı basamaklar şöyle görünür: `9780135172759`, `14`, `1` birer veridir; *"Bu ISBN'li kitap son 14 günde 1 kez ödünç alındı"* enformasyondur; *"Birinci sınıflar dönem başında bu kategoriyi basılı yerine dijital okuyor"* bilgidir; *"Dijital lisans bütçesini artır, basılı alımı azalt"* ise bilgelik basamağındaki karardır.
 
 ---
 
@@ -97,7 +99,7 @@ Bir bilgi sistemi sadece ekrandaki pencereler veya arkada çalışan bir veritab
 
 ## 6. Kurumsal Bilgi Sistemi Türleri
 
-Bir kurumdaki hiyerarşik kademelerin bilgi ihtiyaçları, karar alma mekanizmaları ve zaman ufukları birbirinden tamamen farklıdır. Bir şirketin bilgi ekosistemi genellikle dört ana katmandan oluşur:
+Bir kurumdaki hiyerarşik kademelerin bilgi ihtiyaçları, karar alma mekanizmaları ve zaman ufukları birbirinden tamamen farklıdır. Bir şirketin bilgi ekosistemi genellikle dört ana katmandan oluşur. Veri tabandan tepeye doğru özetlenerek akar:
 
 ![Bilgi Sistemi Piramidi](assets/02-bilgi-sistemi-piramidi.svg)
 
@@ -129,8 +131,8 @@ Bir kurumdaki hiyerarşik kademelerin bilgi ihtiyaçları, karar alma mekanizmal
 
 | Kriter | İBS (TPS) | YBS (MIS) | KDS (DSS) | ÜYBS (EIS) |
 | :--- | :--- | :--- | :--- | :--- |
-| **Yönetim Seviyesi** | Operasyonel | Taktik / Orta | Taktik / Üst | Stratejik / Tepe |
-| **Karar Türü** | Yapılandırılmış (Rutin) | Yapılandırılmış | Yarı Yapılandırılmış | Yapılandırılmamış |
+| **Yönetim Seviyesi** | Operasyonel | Orta kademe | Orta ve üst kademe | Tepe yönetim |
+| **Karar Türü** | Yapılandırılmış (Rutin) | Çoğunlukla yapılandırılmış | Yarı Yapılandırılmış | Yapılandırılmamış |
 | **Veri Kaynağı** | Doğrudan işlemler (İç) | İBS veritabanı (İç) | İç veriler + Analitik modeller | İç özetler + Dış pazar verisi |
 | **Zaman Boyutu** | Anlık / Güncel | Geçmişe dönük özet | Geleceğe dönük simülasyon | Gelecek / Uzun vadeli eğilimler |
 | **Kullanıcı Yetkisi** | Veri girişi ve düzeltme | Rapor görüntüleme | Model parametresi değiştirme | Üst düzey gösterge takibi |
@@ -149,9 +151,9 @@ Sistem analisti bu iki dünyanın tam kesişiminde yer alan bir **tercümandır*
 
 ![Analistin Köprü Rolü](assets/03-analistin-kopru-rolu.svg)
 
-### Sistem Analistinin Dört Temel Yetkinliği
+### Sistem Analistinin Temel Yetkinlikleri
 
-Bir analist yalnızca teknik bilerek başarılı olamaz. Dört ayaklı bir yetkinlik dengesine ihtiyaç duyar:
+Bir analist yalnızca teknik bilerek başarılı olamaz. Ders kitapları bu yetkinlikleri farklı sayılarla sıralar (bazıları etiği ayrı bir madde olarak ekler); burada beş başlıkta topluyoruz:
 
 1. **Analitik Beceriler:**
    - Karmaşık bir iş problemini mantıksal alt parçalarına ayırabilme (ayrıştırma / decomposition).
@@ -163,11 +165,15 @@ Bir analist yalnızca teknik bilerek başarılı olamaz. Dört ayaklı bir yetki
    - İlişkisel veritabanı tasarımı (RDBMS), normalizasyon ve veri modellerini okuyabilme.
    - UML ve DFD gibi standart modelleme dillerini akıcı şekilde çizebilme.
 
-3. **Yönetimsel Beceriler:**
+3. **İş Bilgisi:**
+   - Kurumun nasıl gelir elde ettiğini, hangi kurallara tabi olduğunu ve başarısını neyle ölçtüğünü anlayabilme.
+   - Analisti yalnızca teknik bilen birinden ayıran yetkinlik budur: yazılımcı ile yönetici arasındaki boşluğu iki tarafı da bilerek kapatmak.
+
+4. **Yönetimsel Beceriler:**
    - Proje kaynaklarını, risklerini ve zaman çizelgesini yönetebilme.
    - Değişim yönetimi: Yeni bir yazılım geldiğinde çalışanların alışkanlıklarını ve olası dirençlerini öngörebilme.
 
-4. **İletişim ve Kişilerarası Beceriler:**
+5. **İletişim ve Kişilerarası Beceriler:**
    - **Aktif Dinleme:** Kullanıcının sözünü kesmeden, kendi önyargılarını katmadan gerçek ihtiyacını duyabilme.
    - **Doğru Soru Sorma:** "Bu işlemi nasıl yapıyorsunuz?" yerine *"Bu işlemde en çok nerede vakit kaybediyorsunuz?"* veya *"Bu onay adımını kaldırırsak kurum ne kaybeder?"* gibi derinlemesine sorular sorabilme.
    - **Empati:** Yazılım kullanmaya çekinen bir operasyon personelinin kaygılarını anlayarak arayüz sadeliğini savunabilme.
@@ -179,9 +185,10 @@ Bir analist yalnızca teknik bilerek başarılı olamaz. Dört ayaklı bir yetki
 Dönem boyunca teorik modellerimizi adım adım sınayacağımız **Kütüphane Otomasyonu** projemizin başlangıç analizini yapalım.
 
 ### Mevcut Durum (Manuel Sistem)
-Bir üniversite kütüphanesinde tüm işlemler kağıt defterler ve karton fişlerle yürütülmektedir:
+Bir üniversitenin merkez kütüphanesinde tüm işlemler kağıt defterler ve karton fişlerle yürütülmektedir:
 - Yeni gelen kitaplar demirbaş defterine elle yazılmaktadır.
 - Öğrenciler kitap aramak için çekmecelerdeki alfabetik karton katalogları karıştırmaktadır.
+- Üyeler bir deftere kaydedilmektedir; mükerrer kayıtlar ve eksik telefon numaraları vardır.
 - Ödünç alma sırasında kütüphaneci üyenin kartına ve kitabın cebindeki fişe tarih basmaktadır.
 - Geciken kitapları bulmak için görevliler her cuma günü binlerce karton fişi tek tek elden geçirmektedir.
 
@@ -193,19 +200,47 @@ Bir üniversite kütüphanesinde tüm işlemler kağıt defterler ve karton fiş
 ### Kütüphane Sisteminin 6 Bileşenle Modellenmesi
 
 - **Sistem Sınırı:** Kütüphane Otomasyon Yazılımı ve onun yönettiği veri tabanı.
-- **Dış Çevre:** Öğrenciler/Akademisyenler (Üyeler), Kütüphane İdaresi, Üniversite Öğrenci İşleri Otomasyonu (harici sistem), Kitap Tedarikçileri.
-- **Girdiler:** Üye başvuru bilgileri, yeni kitap katalog kayıtları, ödünç alma/iade istekleri, kitap arama sorguları.
-- **Süreçler:** Üyenin cezalı olup olmadığını kontrol etme, kitap durumunu güncelleme (rafta $\rightarrow$ ödünçte), iade süresini ve gecikme cezasını hesaplama.
-- **Çıktılar:** Ödünç makbuzu/onayı, e-posta gecikme bildirimi, haftalık kayıp kitap raporu, en çok ödünç alınan kategoriler analizi.
-- **Geri Besleme:** Gecikme oranlarının artması durumunda ödünç verme gün sınırının veya ceza miktarının sistem yöneticisi tarafından yeniden ayarlanması.
+- **Dış Çevre:** Üyeler (öğrenciler ve akademisyenler), Kütüphane Daire Başkanlığı, Öğrenci İşleri Sistemi (üyeliği doğrulamak için veri alınan harici sistem), kitap tedarikçileri ve KVKK başta olmak üzere mevzuat.
+- **Girdiler:** Üyelik başvurusu, yeni kitap ve nüsha kaydı, ödünç alma/iade istekleri, katalog sorguları.
+- **Süreçler:** Üyenin cezalı olup olmadığını denetleme, nüsha durumunu güncelleme (rafta → ödünçte), son iade tarihini ve gecikme cezasını hesaplama.
+- **Çıktılar:** Ödünç onayı, gecikme e-postası, kayıp nüsha raporu, kategori bazında ödünç istatistikleri.
+- **Geri Besleme:** Gecikme oranı yükselirse Daire Başkanlığı ödünç süresini veya ceza kuralını yeniden ayarlar. Kuralı değiştiren insandır; sistem yalnızca ölçüm sağlar.
 
-Aşağıdaki model, kütüphane sisteminin bileşen mimarisini göstermektedir:
+Aşağıdaki model, kütüphane sisteminin altı bileşenini göstermektedir:
 
 ![Kütüphane Sistem Modeli](assets/04-kutuphane-sistem-modeli.svg)
 
 ---
 
-## 9. İyi Pratikler ve Sık Yapılan Hatalar
+### Dönem Boyunca Sabit Kalacak Kurallar
+
+Vaka ilerleyen haftalarda büyüyecek; tutarlı kalsın diye iş kurallarını baştan sabitliyoruz:
+
+| Kural | Değer |
+| :--- | :--- |
+| Öğrenci üye | Aynı anda en fazla **3 nüsha**, **15 gün** |
+| Akademisyen üye | Aynı anda en fazla **10 nüsha**, **30 gün** |
+| Gecikme cezası | Nüsha başına günlük **2 TL** |
+| Engel | Gecikmiş nüshası veya ödenmemiş cezası olan üye yeni ödünç alamaz |
+
+"Kitap" ile "nüsha" farkına dikkat: kitap bir eserdir (ISBN ile tanınır), nüsha ise o eserin raftaki tek bir fiziksel kopyasıdır (barkodla tanınır). Ödünç verilen şey nüshadır. Bu ayrımın neden hayati olduğunu 2. haftada göreceğiz.
+
+---
+
+## 9. Dönem Projenize Yansıması
+
+Bu haftanın çıktısı kendi problem alanınızın **tek sayfalık sistem tanımıdır**. Takımınızla şunları yazın:
+
+1. Sistemin amacı tek cümlede nedir?
+2. Altı bileşen: girdiler, süreçler, çıktılar, geri besleme, sınır ve dış çevre.
+3. Sınırın dışında bıraktığınız ama sistemin veri alıp verdiği dış sistemler hangileri?
+4. Mevcut durumda gözlediğiniz üç somut iş problemi (sayıyla ifade edebiliyorsanız daha iyi).
+
+Bu sayfa, 4. haftada hazırlayacağınız fizibilite raporunun "problem tanımı ve sistem sınırı" bölümünün taslağıdır.
+
+---
+
+## 10. İyi Pratikler ve Sık Yapılan Hatalar
 
 Bir sistem analistinin kariyeri boyunca kaçınması gereken en tehlikeli tuzaklar:
 
@@ -218,7 +253,7 @@ Bir sistem analistinin kariyeri boyunca kaçınması gereken en tehlikeli tuzakl
 
 ---
 
-## 10. Kendinizi Deneyin (Bölüm Sonu Soruları)
+## 11. Kendinizi Deneyin (Bölüm Sonu Soruları)
 
 Aşağıdaki senaryoları bir sistem analisti gözüyle değerlendiriniz:
 

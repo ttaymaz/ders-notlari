@@ -1,326 +1,282 @@
-# Konu 03: Modern Yaklaşımlar — Çevik (Agile) ve Scrum
+# 3. Hafta: Çevik Yaklaşım ve Scrum Çerçevesi
 
-Bu bölüm, geleneksel ve plan odaklı yazılım geliştirme modellerinden (Şelale, V-Model gibi), günümüzün dinamik ve belirsiz iş ortamlarına yanıt veren modern, esnek ve artımlı yaklaşımlara geçişi ele alır. Çevik Manifesto'nun felsefesi, empirik süreç kontrolü, endüstride en yaygın kabul gören Scrum çerçevesi, kullanıcı hikayeleriyle gereksinim yönetimi ve Kütüphane Otomasyonu vaka çalışması üzerinden pratik sprint uygulaması detaylandırılmaktadır.
+## Giriş: Kütüphaneci Neden Dokuzuncu Ayda İsyan Etti?
+
+Geçen hafta kütüphane otomasyonunu dokuz aylık bir şelale sözleşmesiyle yaptırdık. Kütüphaneci çalışan ekranı ilk kez canlıya geçiş günü gördü ve bir nüshayı ödünç vermek için dört pencere açıp altı kez onay vermesi gerektiğini fark etti. Bu sorun 150 sayfalık şartnamenin hiçbir yerinde görünmüyordu; ancak ekran görülünce ortaya çıktı.
+
+Buradan çıkan soru bu haftanın konusudur: **Kullanıcının tepkisini dokuzuncu ay yerine ikinci haftada duyabilir miyiz?** Çevik yaklaşımın cevabı evettir: sistemi küçük parçalar hâlinde, kısa döngülerle üretip her döngünün sonunda kullanıcıya çalışan bir şey göstermek.
 
 ---
 
-## 1. Gelenekselden Çevikliğe Geçiş: Değişim ve Belirsizlik Çağı
+## 1. Gelenekselden Çevikliğe: Değişim ve Belirsizlik
 
-Geleneksel yazılım mühendisliği yaklaşımları (Şelale ve türevleri), projenin başlangıcında tüm gereksinimlerin eksiksiz bilinebileceği, pazar koşullarının ve kullanıcı beklentilerinin süreç boyunca sabit kalacağı varsayımına dayanır. Ancak modern bilgi sistemleri dünyasında bu varsayım neredeyse hiçbir zaman geçerli değildir:
+Geleneksel modeller (şelale ve türevleri), projenin başında gereksinimlerin eksiksiz bilinebileceğini ve süreç boyunca sabit kalacağını varsayar. Bu varsayım birçok bilgi sisteminde tutmaz:
 
-- **Pazar Koşullarının Hızlı Değişimi:** Rakiplerin yeni özellikler sunması, mevzuat değişiklikleri veya iş modellerinin evrilmesi, 12 ay önce yazılmış bir analiz dokümanını geçersiz kılabilir.
-- **Kullanıcının Ne İstediğini Görünce Anlaması:** Kullanıcılar genellikle çalışan bir ekranı veya prototipi görmeden gerçek ihtiyaçlarını tam olarak tarif edemezler ("I know it when I see it" sendromu).
-- **Yüksek Belirsizlik:** Karmaşık sistemlerde neden-sonuç ilişkileri önceden öngörülemez; çözümler ancak deneyerek, keşfederek ve geri bildirim alarak inşa edilebilir (Cynefin çerçevesinde "Complex" alan).
+- **Pazar ve mevzuat değişir:** Rakiplerin yeni hizmetleri, yeni yasal düzenlemeler veya değişen iş modelleri, bir yıl önce yazılmış bir analiz belgesini geçersiz kılabilir.
+- **Kullanıcı görünce anlar:** Kullanıcılar çoğu zaman çalışan bir ekranı veya prototipi görmeden gerçek ihtiyaçlarını tarif edemez. İngilizcede buna *"I know it when I see it"* denir.
+- **Belirsizlik yüksektir:** Karmaşık sistemlerde neden-sonuç ilişkileri önceden bilinemez; çözüm denenerek ve geri bildirim alınarak bulunur.
 
-| Boyut | Geleneksel Modeller (Şelale) | Çevik Modeller (Agile / Scrum) |
+| Boyut | Geleneksel (Şelale) | Çevik (Scrum vb.) |
 | :--- | :--- | :--- |
-| **Temel Felsefe** | Öngörücü (Predictive): Plana sıkı sıkıya bağlılık | Uyarlamacı (Adaptive): Değişimi kucaklama |
-| **Gereksinim Yönetimi** | Proje başında dondurulur, değişim talep formlarıyla zorlaştırılır | Sürekli gelişir, önceliklendirilir, değişime açıktır |
-| **Teslimat Biçimi** | Proje sonunda tek bir büyük teslimat (Big Bang) | Düzenli aralıklarla çalışan küçük ürün artışları (Increment) |
-| **Müşteri İlişkisi** | Sözleşme ve onay kapıları üzerinden resmi iletişim | Günlük/haftalık iş birliği ve sürekli geribildirim |
-| **Risk Profili** | Riskler geliştirme sonundaki entegrasyona kadar gizli kalır | Riskler her döngü sonunda çalışan kodla erkenden açığa çıkar |
+| **Temel yaklaşım** | Öngörücü: plana bağlılık | Uyarlamacı: değişime yanıt |
+| **Gereksinim** | Başta dondurulur; değişiklik talebi ile zorlaşır | Sürekli yeniden sıralanır |
+| **Teslim** | Sonda tek büyük teslim | Kısa aralıklarla çalışan artışlar |
+| **Müşteri ilişkisi** | Sözleşme ve onay kapıları üzerinden | Sürekli iş birliği ve geri bildirim |
+| **Risk** | Entegrasyona kadar gizli kalabilir | Her döngü sonunda görünür olur |
 
-![Çevik Döngü vs Şelale Karşılaştırması](assets/01-cevik-dongu-vs-selale.svg)
+![Şelale ve çevik teslim](assets/01-cevik-dongu-vs-selale.svg)
+
+Çevik yaklaşım analizi atlamaz. Her döngünün içinde küçük bir analiz, tasarım, kodlama ve test vardır; fark, bu adımların tüm sistem için bir kez değil, küçük parçalar için tekrar tekrar yapılmasıdır.
 
 ---
 
 ## 2. Çevik Yazılım Geliştirme Manifestosu
 
-2001 yılının Şubat ayında, farklı hafif geliştirme metodolojilerini temsil eden 17 öncü yazılımcı (Kent Beck, Jeff Sutherland, Ken Schwaber, Alistair Cockburn, Martin Fowler ve diğerleri) Utah'taki Snowbird kayak merkezinde bir araya gelerek **Çevik Yazılım Geliştirme Manifestosu**'nu (*Agile Manifesto*) yayımlamıştır.
+Şubat 2001'de farklı hafif geliştirme yöntemlerini temsil eden 17 yazılımcı (aralarında Kent Beck, Ken Schwaber, Jeff Sutherland, Alistair Cockburn ve Martin Fowler) Utah'taki Snowbird'de bir araya gelerek **Çevik Yazılım Geliştirme Manifestosu**'nu (*Agile Manifesto*) yayımladı.
 
-Manifesto, sağdaki maddelerin değerini yadsımamakla birlikte, soldaki maddelere daha fazla değer verildiğini açıkça ilan eder:
+Manifesto dört değer ortaya koyar. Sağdaki maddelerin de değerli olduğunu kabul eder, ancak soldakilere daha çok değer verir:
 
-> 1. **Süreçler ve araçlardan ziyade, bireyler ve aralarındaki etkileşimlere**,
-> 2. **Kapsamlı dokümantasyondan ziyade, çalışan yazılıma**,
-> 3. **Sözleşme pazarlıklarından ziyade, müşteri ile iş birliğine**,
-> 4. **Bir plana sıkı sıkıya bağlı kalmaktan ziyade, değişime yanıt vermeye** değer veriyoruz.
+> 1. Süreç ve araçlardan çok **bireyler ve aralarındaki etkileşime**,
+> 2. Kapsamlı belgelerden çok **çalışan yazılıma**,
+> 3. Sözleşme pazarlığından çok **müşteriyle iş birliğine**,
+> 4. Bir plana bağlı kalmaktan çok **değişime yanıt vermeye** değer veriyoruz.
 
-### Çevik Prensiplerden Öne Çıkanlar (12 İlke Özeti)
+En sık yapılan yanlış okuma "çevik yaklaşımda belge yazılmaz, plan yapılmaz" sonucudur. Manifesto belgeyi, planı ve sözleşmeyi reddetmez; bunların **amaç değil araç** olduğunu söyler.
 
-1. En yüksek öncelik, değerli yazılımın erken ve sürekli teslimiyle müşteriyi memnun etmektir.
-2. Geliştirmenin son aşamalarında bile değişen gereksinimler memnuniyetle karşılanır.
-3. Çalışan yazılım, birkaç haftadan birkaç aya kadar değişen kısa zaman aralıklarında düzenli olarak teslim edilir.
-4. İş birimi temsilcileri ile yazılımcılar proje boyunca her gün birlikte çalışmalıdır.
-5. Projeler motive olmuş bireyler etrafında kurulmalı; onlara ihtiyaç duydukları ortam ve güven sağlanmalıdır.
-6. Bilgi aktarımının en verimli yolu yüz yüze (doğrudan) iletişimdir.
+### On İki İlkeden Öne Çıkanlar
+
+Manifestoyu on iki ilke destekler. Analist açısından en önemlileri şunlardır:
+
+1. En yüksek öncelik, değerli yazılımı erken ve sürekli teslim ederek müşteriyi memnun etmektir.
+2. Değişen gereksinimler, geliştirmenin sonlarında bile kabul edilir.
+3. Çalışan yazılım birkaç haftadan birkaç aya kadar aralıklarla, kısa olan tercih edilerek teslim edilir.
+4. İş birimi temsilcileri ile geliştiriciler proje boyunca her gün birlikte çalışır.
+5. Projeler motive olmuş bireyler etrafında kurulur; onlara gereken ortam ve güven sağlanır.
+6. Bilgi aktarımının en etkili yolu yüz yüze konuşmadır.
 7. İlerlemenin birincil ölçüsü çalışan yazılımdır.
-8. Basitlik —yapılması gerekmeyen işleri maksimize etme sanatı— esastır.
-9. En iyi mimariler ve tasarımlar, kendi kendini yöneten (self-organizing) takımlardan çıkar.
-10. Takım, düzenli aralıklarla daha etkili olma yollarını değerlendirir ve davranışlarını buna göre ayarlar.
+8. Sadelik, yani yapılması gerekmeyen işi en çoğa çıkarma sanatı esastır.
+9. En iyi mimari, gereksinim ve tasarımlar kendi kendini örgütleyen takımlardan çıkar.
+10. Takım düzenli aralıklarla nasıl daha etkili olacağını düşünür ve davranışını buna göre ayarlar.
+
+İlkelerin tam listesi manifestonun kendi sayfasında yer alır; burada sayılmayan ikisi sürdürülebilir çalışma temposu ve teknik mükemmelliğe sürekli dikkattir.
 
 ---
 
-## 3. Scrum Çerçevesi: Empirizm ve Temel İlkeler
+## 3. Scrum Çerçevesi
 
-Scrum, karmaşık adaptif problemleri çözmek ve mümkün olan en yüksek değere sahip ürünleri üretken ve yaratıcı bir şekilde teslim etmek için kullanılan bir yönetim çerçevesidir (*framework*). Scrum bir metodoloji değil, bir çerçevedir; çünkü adım adım izlenecek katı talimatlar vermek yerine, takımın içinde hareket edeceği kuralları, rolleri ve etkinlik sınırlarını tanımlar.
+Scrum, karmaşık problemler için uyarlanabilir çözümler üretmeye yardım eden **hafif bir çerçevedir** (*framework*). Bir yöntem değildir: adımları tek tek dikte etmez, takımın içinde hareket edeceği kuralları ve sınırları koyar. Bu bölümdeki tanımlar Scrum'ın resmî kaynağı olan **Scrum Kılavuzu**'nun (*The Scrum Guide*) Kasım 2020 sürümüne dayanır.
 
-### Empirik Süreç Kontrolü (Empiricism)
+Adını rugby'deki hücum dizilişinden alır. Takeuchi ve Nonaka 1986'da yazdıkları makalede başarılı ürün geliştirme ekiplerini topu birlikte ileri taşıyan bir rugby takımına benzetmişti; Scrum bu benzetmeden doğdu.
 
-Scrum, **empirizm** (deneyimcilik) teorisine dayanır. Empirizm, bilginin deneyimden geldiğini ve kararların gözlemlenen gerçeklere dayandığını savunur. Üç ana sacayağı vardır:
+### 3.1. Deneycilik ve Üç Dayanak
 
-1. **Şeffaflık (Transparency):** Sürecin önemli yönleri, sonuçtan sorumlu olan herkes tarafından açıkça görülebilmelidir. Örneğin "Bitti" (Done) tanımı herkes için aynı anlamı taşımalı; kimse bitmemiş bir işi bitmiş gibi göstermemelidir.
-2. **Denetim (Inspection):** Scrum eserleri ve hedefe doğru ilerleme, istenmeyen sapmaları yakalamak amacıyla sık sık ve dikkatle denetlenmelidir. Bu denetim işi engellemeyecek sıklıkta olmalıdır.
-3. **Uyarlama (Adaptation):** Bir denetim sürecin kabul edilebilir limitlerin dışına çıktığını gösterirse, süreç veya üretilen malzeme derhal ayarlanmalıdır.
+Scrum **deneycilik** (*empiricism*) üzerine kuruludur: bilgi deneyimden gelir, kararlar gözlenen sonuçlara dayanır. Deneyciliğin üç dayanağı vardır:
 
-![Scrum Çerçevesi](assets/02-scrum-cercevesi.svg)
+1. **Şeffaflık (transparency):** İş ve ilerleme, işi yapanlar ve işten etkilenenler tarafından görülebilir olmalıdır. "Bitti" kelimesi herkes için aynı anlama gelmelidir.
+2. **Denetleme (inspection):** Eserler ve hedefe doğru ilerleme sık aralıklarla, dikkatle gözden geçirilir.
+3. **Uyarlama (adaptation):** Bir sapma görüldüğünde süreç veya ürün mümkün olan en kısa sürede düzeltilir.
+
+Üçü birbirine bağlıdır: görünmeyen şey denetlenemez, denetlenmeyen şey uyarlanamaz.
+
+![Scrum çerçevesi](assets/02-scrum-cercevesi.svg)
 
 ---
 
-## 4. Scrum Takımı ve Rolleri
+## 4. Scrum Takımı ve Üç Sorumluluk
 
-Scrum takımında alt-takımlar veya hiyerarşik kademeler yoktur. Takım, tek bir ürün hedefine odaklanmış profesyonellerden oluşur ve genellikle 10 veya daha az kişidir. Takım **çapraz fonksiyoneldir** (bir işi tamamlamak için gereken tüm yeteneklere içeride sahiptir) ve **kendi kendini yönetir** (neyin, ne zaman ve nasıl yapılacağına içeride karar verir).
+Scrum takımı tek bir ürün hedefine odaklanan, genellikle **10 kişi veya daha az** üyeden oluşan bir birimdir. Alt takım ve hiyerarşi yoktur. Takım **çapraz işlevlidir** (işi bitirmek için gereken tüm becerilere sahiptir) ve **kendini yönetir** (kimin neyi, ne zaman ve nasıl yapacağına içeride karar verir).
 
-### 4.1. Ürün Sahibi (Product Owner - PO)
-- **Misyon:** Ürünün ve geliştirme takımının ortaya koyduğu işin değerini maksimize etmek.
-- **Sorumluluklar:**
-  - Ürün İş Listesi'ni (*Product Backlog*) oluşturmak, açıkça ifade etmek ve maddeleri önceliklendirmek.
-  - Paydaşların ve son kullanıcıların sesini temsil etmek; iş hedefleri ile teknik dünya arasında köprü olmak.
-  - Bir özelliğin kabul edilip edilmeyeceğine (kabul kriterlerine uygunluğuna) karar vermek.
-- **Yetki:** PO tek bir kişidir, komite değildir. Backlog'un içeriğini değiştirmek isteyen herkes PO'yu ikna etmek zorundadır.
+Eski kaynaklarda "üç rol" olarak geçen yapıya, Scrum Kılavuzu 2020'de **üç sorumluluk** (*accountability*) denir. Fark ince ama önemlidir: bir kişi bir unvan taşımaz, bir sonuçtan sorumlu olur.
 
-### 4.2. Scrum Master (SM)
-- **Misyon:** Scrum'ın Scrum Kılavuzu'na uygun olarak anlaşılmasını ve uygulanmasını sağlamak.
-- **Sorumluluklar:**
-  - Takıma ve kuruma hizmet eden liderdir (*Servant Leader*).
-  - Takımın ilerlemesini engelleyen pürüzleri ve bürokratik engelleri (*impediments*) ortadan kaldırmak.
-  - Etkinliklerin amacına uygun, verimli ve belirlenen zaman kutusu (*time-box*) içinde geçmesini kolaylaştırmak (*facilitation*).
-  - Takımı dış baskılardan ve gereksiz bölünmelerden korumak.
+### 4.1. Ürün Sahibi (Product Owner)
+
+- Ürünün ortaya koyduğu değeri en çoğa çıkarmaktan sorumludur.
+- Ürün iş listesini yönetir: ürün hedefini belirler, maddeleri açıkça yazar, sıralar ve listenin herkes tarafından anlaşılmasını sağlar.
+- **Tek kişidir, komite değildir.** İş listesinde değişiklik isteyen herkes Ürün Sahibi'ni ikna etmek zorundadır.
+- Paydaşların sesini takıma taşır; bu yönüyle analistin işine en yakın sorumluluktur.
+
+### 4.2. Scrum Master
+
+- Scrum'ın kılavuzda tanımlandığı gibi anlaşılmasını ve uygulanmasını sağlar.
+- Takımın önündeki engellerin kaldırılmasını sağlar, etkinliklerin amacına uygun ve zaman kutusu içinde geçmesine yardım eder.
+- Kılavuzun ifadesiyle, **takıma ve kuruma hizmet eden gerçek bir liderdir.** Eski sürümlerde bu "hizmetkâr lider" (*servant leader*) diye geçer. Patron veya proje yöneticisi değildir.
 
 ### 4.3. Geliştiriciler (Developers)
-- **Misyon:** Her Sprint sonunda kullanılabilir ve "Bitti" tanımına uygun bir Artış (*Increment*) üretmek.
-- **Sorumluluklar:**
-  - Sprint Planlama'da seçilen işleri teknik görevlere ayırmak ve Sprint Backlog'u oluşturmak.
-  - Kalite standartlarına (Definition of Done) sadık kalarak analiz, tasarım, kodlama, test ve dokümantasyon yapmak.
-  - Günlük Scrum'da hedefe doğru ilerlemeyi koordine etmek.
+
+- Her sprintte kullanılabilir bir artış üretmeyi taahhüt eden kişilerdir.
+- Sprint iş listesini oluşturur, sprint hedefine göre günlük planı yapar, kaliteyi Bitti Tanımı'na uyarak korur.
+- "Geliştirici" yalnızca yazılımcı demek değildir; analist, tasarımcı, testçi ve veritabanı uzmanı da bu sorumluluğu taşır.
+
+Scrum'da geleneksel proje yöneticisi yoktur; onun işleri bu üç sorumluluğa dağılmıştır. Ürün Sahibi **neyin ve hangi sırayla** yapılacağına, geliştiriciler **nasıl** yapılacağına karar verir. Bu ayrım, analiz (NE) ile tasarım (NASIL) ayrımının küçük bir yansımasıdır.
 
 ---
 
-## 5. Scrum Eserleri ve Taahhütleri
+## 5. Üç Eser ve Taahhütleri
 
-Scrum'ın üç resmi eseri (*Artifacts*) vardır. Her eser, şeffaflığı ve odaklanmayı artırmak amacıyla belirli bir **taahhüt** (*Commitment*) ile eşleşir:
+Scrum'ın üç eseri (*artifact*) vardır. Her eser, şeffaflığı ve odağı güçlendiren bir **taahhüt** (*commitment*) içerir:
 
-| Eser (*Artifact*) | Tanım | Eşleşen Taahhüt (*Commitment*) |
+| Eser | Tanım | Taahhüt |
 | :--- | :--- | :--- |
-| **Ürün İş Listesi (Product Backlog)** | Ürünü geliştirmek için ihtiyaç duyulan tüm gereksinimlerin, iyileştirmelerin ve hata düzeltmelerinin yaşayan, dinamik listesidir. | **Ürün Hedefi (Product Goal):** Sistemin uzun vadeli vizyonunu ve nihai hedefini tanımlar. |
-| **Sprint İş Listesi (Sprint Backlog)** | Mevcut Sprint içinde tamamlanmak üzere seçilen Product Backlog maddeleri ve bunların nasıl hayata geçirileceğini gösteren teknik görev planıdır. | **Sprint Hedefi (Sprint Goal):** Sprint sırasında neden değer üretildiğini ve neyin başarılacağını özetleyen tek amaçtır. |
-| **Ürün Artışı (Increment)** | Sprint süresince tamamlanan ve önceki tüm sprintlerin kazanımlarıyla birleştirilmiş, çalışır durumdaki somut ürün parçasıdır. | **Bitti Tanımı (Definition of Done - DoD):** Bir işin teslim edilebilir sayılması için karşılaması gereken resmi kalite ölçütleridir. |
+| **Ürün İş Listesi** (Product Backlog) | Ürünü geliştirmek için gereken her şeyin sıralı, yaşayan listesi. Hiçbir zaman "tamamlanıp dondurulmaz". | **Ürün Hedefi:** Ürünün ulaşmak istediği uzun vadeli durum. |
+| **Sprint İş Listesi** (Sprint Backlog) | Sprint için seçilen maddeler, sprint hedefi ve bunları yapma planı. Geliştiricilere aittir. | **Sprint Hedefi:** Sprintin tek amacı. |
+| **Artış** (Increment) | Ürün hedefine doğru atılmış, önceki artışlarla birleşmiş, **kullanılabilir** somut adım. | **Bitti Tanımı:** Bir işin artışa girebilmesi için karşılaması gereken kalite ölçütleri. |
+
+Bitti Tanımı'na dikkat edin. "Kodu yazdım" ile "bitti" aynı şey değildir. Takım, bir işin bitmiş sayılması için neyin gerektiğini (örneğin: testler geçti, kod gözden geçirildi, kullanıcı ekranı denedi) baştan ve yazılı olarak belirler. Bu tanım olmadan şeffaflık kurulamaz.
 
 ---
 
-## 6. Scrum Etkinlikleri (The Events)
+## 6. Beş Etkinlik
 
-Scrum'daki tüm etkinlikler sabit bir zaman kutusuna (*time-box*) sahiptir; yani süresi uzatılamaz.
+Scrum'daki tüm etkinlikler **zaman kutuludur** (*time-boxed*): belirlenen süre dolunca etkinlik biter. Aşağıdaki üst sınırlar bir aylık sprint içindir; kısa sprintlerde süreler genellikle oranla kısalır.
 
-1. **Sprint (1–4 Hafta):**
-   - Scrum'ın kalbidir. Diğer tüm etkinlikleri kapsayan ana döngüdür.
-   - Her sprintte potansiyel olarak canlıya alınabilir (*potentially releasable*) bir Artış üretilir.
-   - Sprint devam ederken Sprint Hedefini tehlikeye atacak değişiklikler yapılamaz.
-2. **Sprint Planlama (Sprint Planning):**
-   - Sprint'in ilk gününde yapılır (1 aylık sprint için en fazla 8 saat, 2 haftalık için ~4 saat).
-   - Üç soruya yanıt aranır:
-     1. Bu Sprint neden değerlidir? (Sprint Hedefi belirlenir)
-     2. Bu Sprint'te ne yapılabilir? (Backlog'dan maddeler seçilir)
-     3. Seçilen iş nasıl başarılacak? (Geliştiriciler teknik planı çıkarır)
-3. **Günlük Scrum (Daily Scrum):**
-   - Her iş günü aynı saatte ve aynı yerde yapılan **15 dakikalık** ayakta toplantıdır.
-   - Yalnızca geliştiriciler içindir. Odak noktası durum raporu vermek değil; Sprint Hedefine doğru senkronize olmak ve engelleri paylaşmaktır.
-4. **Sprint İnceleme (Sprint Review):**
-   - Sprint'in son gününde, takım ve tüm paydaşların katılımıyla yapılır.
-   - Tamamlanan artış canlı olarak gösterilir (demo yapılır).
-   - Pazar koşulları ve geri bildirimler tartışılarak Product Backlog güncellenir.
-5. **Sprint Retrospektifi (Sprint Retrospective):**
-   - Sprint İnceleme'den hemen sonra, yeni Sprint Planlama'dan önce yapılır.
-   - Odak ürün değil, **takımın çalışma biçimi, süreçler, ilişkiler ve araçlardır**.
-   - "Neyi iyi yaptık?", "Nerede zorlandık?", "Gelecek sprintte neyi somut olarak iyileştireceğiz?" soruları cevaplanır ve en az bir eylem planı çıkarılır.
+1. **Sprint:** En fazla bir ay süren, sabit uzunluklu döngü. Diğer tüm etkinlikleri kapsar. Sprint sırasında sprint hedefini tehlikeye atacak değişiklik yapılmaz.
+2. **Sprint Planlama** (en fazla 8 saat): Üç soruya cevap aranır:
+   1. Bu sprint neden değerli? (Sprint hedefi belirlenir.)
+   2. Bu sprintte ne yapılabilir? (İş listesinden maddeler seçilir.)
+   3. Seçilen iş nasıl yapılacak? (Geliştiriciler işi planlar.)
+3. **Günlük Scrum** (15 dakika): Geliştiriciler sprint hedefine göre ilerlemeyi denetler ve günün planını uyarlar. Kılavuzun eski sürümlerindeki "dün ne yaptım, bugün ne yapacağım, engelim var mı" üç sorusu 2020 sürümünde **zorunlu değildir**; takım istediği yapıyı seçebilir, yeter ki odak sprint hedefi olsun. Günlük Scrum bir durum raporu değildir.
+4. **Sprint İnceleme** (en fazla 4 saat): Takım ve paydaşlar artışı birlikte denetler, geri bildirime göre ürün iş listesini uyarlar. Bir slayt gösterisi değil, çalışan ürünün gözden geçirilmesidir.
+5. **Sprint Retrospektifi** (en fazla 3 saat): İncelemeden sonra, bir sonraki planlamadan önce yapılır. Odak ürün değil, **takımın çalışma biçimidir**: bireyler, etkileşimler, süreçler, araçlar ve Bitti Tanımı. En az bir somut iyileştirme kararıyla biter.
 
 ---
 
-## 7. Çevik Gereksinim Mühendisliği: Kullanıcı Hikayeleri
+## 7. Çevik Gereksinim: Kullanıcı Hikâyeleri
 
-Geleneksel analizde gereksinimler sayfalarca süren "Sistem ... yapmalıdır" cümleleriyle yazılırken; Çevik yaklaşımlarda gereksinimler kullanıcının bakış açısından anlatılan kısa ve samimi **Kullanıcı Hikayeleri** (*User Stories*) ile ifade edilir.
+Geleneksel analizde gereksinimler "Sistem ... yapmalıdır" cümleleriyle yazılır. Çevik takımlarda ürün iş listesi maddeleri çoğunlukla **kullanıcı hikâyesi** (*user story*) biçiminde yazılır. Kullanıcı hikâyesi Scrum Kılavuzu'nda geçmez; ama iş listesi maddelerini yazmanın en yaygın yoludur.
 
-### 7.1. Hikaye Şablonu
+### 7.1. Hikâye Kalıbı
 
 ```text
-Bir [Kullanıcı Rolü / Persona] olarak,
-[Bir İhtiyaç / Özellik / Eylem] istiyorum,
-Böylece [Elde Edilecek Fayda / İş Değeri] sağlayabileyim.
+Bir [rol] olarak,
+[ihtiyaç] istiyorum,
+böylece [fayda] sağlayabileyim.
 ```
 
-- **Rol (Kim?):** Sistemin kimin için tasarlandığını netleştirir (Örn: Öğrenci, Bölüm Başkanı, Kütüphane Görevlisi).
-- **İstek (Ne?):** Kullanıcının sistemde gerçekleştirmek istediği davranıştır.
-- **Değer (Neden?):** Özelliğin arkasındaki asıl gerekçedir. Değer kısmı olmayan bir hikaye, amaçsız kod yazımına yol açar.
+- **Rol (kim?):** Sistemin kimin için yapıldığını söyler. İleride use case diyagramında aktöre dönüşecek.
+- **İhtiyaç (ne?):** Kullanıcının yapmak istediği davranıştır. Use case diyagramında kullanım senaryosuna dönüşecek.
+- **Fayda (neden?):** Özelliğin gerekçesidir. Nedeni yazılmamış bir hikâye, geliştiricinin daha iyi bir çözüm önermesini engeller.
 
-![Kullanıcı Hikayesi Yapısı](assets/03-kullanici-hikayesi-yapisi.svg)
+![Kullanıcı hikâyesi kalıbı ve 3C](assets/03-kullanici-hikayesi-yapisi.svg)
 
 ### 7.2. Ron Jeffries'in 3C Modeli
 
-Bir kullanıcı hikayesi sadece bir yazıdan ibaret değildir; üç bileşenden oluşur:
+1. **Kart (card):** Hikâyenin kısa hâli; bir yapışkan not veya bir iş takip aracındaki kart.
+2. **Konuşma (conversation):** Ayrıntılar Ürün Sahibi ve geliştiricilerle konuşularak netleşir. Kart konuşmanın yerine geçmez, konuşmayı hatırlatır.
+3. **Onay (confirmation):** Hikâyenin bittiğini gösteren kabul ölçütleri. Sık kullanılan kalıp *Verili / Olduğunda / O zaman*'dır (İngilizcesi *Given / When / Then*, davranış odaklı geliştirmeden gelir):
+   - *Verili:* Öğrenci üyenin gecikmiş nüshası ve ödenmemiş cezası yoktur ve üzerinde 3'ten az nüsha vardır.
+   - *Olduğunda:* Kütüphaneci nüshanın barkodunu okuttuğunda,
+   - *O zaman:* Nüsha üyenin üzerine geçer ve son iade tarihi 15 gün sonrası olarak atanır.
 
-1. **Card (Kart):** Hikayenin adını ve şablonunu içeren kısa özet (fiziksel post-it veya Jira/Trello kartı).
-2. **Conversation (Diyalog):** Geliştiriciler ile PO arasındaki sürekli sözlü iletişim. Doküman konuşmanın yerine geçmez, konuşmayı hatırlatır.
-3. **Confirmation (Onay / Kabul Kriterleri):** Hikayenin bittiğini kanıtlayan test edilebilir senaryolar. Genellikle *Given-When-Then* kalıbıyla yazılır:
-   - *Given (Verili Durum):* Kullanıcı giriş yapmış ve gecikmiş kitabı bulunmamaktadır.
-   - *When (Eylem):* Kitap detay sayfasında "Ödünç Al" düğmesine bastığında.
-   - *Then (Sonuç):* Kitap kullanıcının üzerine zimmetlenmeli ve 15 günlük iade tarihi üretilmelidir.
+### 7.3. İyi Bir Hikâye: INVEST (Bill Wake)
 
-### 7.3. Kaliteli Hikaye Ölçütü: INVEST Modeli (Bill Wake)
-
-- **I - Independent (Bağımsız):** Diğer hikayelere sıkı sıkıya bağımlı olmamalı; tek başına geliştirilebilmeli ve test edilebilmelidir.
-- **N - Negotiable (Müzakere Edilebilir):** Değişmez bir sözleşme değildir; kapsamı PO ve geliştiriciler arasında konuşulup esnetilebilir.
-- **V - Valuable (Değerli):** Müşteri veya son kullanıcı için net bir iş değeri taşımalıdır.
-- **E - Estimable (Tahmin Edilebilir):** Takım hikayenin büyüklüğünü ve karmaşıklığını kestirebilmelidir.
-- **S - Small (Küçük):** Tek bir sprint içinde rahatlıkla tamamlanabilecek boyutta olmalıdır.
-- **T - Testable (Test Edilebilir):** Başarılı olup olmadığını doğrulayacak açık kabul kriterlerine sahip olmalıdır.
+- **I – Independent (bağımsız):** Başka bir hikâyeyi beklemeden geliştirilip test edilebilir.
+- **N – Negotiable (pazarlığa açık):** Değişmez bir sözleşme değildir; kapsamı konuşularak şekillenir.
+- **V – Valuable (değerli):** Kullanıcıya veya kuruma açık bir değer üretir.
+- **E – Estimable (tahmin edilebilir):** Takım büyüklüğünü kestirebilir.
+- **S – Small (küçük):** Bir sprinte sığar. Sığmayan büyük hikâyeye **destan** (*epic*) denir ve bölünür.
+- **T – Testable (test edilebilir):** Kabul ölçütü yazılabilir. "Arama hızlı olsun" test edilemez; "arama sonucu 2 saniye içinde gelsin" edilebilir.
 
 ---
 
-## 8. Karşılaştırmalı Analiz: Şelale vs. Spiral vs. Scrum
+## 8. Karşılaştırma: Şelale, Spiral ve Scrum
 
-| Kriter | Şelale Modeli (Waterfall) | Spiral Model (Boehm) | Scrum (Agile) |
+| Ölçüt | Şelale | Spiral | Scrum |
 | :--- | :--- | :--- | :--- |
-| **Gereksinim Değişimi** | Çok zor; maliyet katlanarak artar | Döngü başlarında değerlendirilir | Doğal karşılanır; her sprint başında yeniden önceliklendirilir |
-| **Temel İtici Güç** | Plan ve onaylanmış dokümantasyon | Risk analizi ve prototipleme | Müşteri değeri ve çalışan yazılım |
-| **Döngü Uzunluğu** | Tek döngü (Aylar veya yıllar) | Değişken (Genellikle 3–6 ay) | Sabit zaman kutusu (1–4 hafta) |
-| **Kullanıcı Katılımı** | Başta (Analiz) ve sonda (Kabul Testi) | Her spiral döngüsünün değerlendirmesinde | Sürekli (PO her gün takımla; paydaşlar her incelemede) |
-| **Dokümantasyon Düzeyi** | Kapsamlı, resmi ve bağlayıcı | Risk odaklı ve mimari ağırlıklı | Yalın; yalnızca gereken kadar (*Just Enough*) |
-| **Başarı Ölçütü** | Plana, bütçeye ve takvime uyum | Risklerin başarıyla elenmesi | Üretilen değer ve çalışan yazılım kalitesi |
+| **Gereksinim değişimi** | Çok zor; maliyet katlanır | Her turun başında değerlendirilir | Olağan; her sprintte yeniden sıralanır |
+| **İtici güç** | Plan ve onaylı belge | Risk analizi ve prototip | Müşteri değeri ve çalışan yazılım |
+| **Döngü uzunluğu** | Tek döngü, aylar veya yıllar | Projeye göre değişken | Sabit sprint, en fazla bir ay |
+| **Kullanıcı katılımı** | Başta ve kabul testinde | Tur sonu değerlendirmelerinde | Sürekli; paydaşlar her incelemede |
+| **Belge düzeyi** | Kapsamlı ve bağlayıcı | Risk ve mimari ağırlıklı | Gerektiği kadar |
+| **Başarı ölçüsü** | Plana, bütçeye ve takvime uyum | Risklerin elenmesi | Üretilen değer |
+
+Modeller birbirini dışlamaz. Güvenlik kritik alanlarda bile çevik uygulamalar V-Modeli'nin test ve izlenebilirlik disipliniyle birlikte kullanılabilir.
 
 ---
 
-## 9. Vaka Çalışması: Kütüphane Otomasyonu Sprint 1 Simülasyonu
+## 9. Vaka Çalışması: Kütüphane Otomasyonu Scrum ile
 
-Geleneksel yaklaşımda 40 sayfalık şartnamesi hazırlanan Kütüphane Otomasyonu'nu Scrum yaklaşımıyla hayata geçirelim.
+Geçen hafta şelale ile dokuz ayda yaptırmaya çalıştığımız kütüphane otomasyonunu şimdi Scrum ile başlatalım. **Ürün Sahibi Kütüphane Daire Başkanı'dır**; kuralları o belirler, iş listesini o sıralar.
 
-### 9.1. Product Backlog'un Oluşturulması ve Önceliklendirilmesi
+### 9.1. Ürün İş Listesi
 
-Ürün Sahibi (Kütüphane Direktörü), paydaşlarla görüşerek ilk kullanıcı hikayelerini çıkarır ve iş değerine göre sıralar:
+Daire Başkanı kütüphaneciler ve üyelerle görüşerek ilk hikâyeleri yazar ve değere göre sıralar:
 
-1. **[Öncelik 1 - Yüksek]** *Bir kütüphaneci olarak*, sisteme ISBN, başlık ve yazar bilgileriyle yeni bir kitap ekleyebilmek istiyorum; böylece yeni gelen bağışları envantere hemen kaydedebilirim.
-2. **[Öncelik 2 - Yüksek]** *Bir öğrenci olarak*, kütüphane arama çubuğuna kitap adı veya yazar yazarak arama yapabilmek istiyorum; böylece aradığım kitabın rafta olup olmadığını rafta aramadan görebileyim.
-3. **[Öncelik 3 - Orta]** *Bir öğrenci olarak*, üzerimdeki kitapları ve kalan iade sürelerimi listeleyebilmek istiyorum; böylece ceza ödemeden iade tarihini takip edebileyim.
-4. **[Öncelik 4 - Düşük]** *Bir kütüphaneci olarak*, geciken kitaplar için öğrencilere otomatik e-posta uyarısı göndermek istiyorum; böylece tek tek telefonla aramak zorunda kalmayayım.
+1. Bir **kütüphaneci** olarak yeni kitabı ve nüshalarını barkoduyla kaydetmek istiyorum; böylece envanter ilk günden izlenebilsin.
+2. Bir **üye** olarak kataloğu başlık veya yazara göre aramak istiyorum; böylece rafa gitmeden nüshanın rafta mı ödünçte mi olduğunu göreyim.
+3. Bir **üye** olarak üzerimdeki nüshaları ve son iade tarihlerini görmek istiyorum; böylece cezaya düşmeyeyim.
+4. Bir **kütüphaneci** olarak gecikmelere otomatik e-posta gitsin istiyorum; böylece üyeleri tek tek aramak zorunda kalmayayım.
 
-![Kütüphane Sprint 1 Akışı](assets/04-kutuphane-scrum-akisi.svg)
+Birinci hikâyedeki "nüshalarını barkoduyla" ifadesine dikkat edin. Geçen hafta şelale projesinde sekizinci ayda bulunan "ISBN tek başına yetmez" hatası, burada daha ilk sprintte ve çok ucuza önlenir.
 
-### 9.2. Sprint 1 Planlama ve Sprint Backlog
+![Kütüphane Sprint 1 akışı](assets/04-kutuphane-scrum-akisi.svg)
 
-Takım, 1 haftalık ilk Sprint için toplanır.
-- **Sprint Hedefi:** "Kütüphanecinin sisteme yeni bir kitap kaydedip envanter listesinde görebileceği çalışan ilk sürümü üretmek."
-- Bu hedefe ulaşmak için Product Backlog'dan **1. Hikaye** Sprint'e seçilir.
-- Geliştiriciler bu hikayeyi alt görevlere (*Tasks*) böler (Sprint Backlog):
-  - `GÖREV-1:` Veritabanında `Kitaplar` tablosunun ve indekslerinin oluşturulması (Veri Analisti / Backend).
-  - `GÖREV-2:` "Yeni Kitap Ekle" formu kullanıcı arayüzünün tasarlanması (UI Tasarımcısı / Frontend).
-  - `GÖREV-3:` Formdan gelen girdilerin doğrulanması (ISBN-13 format denetimi) ve API servisinin yazılması.
-  - `GÖREV-4:` Kayıt sonrası kütüphaneciye başarı mesajı gösterilmesi ve tablonun yenilenmesi.
-  - `GÖREV-5:` Hatalı ISBN girişleri için negatif senaryo testlerinin koşulması.
+### 9.2. Sprint 1 Planlama
 
-### 9.3. Sprint Koşusu ve İnceleme (Review)
+Takım iki haftalık ilk sprint için toplanır.
 
-- **Günlük Scrum:** Takım üyeleri her sabah 15 dakika toplanır. Arayüz geliştiren analist, ISBN doğrulama servisini beklediğini söyler; backend geliştirici gün içinde servisi açacağını taahhüt ederek engeli kaldırır.
-- **Sprint İnceleme (Demo):** Haftanın sonunda Kütüphane Direktörü çağrılır. Canlı ortamda yeni bir kitap eklenir ve listede gösterilir. Direktör sistemi çok beğenir ancak şu geri bildirimi verir: *"Kütüphanemizde çok sayıda çok ciltli ansiklopedi var, forma bir de 'Baskı/Cilt Numarası' alanı ekleyebilir miyiz?"*
-- **Sonuç:** Bu yeni istek kavga sebebi olmaz; sözleşme değişikliği gerektirmez. PO tarafından Product Backlog'a yeni bir madde olarak yazılır ve gelecek sprintlerde önceliklendirilir.
+- **Sprint hedefi:** "Kütüphaneci ilk kitabı ve nüshalarını kaydedip listede görebilsin."
+- Bu hedefe hizmet etmek için ürün iş listesinden **birinci hikâye** seçilir.
+- Geliştiriciler hikâyeyi işlere böler (sprint iş listesi):
+  1. `KITAP` ve `NUSHA` tablolarının oluşturulması.
+  2. Kayıt formunun tasarlanması.
+  3. ISBN ve barkod biçim denetimi.
+  4. Kayıt ve listeleme servisinin yazılması.
+  5. Hatalı ISBN ve mükerrer barkod testlerinin koşulması.
+- **Bitti Tanımı:** Testler geçti, kod başka bir geliştirici tarafından gözden geçirildi, kütüphaneci ekranı denedi.
 
----
+Arama ekranı bu sprintte yoktur. Sprint hedefine hizmet etmediği için kapsam dışında bırakılmıştır; bu da bir karardır.
 
-## 10. Dönem Projesi: Takım Rolleri ve Konu Seçimi Rehberi
+### 9.3. Sprint Boyunca ve Sprint Sonunda
 
-Dersimizin dönem projesinde her öğrenci takımı (3–5 kişi), gerçek dünyada karşılığı olan bir iş problemini uçtan uca analiz edip tasarlayacaktır.
-
-### 10.1. Takım İçi Roller ve Bireysel Sorumluluk Dağılımı
-
-Takım içi çalışmalarda "beleşçilik" (*free-riding*) riskini önlemek için her üye aşağıdaki 5 kritik rolden en az birinin liderliğini üstlenir:
-
-1. **İş ve Süreç Analisti (Product Owner / Business Analyst):**
-   - Problemin tanımı, paydaş analizi, iş hedefleri ve fizibilite çalışmasını yönetir.
-   - Kullanıcı hikayelerini ve kabul kriterlerini yazar.
-2. **Süreç Modelleme Uzmanı (Process Modeler):**
-   - Sistemin mevcut (As-Is) ve gelecekteki (To-Be) iş akışlarını modeller.
-   - UML Kullanım Senaryoları (*Use Case Diagrams*) ve Veri Akış Şemaları'nı (*DFD*) çizer.
-3. **Veri Mimarı ve Analisti (Data Architect):**
-   - Sistemin veri yapısını kurgular, Varlık-İlişki Şeması'nı (*ERD*) çıkarır.
-   - Veri sözlüğünü hazırlar ve üçüncü normal forma (3NF) kadar normalize eder.
-4. **Sistem ve Entegrasyon Mimarı (System Architect):**
-   - Sistemin mimari katmanlarını (Frontend, Backend, Veritabanı, Dış API servisleri) kurgular.
-   - Sınıf diyagramları (*Class Diagrams*) ve Sıralama şemalarını (*Sequence Diagrams*) tasarlar.
-5. **Kullanıcı Deneyimi ve Arayüz Tasarımcısı (UI/UX Designer):**
-   - Kullanıcı personolarını ve kullanıcı yolculuğu haritalarını hazırlar.
-   - Düşük ve yüksek sadakatli ekran taslaklarını (*Wireframe* / Prototip) ve form akışlarını çizer.
-
-### 10.2. İlham Verici Örnek Proje Senaryoları
-
-Takımlar kendi özgün fikirlerini seçebileceği gibi, aşağıdaki problem alanlarından birini de uyarlayabilir:
-
-#### Senaryo A: Spor Salonu Üyelik ve Ders Rezervasyon Sistemi
-- **Problem:** Üyelerin seans rezervasyonlarını telefonla yapması, salon kapasitesinin verimsiz kullanılması ve aidat gecikmelerinin takip edilememesi.
-- **Kapsam:** Üye self-servis portalı, antrenör takvim yönetimi, QR kod ile turnike geçiş kaydı, otomatik aidat tahsilat bildirimi.
-
-#### Senaryo B: Kampüs İçi İkinci El Ders Kitabı ve Not Takas Platformu
-- **Problem:** Dönem başlarında öğrencilerin pahalı ders kitaplarına erişim zorluğu ve dönem sonunda kitapların atıl kalması; güvensiz sosyal medya gruplarında yaşanan dolandırıcılıklar.
-- **Kapsam:** Öğrenci e-postası doğrulamalı üyelik, ders koduna göre kitap eşleştirme, emanet usulü güvenli takas noktası modeli.
-
-#### Senaryo C: Sivil Toplum Kuruluşları için Gönüllülük ve Etkinlik Yönetim Sistemi
-- **Problem:** STK'ların acil ihtiyaç durumlarında doğru yetkinlikteki gönüllülere hızla ulaşamaması; gönüllülerin katılım saatlerinin ve yetkinliklerinin kayıt altına alınamaması.
-- **Kapsam:** Gönüllü yetkinlik profili, etkinlik bazlı görev dağılımı, saha yoklama takip arayüzü, dijital gönüllülük sertifikası üretimi.
+- **Günlük Scrum:** Formu yapan geliştirici, barkod denetim servisini beklediğini söyler; servisi yazan geliştirici gün içinde servisi açacağını belirtir. Engel toplantıda çözülmez, konuşulur; çözüm toplantı sonrasına kalır.
+- **Sprint İnceleme:** Daire Başkanı ekranda yeni bir kitap ve üç nüshasını kaydeder, listede görür. Beğenir ama bir istek ekler: *"Ansiklopedilerimiz çok ciltli; forma baskı ve cilt numarası alanı da ekleyebilir miyiz?"*
+- **Sonuç:** İstek bir değişiklik talebi veya sözleşme krizi değildir. Ürün iş listesine yeni bir madde olarak yazılır ve Daire Başkanı tarafından sıralanır.
+- **Retrospektif:** Takım, test verisini her seferinde elle girdiğini fark eder ve bir sonraki sprintte örnek veri yükleme betiği hazırlamaya karar verir.
 
 ---
 
-## 11. Sık Yapılan Hatalar ve Çevik Karşıtı Kalıplar (Scrum Anti-Patterns)
+## 10. Dönem Projenize Yansıması
 
-1. **ScrumBut Sendromu:** "Biz Scrum uyguluyoruz ama retrospektif yapmaya vaktimiz olmuyor" veya "Scrum yapıyoruz ama PO'muz yok, kararları müdür veriyor". Kuralların işine gelen kısmını alıp en kritik parçalarını atmak Scrum'ın faydalarını yok eder.
-2. **Zombie Scrum:** Ritüellerin (Daily, Review, Retro) şeklen yapıldığı ancak hiçbir gerçek empati, geri bildirim veya çalışan yazılım artışı üretilmediği ruhsuz döngüler.
-3. **Daily Scrum'ın Durum Raporuna Dönüşmesi:** Geliştiricilerin birbirleriyle konuşmak yerine Scrum Master'a hesap vermesi. Scrum Master bir patron veya proje yöneticisi değildir.
-4. **Gereksiz Büyük Hikayeler (Epiklerin Parçalanmaması):** Bir sprint içine sığamayacak büyüklükteki hikayelerin sprint'e alınması ve sprint sonuna yarım kalmış işlerle girilmesi.
-5. **Bitti Tanımının (DoD) Esnetilmesi:** Testi yapılmamış, dokümante edilmemiş veya canlıya hazır olmayan işlerin "yetişsin diye" bitti kabul edilmesi; bu durum teknik borç (*technical debt*) yaratır.
+Bu haftanın çıktısı kendi projenizin **ilk ürün iş listesidir**. Takımınızla:
+
+1. Sisteminizin kullanıcı rollerini sayın (en az iki farklı rol olmalı).
+2. Her rol için kullanıcı hikâyeleri yazın; her hikâyede kim, ne ve neden parçası bulunsun.
+3. Her hikâyeye en az bir kabul ölçütü ekleyin (*Verili / Olduğunda / O zaman*).
+4. Hikâyeleri INVEST ile sınayın; bir sprinte sığmayanları bölün.
+5. Listeyi değere göre sıralayın ve ilk sıradaki hikâyeyi neden seçtiğinizi bir cümleyle yazın.
+
+Bu liste iki yere hizmet eder: 4. haftadaki fizibilite raporunda **kapsam** bölümünü besler, 5. haftada ise use case diyagramının ham malzemesi olur (rol → aktör, ihtiyaç → kullanım senaryosu). Takım içindeki iş bölümü için dönem projesi kılavuzundaki rol dağılımına bakın.
+
+### Örnek Problem Alanları
+
+Takımlar kendi fikirlerini seçebilir; aşağıdakiler yalnızca ilham içindir:
+
+- **Spor salonu üyelik ve ders rezervasyonu:** Telefonla yapılan seans rezervasyonları, verimsiz kullanılan kapasite, takip edilemeyen aidat gecikmeleri.
+- **Kampüs içi ikinci el ders kitabı değişimi:** Pahalı ders kitaplarına erişim, dönem sonunda atıl kalan kitaplar, güvensiz sosyal medya gruplarındaki dolandırıcılık.
+- **Sivil toplum kuruluşu için gönüllü yönetimi:** Acil ihtiyaçta doğru yetkinlikte gönüllüye hızla ulaşamamak, katılım saatlerinin kaydedilememesi.
 
 ---
 
-## 12. Bölüm Sonu Değerlendirme Soruları
+## 11. İyi Pratikler ve Sık Yapılan Hatalar
 
-#### Soru 1: Çevik Manifesto Değerleri
-Aşağıdakilerden hangisi Çevik Manifesto'nun 4 temel değerinden birisi **değildir**?  
-A) Süreçler ve araçlardan ziyade bireyler ve aralarındaki etkileşimler  
-B) Kapsamlı dokümantasyondan ziyade çalışan yazılım  
-C) Bir plana sıkı sıkıya bağlı kalmaktan ziyade değişime yanıt verme  
-D) Müşteri iş birliğinden ziyade katı sözleşme şartlarına sadakat  
-E) Değişimi bir tehdit değil, rekabet avantajı olarak görme  
-*Cevap: D (Manifesto, sözleşme pazarlıklarından ziyade müşteri ile iş birliğini savunur).*
+| Hata | Neden Tehlikeli? | Doğru Pratik |
+| :--- | :--- | :--- |
+| **ScrumBut** | "Scrum yapıyoruz ama retrospektife vaktimiz yok" demek, sürecin kendini iyileştirme halkasını keser. | Etkinlikleri kısaltın ama atlamayın; her birinin bir amacı vardır. |
+| **Zombi Scrum** | Toplantılar yapılır ama çalışan artış ve gerçek geri bildirim yoktur. | Her incelemede paydaşın dokunabileceği çalışan bir şey gösterin. |
+| **Günlük Scrum'ı rapora çevirmek** | Geliştiriciler birbirine değil yöneticiye konuşur; plan yapılmaz. | Odağı sprint hedefinde tutun; 15 dakikayı aşmayın. |
+| **Sprint ortasında iş eklemek** | Sprint hedefi her gün değişir, hiçbir şey bitmez. | Yeni istek ürün iş listesine gider; Ürün Sahibi sıralar. |
+| **Bitti Tanımı'nı esnetmek** | "Testine sonra bakarız" denilen her iş teknik borç olarak geri döner. | Bitti Tanımı'nı baştan yazılı belirleyin ve pazarlık konusu yapmayın. |
+| **Destanı sprinte almak** | Bir sprinte sığmayan hikâye yarım kalır. | Büyük hikâyeleri küçük, değer üreten parçalara bölün. |
 
-#### Soru 2: Scrum Rolleri
-Bir Scrum takımında "Ürünün değerini en üst düzeye çıkarmak" ve "Ürün İş Listesi'ni (Product Backlog) yönetip önceliklendirmek"ten birincil derecede sorumlu olan rol hangisidir?  
-A) Scrum Master  
-B) Proje Yöneticisi  
-C) Ürün Sahibi (Product Owner)  
-D) Baş Yazılım Mimarı  
-E) İş Analisti Komitesi  
-*Cevap: C*
+---
 
-#### Soru 3: Scrum Eserleri ve Taahhütleri
-Scrum'da her eser belirli bir taahhüt ile güvence altına alınır. Buna göre, geliştirilen işin tamamlandığını ve ürün artışına (Increment) dahil edilebileceğini belirleyen resmi kalite kriterleri bütününe ne ad verilir?  
-A) Sprint Hedefi (Sprint Goal)  
-B) Bitti Tanımı (Definition of Done)  
-C) Kabul Testi Protokolü  
-D) Ürün Hedefi (Product Goal)  
-E) Kapsam Bildirimi  
-*Cevap: B*
+## 12. Kendinizi Deneyin
 
-#### Soru 4: Kullanıcı Hikayesi INVEST Ölçütü
-INVEST modelinde yer alan **"N"** harfi kullanıcı hikayesinin hangi özelliğini temsil eder?  
-A) Non-functional (Fonksiyonel olmayan gereksinimleri içermesi)  
-B) Necessary (Proje için zorunlu olması)  
-C) Negotiable (Kapsamının geliştiriciler ve PO arasında müzakere edilebilir olması)  
-D) Novel (Yenilikçi ve özgün bir fikir barındırması)  
-E) Normalized (Veritabanı kurallarına uygun olması)  
-*Cevap: C*
-
-#### Soru 5: Vaka Analizi Senaryosu
-Bir e-ticaret şirketi 3 haftalık sprintler koşmaktadır. Sprint'in 10. gününde şirket CEO'su geliştirme ekibine doğrudan gelerek *"Pazarlamadan acil bir talep geldi, mevcut işleri bırakıp derhal sevgililer günü banner'ını ve indirim kodunu yazın"* der. Scrum prensiplerine göre bu durumda geliştiricilerin ve Scrum Master'ın sergilemesi gereken en doğru davranış nedir?  
-A) CEO şirketin en yetkili kişisi olduğu için işi hemen bırakıp talebi yapmalıdırlar.  
-B) Geliştiriciler CEO'yu reddetmeli ve projeden çıkarmalıdır.  
-C) Scrum Master devreye girmeli, sprint ortasında takımın odağının doğrudan bölünemeyeceğini açıklamalı ve CEO'yu talebini Product Backlog'a ekleyip önceliklendirmesi için Ürün Sahibi'ne (Product Owner) yönlendirmelidir.  
-D) Takım fazla mesai yaparak her iki işi birden bitirmeye çalışmalıdır.  
-E) Sprint derhal iptal edilmeli ve tüm ekip dağıtılmalıdır.  
-*Cevap: C*
+1. **Manifesto:** "Çevik takımlar belge yazmaz" iddiasını manifestonun kendi cümlesiyle çürütün. Hangi kelime bu yanlış okumanın önüne geçer?
+2. **Sorumluluklar:** Bir üniversitede kütüphane otomasyonu yapılıyor. Bilgi işlem müdürü, Daire Başkanı ve bir kıdemli kütüphaneci arasından Ürün Sahibi kim olmalı? Seçmediklerinizin projede nasıl bir yeri olur?
+3. **Sprint ortası:** Üç haftalık bir sprintin onuncu gününde genel müdür takıma gelip "her işi bırakın, kampanya ekranını yazın" diyor. Scrum'ın kurallarına göre bu istek nereye gitmeli, kim karar vermeli? Sprint hedefi tamamen anlamını yitirmişse ne yapılabilir?
+4. **INVEST:** "Bir üye olarak kitap aramak istiyorum" hikâyesini INVEST ile sınayın. Hangi harfte eksik? Hikâyeyi yeniden yazın ve bir kabul ölçütü ekleyin.
+5. **Bitti Tanımı:** Kütüphane takımının Bitti Tanımı'na "kütüphaneci ekranı denedi" maddesi eklenmiş. Bu maddenin çıkarılması hangi dayanağı zayıflatır: şeffaflık, denetleme mi, uyarlama mı?
 
 ---
 

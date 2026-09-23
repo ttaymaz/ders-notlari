@@ -12,9 +12,9 @@ Kısa adres: `tymz.org/ybs403`
 | ------------- | :-----: | ----- | ----------------- |
 | **Ara Sınav** | %40 | 09–13 Kasım 2026 | 1.–7. hafta konuları · **Tamamı test** (çoktan seçmeli) |
 | **Teslim 1:** Fizibilite Raporu | — | 4. Hafta | Proje tanımı, kapsam ve 4 boyutlu fizibilite analizi |
-| **Teslim 2:** Gereksinim Analizi | — | 9. Hafta | Use Case, DFD (Bağlam/Seviye 0), ERD ve Veri Sözlüğü |
-| **Teslim 3:** Detaylı Tasarım | — | 13. Hafta | Sınıf, Sequence, Sistem Mimarisi ve Veritabanı şeması |
-| **Dönem Projesi** *(final sınavı yerine)* | %60 | 14.–15. Hafta | Canlı sunum (15–20 dk), Nihai SGYD Raporu ve Prototip Demosu |
+| **Teslim 2:** Gereksinim Analizi | — | 9. Hafta | Gereksinim listesi, Use Case, DFD (Bağlam, Seviye 0, en az bir Seviye 1), ERD ve Veri Sözlüğü |
+| **Teslim 3:** Detaylı Tasarım | — | 13. Hafta | Sınıf, Sequence ve Durum, Sistem Mimarisi, Wireframe, Veritabanı şeması ve 3NF |
+| **Dönem Projesi** *(yarıyıl sonu sınavı yok)* | %60 | 14.–15. Hafta | Canlı sunum (15–20 dk), Nihai SGYD Raporu ve Prototip Demosu |
 
 > Dönem projesinin ayrıntılı şablonu, grup kuralları ve puanlama rubriği için **[Dönem Projesi Kılavuzu](proje-kilavuzu.md)** sayfasına bakınız.
 
