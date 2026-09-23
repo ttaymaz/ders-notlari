@@ -38,10 +38,10 @@ Bu hafta ilk dört varsayımı gevşeteceğiz. Beşincisi — ve en gerçek dı�
 
 Bir politikanın iyi olup olmadığını söylemek için onu **ölçmemiz** gerekir. İki temel ölçüt kullanacağız:
 
-> **Dönüş süresi** (turnaround time) = bitiş zamanı − varış zamanı
+> **Dönüş süresi** (turnaround time) = bitiş zamanı − varış zamanı<br>
 > Bir iş sisteme girdikten kaç birim sonra tamamen bitti?
 
-> **Yanıt süresi** (response time) = ilk çalışma zamanı − varış zamanı
+> **Yanıt süresi** (response time) = ilk çalışma zamanı − varış zamanı<br>
 > Bir iş sisteme girdikten kaç birim sonra **ilk kez** işlemciye kavuştu?
 
 Dönüş süresi toplu işler için (bir derleme, bir yedekleme) önemlidir: iş ne zaman bitecek? Yanıt süresi etkileşimli işler için önemlidir: bir tuşa bastım, ekran ne zaman tepki verecek?
