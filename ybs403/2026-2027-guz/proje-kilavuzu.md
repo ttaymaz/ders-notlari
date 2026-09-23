@@ -4,7 +4,7 @@
 
 **Ders:** YBS403 Sistem Analizi ve Tasarımı  
 **Öğretim Elemanı:** Öğr. Gör. Turgay Taymaz  
-**Ağırlık:** Final notunun %60'ı
+**Ağırlık:** Ders başarı notunun %60'ı — **final sınavı yerine geçer**
 
 ---
 
@@ -47,7 +47,7 @@ Dönem projesi son haftada tek seferde yazılan bir ödev değildir; dönem boyu
 
 ## 4. Final Sunumu Kuralları (14. ve 15. Haftalar)
 
-Toplam 10–11 takım iki haftaya dengeli biçimde paylaştırılır (Hafta başına 5 veya 6 takım). Her takıma **15–20 dakika** (12-15 dk sunum + 5 dk soru-cevap) süre ayrılmıştır. 
+Toplam 10–11 takım iki haftaya dengeli biçimde paylaştırılır (Hafta başına 5 veya 6 takım). Her takıma **15–20 dakika** (12–15 dk sunum + 5 dk soru-cevap) süre ayrılmıştır.
 
 ### Zaman Yönetimi ve Sunum Akışı (Maksimum 20 Dk)
 
@@ -103,4 +103,4 @@ Toplam 10–11 takım iki haftaya dengeli biçimde paylaştırılır (Hafta baş
 | **Analiz ve Modelleme Tutarlılığı** | %30 | Use Case, DFD ve ERD arasındaki uyum; DFD seviye kurallarına uygunluk |
 | **Tasarım ve Mimari Derinliği** | %25 | Sınıf ilişkileri (kalıtım/aggregation), Sequence akışı, katmanlı mimari gerekçesi |
 | **Veritabanı ve Veri Sözlüğü** | %15 | 3NF kurallarına uygunluk, veri sözlüğünün eksiksizliği |
-| **Sunum, Süre ve Soru-Cevap** | %15 | 20 dakikalık sürenin etkin kullanımı, tüm üyelerin hakimiyeti, sorulara net yanıtlar |
+| **Sunum, Süre ve Soru-Cevap** | %15 | Ayrılan sürenin etkin kullanımı, tüm üyelerin hakimiyeti, sorulara net yanıtlar |

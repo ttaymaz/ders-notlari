@@ -14,7 +14,7 @@ Kısa adres: `tymz.org/ybs403`
 | **Teslim 1:** Fizibilite Raporu | — | 4. Hafta | Proje tanımı, kapsam ve 4 boyutlu fizibilite analizi |
 | **Teslim 2:** Gereksinim Analizi | — | 9. Hafta | Use Case, DFD (Bağlam/Seviye 0), ERD ve Veri Sözlüğü |
 | **Teslim 3:** Detaylı Tasarım | — | 13. Hafta | Sınıf, Sequence, Sistem Mimarisi ve Veritabanı şeması |
-| **Dönem Projesi (Final)** | %60 | 14.–15. Hafta | Canlı sunum (20 dk), Nihai SGYD Raporu ve Prototip Demosu |
+| **Dönem Projesi** *(final sınavı yerine)* | %60 | 14.–15. Hafta | Canlı sunum (15–20 dk), Nihai SGYD Raporu ve Prototip Demosu |
 
 > Dönem projesinin ayrıntılı şablonu, grup kuralları ve puanlama rubriği için **[Dönem Projesi Kılavuzu](proje-kilavuzu.md)** sayfasına bakınız.
 
