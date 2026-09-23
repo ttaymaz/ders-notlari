@@ -51,6 +51,7 @@ Klasörün içinde her konu için ayrı bir alt klasör vardır. Dönem boyunca 
 | Hafta | Klasör | Simülatör |
 | :---: | ------ | --------- |
 | 1 | `cpu-intro` | `process-run.py` |
+| 2 | `cpu-api` | `fork.py` |
 | 3 | `cpu-sched` | `scheduler.py` |
 | 4 | `cpu-sched-mlfq`, `cpu-sched-lottery` | `mlfq.py`, `lottery.py` |
 | 5 | `vm-mechanism`, `vm-segmentation` | `relocation.py`, `segmentation.py` |
@@ -116,11 +117,11 @@ sudo apt install build-essential
 ### Bir örneği derleyip çalıştırmak
 
 ```
-gcc dosya.c -o dosya
-./dosya
+gcc 01-fork.c -o 01-fork.out
+./01-fork.out
 ```
 
-Derste kullanılan C dosyaları her haftanın `kod/` klasöründe yayımlanır.
+Derste kullanılan C dosyaları her haftanın `kod/` klasöründe yayımlanır. Derlenmiş dosyaya `.out` uzantısı vermek, kaynak dosyayla karışmasını önler.
 
 ---
 
@@ -131,6 +132,7 @@ Derste kullanılan C dosyaları her haftanın `kod/` klasöründe yayımlanır.
 | `python` bulunamadı | Kurulumda "Add python.exe to PATH" işaretlenmedi; kurulumu *Modify* ile tekrar açıp işaretleyin |
 | `python` yazınca Store açılıyor | Uygulama yürütme diğer adları (yukarıdaki tuzak kutusu) |
 | `No such file or directory` | Yanlış klasördesiniz; `cd` ile simülatörün klasörüne geçin |
+| `UnicodeEncodeError: 'charmap' codec ...` | Simülatörün çizdiği ağaç karakterleri Türkçe Windows kod sayfasına sığmıyor. Komutun sonuna `-P basic` ekleyin ya da PowerShell'de önce `$env:PYTHONUTF8=1` yazın |
 | `wsl --install` hata veriyor | BIOS'ta sanallaştırma kapalı olabilir; hata metnini getirin |
 | `gcc: command not found` | `build-essential` kurulmadı veya komut WSL yerine PowerShell'de yazıldı |
 
