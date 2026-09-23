@@ -25,7 +25,7 @@ Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/
 | :---: | ---- | :---: | :-------: |
 | 1 | Ders tanıtımı · İşletim sistemi ne yapar: sanallaştırma, eşzamanlılık, kalıcılık | 2, 4 | [not](../../konular/isletim-sistemleri/01-isletim-sistemine-giris/not.md) |
 | 2 | Proses API'si, sistem çağrıları, kullanıcı ve çekirdek modu | 5, 6 | [not](../../konular/isletim-sistemleri/02-proses-api-ve-sistem-cagrilari/not.md) · [kod](../../konular/isletim-sistemleri/02-proses-api-ve-sistem-cagrilari/kod/) |
-| 3 | CPU zamanlama 1: FIFO, SJF, STCF, Round Robin | 7 | — |
+| 3 | CPU zamanlama 1: FIFO, SJF, STCF, Round Robin | 7 | [not](../../konular/isletim-sistemleri/03-cpu-zamanlama/not.md) |
 | 4 | CPU zamanlama 2: MLFQ, orantılı pay, çok çekirdekli sistemlere bakış | 8–10 | — |
 | 5 | Bellek 1: adres uzayı, adres çevirme, segmentasyon | 13, 15, 16 | — |
 | 6 | Bellek 2: sayfalama ve TLB | 18, 19 | — |
