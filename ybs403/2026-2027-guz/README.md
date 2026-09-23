@@ -29,7 +29,7 @@ Ders içeriği [`konular/sistem-analizi-ve-tasarimi/`](../../konular/sistem-anal
 | 2 | SGYD ve geleneksel süreç modelleri: Şelale, V-Model, Spiral Model | [not](../../konular/sistem-analizi-ve-tasarimi/02-sgyd-ve-geleneksel-modeller/not.md) | Takım ve konu bildirimi |
 | 3 | Modern yaklaşımlar: Çevik (Agile) felsefe ve Scrum çerçevesi | [not](../../konular/sistem-analizi-ve-tasarimi/03-cevik-yaklasimlar-ve-scrum/not.md) | Kullanıcı hikayeleri ve Product Backlog taslağı |
 | 4 | Proje başlatma, paydaş analizi ve fizibilite analizi | [not](../../konular/sistem-analizi-ve-tasarimi/04-proje-baslatma-ve-fizibilite/not.md) | **Teslim 1:** Proje Tanımı ve Fizibilite Raporu |
-| 5 | Gereksinim analizi 1: UML Use Case diyagramları ve senaryolar | — | Aktörler ve Use Case diyagramı |
+| 5 | Gereksinim analizi 1: UML Use Case diyagramları ve senaryolar | [not](../../konular/sistem-analizi-ve-tasarimi/05-gereksinim-analizi-ve-use-case/not.md) | Aktörler ve Use Case diyagramı |
 | 6 | Gereksinim analizi 2: Süreç modelleme — Veri Akış Diyagramları (DFD) ve süreç mantığı | — | Bağlam (Context) ve Seviye 0 DFD çizimleri |
 | 7 | Gereksinim analizi 3: Veri modelleme — Varlık-İlişki Diyagramları (ERD), Veri Sözlüğü ve Vize Provası | — | Mantıksal ERD ve Veri Sözlüğü hazırlığı |
 | 8 | **Ara Sınav Haftası** *(Tamamı çoktan seçmeli test)* | | |

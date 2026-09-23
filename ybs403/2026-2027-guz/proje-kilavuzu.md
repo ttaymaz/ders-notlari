@@ -65,7 +65,7 @@ Toplam 10–11 takım iki haftaya dengeli biçimde paylaştırılır (Hafta baş
 
 ## 5. Nihai Rapor Şablonu (SGYD Akışı)
 
-15. haftanın sonunda teslim edilecek ciltli/PDF nihai teknik rapor şu ana başlıkları eksiksiz içermelidir:
+Dönemin son haftası olan 15. haftanın sonunda teslim edilecek ciltli/PDF nihai teknik rapor şu ana başlıkları eksiksiz içermelidir:
 
 ```markdown
 1. GİRİŞ VE PLANLAMA
