@@ -31,7 +31,7 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 
 | Hafta | Konu | Ders notu |
 | :---: | ---- | :-------: |
-| 1 | Ders tanıtımı · Profesyonel C# çalışma düzeni: .NET komut satırı, proje yapısı, NuGet, nullable referans tipleri, çözümleyiciler | — |
+| 1 | Ders tanıtımı · Profesyonel C# çalışma düzeni: .NET komut satırı, proje yapısı, NuGet, nullable referans tipleri, çözümleyiciler | [not](../../konular/ileri-programlama/01-calisma-duzeni/not.md) · [kod](../../konular/ileri-programlama/01-calisma-duzeni/kod/) |
 | 2 | Tip sistemi ve bellek: değer ve referans tipleri, struct ve record, eşitlik, çöp toplayıcı | — |
 | 3 | Jenerik programlama: kısıtlar, jenerik arayüzler, kovaryans ve kontravaryans | — |
 | 4 | Delegeler, lambda ifadeleri ve olaylar | — |
