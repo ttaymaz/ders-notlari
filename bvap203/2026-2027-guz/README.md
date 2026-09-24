@@ -31,7 +31,7 @@ Ders notu ve not defteri bağlantıları, o hafta yayımlandıkça tabloya eklen
 | 1 | Bulut nedir? Kendi makinenin sınırı | [not](../../konular/bulut-bilisim/01-bulut-nedir/not.md) | — |
 | 2 | Hizmet modelleri: IaaS, PaaS, SaaS | [not](../../konular/bulut-bilisim/02-hizmet-modelleri/not.md) | — |
 | 3 | Çalışma alanı, not defteri ve nesne depolama | [not](../../konular/bulut-bilisim/03-nesne-depolama/not.md) | [kod](../../konular/bulut-bilisim/03-nesne-depolama/kod/) |
-| 4 | *planlanıyor* | — | — |
+| 4 | Veriye ilk sorular: Python ve SQL | [not](../../konular/bulut-bilisim/04-veriye-ilk-sorular/not.md) | [kod](../../konular/bulut-bilisim/04-veriye-ilk-sorular/kod/) |
 | 5 | *planlanıyor* | — | — |
 | 6 | *planlanıyor* | — | — |
 | 7 | *planlanıyor* | — | — |

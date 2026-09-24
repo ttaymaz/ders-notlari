@@ -20,6 +20,7 @@ Bu depo, ders notlarının ve örnek kodların öğrenciye açık **yansımasıd
 | [BVAP203](bvap203/) | Bulut Bilişim | Büyük Veri Analistliği | `tymz.org/bvap203` |
 | [YBS403](ybs403/) | Sistem Analizi ve Tasarımı | Yönetim Bilişim Sistemleri | `tymz.org/ybs403` |
 | [BM313](bm313/) | İşletim Sistemleri | Bilgisayar Mühendisliği | `tymz.org/bm313` |
+| [SD329](sd329/) | İleri Programlama I | Yazılım Mühendisliği | `tymz.org/sd329` |
 
 Aktif dönem: **2026–2027 Güz**
 
