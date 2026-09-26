@@ -2,7 +2,7 @@
 
 İşlemcinin sanallaştırılmasını geçen hafta bitirdik. Bu hafta sanallaştırmanın ikinci yarısına, **belleğe** geçiyoruz. 1. haftada bir iddiada bulunmuştuk: *iki proses aynı adresi yazdırır ve farklı değerler görür.* Bu hafta bu iddiayı önce bir programla kanıtlayacak, sonra donanımın ve işletim sisteminin bunu nasıl mümkün kıldığını adım adım hesaplayacağız.
 
-Bu haftanın C örnekleri `kod/` klasöründedir. Adres hesaplarında ikilik ve onaltılık sayılar kullanılacak; hesap makinesi işinizi kolaylaştırır.
+Bu haftanın C örnekleri `kod/` klasöründedir. Örneklerde `&`, `*`, `%p` ve `malloc` sık geçer; bunlar size yabancıysa önce [Bu Ders İçin Yeterli C](../00-c-isaretci-ve-struct/not.md) notunun 1–4. bölümlerini okuyun. Adres hesaplarında ikilik ve onaltılık sayılar kullanılacak; hesap makinesi işinizi kolaylaştırır.
 
 ---
 
@@ -118,7 +118,7 @@ Dikkat: 867 adresi 1 KB'lık adres uzayının **içindedir**, ama sınır 700 ol
 | Yazmaçları değiştiren **ayrıcalıklı** komutlar | Bağlam değişiminde taban ve sınırı **kaydeder ve yükler** |
 | Sınır aşıldığında **istisna** | İstisnayı **işler** (genellikle prosesi sonlandırır) |
 
-Bağlam değişimi satırında durun: geçen haftaki `struct proses` yapısındaki `bellek` alanı tam olarak bunun içindi. Bir prosesin taban ve sınır değerleri, işlemciden alınırken kaydına yazılır ve geri döndüğünde yüklenir. Taban yazmacını değiştiren komutun **ayrıcalıklı** olması da şarttır: kullanıcı modundaki bir program tabanını değiştirebilseydi başka bir prosesin belleğine erişebilirdi.
+Tablonun üçüncü satırına dikkat edin: 1. haftadaki `struct proses` yapısındaki `bellek` alanı tam olarak bunun içindi. Bir prosesin taban ve sınır değerleri, işlemciden alınırken kaydına yazılır ve geri döndüğünde yüklenir. Taban yazmacını değiştiren komutun **ayrıcalıklı** olması da şarttır: kullanıcı modundaki bir program tabanını değiştirebilseydi başka bir prosesin belleğine erişebilirdi.
 
 ### Taban ve sınırın sorunu
 

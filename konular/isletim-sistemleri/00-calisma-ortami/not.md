@@ -123,6 +123,8 @@ gcc 01-fork.c -o 01-fork.out
 
 Derste kullanılan C dosyaları her haftanın `kod/` klasöründe yayımlanır. Derlenmiş dosyaya `.out` uzantısı vermek, kaynak dosyayla karışmasını önler.
 
+Bu programlarda işaretçi, `malloc` ve `struct` geçer. Bunlar size yabancıysa [Bu Ders İçin Yeterli C](../00-c-isaretci-ve-struct/not.md) notu, kodları okuyabilmeniz için gereken kadarını toplar.
+
 ---
 
 ## 4. Takıldığınızda
@@ -135,6 +137,16 @@ Derste kullanılan C dosyaları her haftanın `kod/` klasöründe yayımlanır. 
 | `UnicodeEncodeError: 'charmap' codec ...` | Simülatörün çizdiği ağaç karakterleri Türkçe Windows kod sayfasına sığmıyor. Komutun sonuna `-P basic` ekleyin ya da PowerShell'de önce `$env:PYTHONUTF8=1` yazın |
 | `wsl --install` hata veriyor | BIOS'ta sanallaştırma kapalı olabilir; hata metnini getirin |
 | `gcc: command not found` | `build-essential` kurulmadı veya komut WSL yerine PowerShell'de yazıldı |
+
+---
+
+## 5. Yapay Zekâ Araçlarıyla Çalışırken
+
+Bir komutun ya da C kodunun ne yaptığını anlamak için yapay zekâ araçlarından yardım alabilirsiniz; bir satırı açıklatmak, bir hata mesajını yorumlatmak için iyi araçlardır. Ama bu derste bilinen bir zayıflıkları var: **zamanlama tabloları, ortalama bekleme süreleri, adres çevirileri ve sayfa hatası sayıları** gibi adım adım hesaplarda sıkça, üstelik emin bir dille yanlış sonuç verirler.
+
+> **Kural:** Yapay zekâya komutu ve kodu açıklatın; **sayıları simülatörün `-c` çıktısıyla** ya da programı çalıştırarak kontrol edin. İkisi farklıysa doğru olan simülatördür.
+
+Sınavda yanınızda ne simülatör ne yapay zekâ olacak. Elle izlemeyi kendiniz yapmadan cevabı okumak, o soruyu sınavda ilk kez çözmek demektir.
 
 ---
 

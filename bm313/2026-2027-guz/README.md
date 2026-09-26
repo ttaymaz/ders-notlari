@@ -17,6 +17,8 @@ Kısa adres: `tymz.org/bm313`
 
 Birinci haftadan itibaren Python 3 ve OSTEP simülatörleri gerekir; ikinci haftadan itibaren C örneklerini kendi bilgisayarınızda çalıştırmak isteyenler için WSL ve `gcc` isteğe bağlıdır. Adım adım kurulum: **[Çalışma Ortamı](../../konular/isletim-sistemleri/00-calisma-ortami/not.md)**
 
+Derste gösterilen C kodlarında işaretçi ve `struct` geçer. Bu konular size yabancıysa 5. haftadan önce **[Bu Ders İçin Yeterli C](../../konular/isletim-sistemleri/00-c-isaretci-ve-struct/not.md)** notunu okuyun.
+
 ## Haftalık Plan
 
 Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/) altında ders kodundan bağımsız olarak tutulur. OSTEP sütunu haftanın ileri okumasıdır.

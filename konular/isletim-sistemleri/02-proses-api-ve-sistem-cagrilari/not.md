@@ -2,7 +2,7 @@
 
 Geçen hafta prosesi dışarıdan tanımladık: çalışan program, üç durum, bir kayıt. Bu hafta iki soruya cevap arıyoruz. Birincisi programcının sorusu: *Bir program yeni bir prosesi nasıl başlatır?* İkincisi işletim sisteminin sorusu: *Kullanıcı modundaki bir program, yetkisi olmayan bir işi çekirdekten nasıl ister — ve çekirdek işlemciyi ondan nasıl geri alır?*
 
-Bu haftanın C örnekleri `kod/` klasöründedir. Kendi bilgisayarınızda çalıştırmak için [çalışma ortamı](../00-calisma-ortami/not.md) belgesindeki C derleyicisi bölümüne bakın; çalıştırmasanız da her örneğin çıktısı bu notta yazılıdır.
+Bu haftanın C örnekleri `kod/` klasöründedir. Kendi bilgisayarınızda çalıştırmak için [çalışma ortamı](../00-calisma-ortami/not.md) belgesindeki C derleyicisi bölümüne bakın; çalıştırmasanız da her örneğin çıktısı bu notta yazılıdır. Kodlarda geçen `&durum` ve `char *argumanlar[]` gibi ifadeler size yabancıysa [Bu Ders İçin Yeterli C](../00-c-isaretci-ve-struct/not.md) notunun 3. ve 7. bölümlerine bakın.
 
 ---
 
@@ -50,7 +50,7 @@ Bu çıktıdan üç sonuç çıkar:
 
 ## 3. `wait`: Sırayı Garanti Etmek
 
-Ebeveyn, çocuğun işini bitirmesini beklemek istiyorsa `wait()` çağırır. `wait` çocuk bitene kadar ebeveyni **bloke** eder — geçen haftanın proses durumlarını hatırlayın. Çocuk bitince `wait` onun PID'ini döndürür ve çocuğun `exit` ile bıraktığı **çıkış kodunu** ebeveyne verir.
+Ebeveyn, çocuğun işini bitirmesini beklemek istiyorsa `wait()` çağırır. `wait` çocuk bitene kadar ebeveyni **bloke** eder — geçen haftanın proses durumlarını hatırlayın. Çocuk bitince `wait` onun PID'ini döndürür ve çocuğun `exit` ile bıraktığı **çıkış kodunu** ebeveyne verir. Kodda `wait(&durum)` yazılır: `wait`'e `durum` değişkeninin **adresi** verilir ki çıkış bilgisini oraya yazabilsin.
 
 `kod/02-fork-wait.c` çıktısı:
 

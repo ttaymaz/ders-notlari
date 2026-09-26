@@ -166,7 +166,7 @@ Gerçek sistemlerde bu üçüne ek durumlar da vardır: oluşturulmakta olan pro
 
 ## 8. Proses Listesi: İşletim Sisteminin Defteri
 
-İşletim sistemi her proses için bir kayıt tutar ve bu kayıtları bir listede toplar. Bu kayda çoğu kaynakta **proses kontrol bloğu** (process control block, PCB) denir. C bildiğiniz için kaydı bir `struct` olarak düşünmek en kolayı. Gerçek bir çekirdekteki yapı çok daha kalabalıktır ama özü aşağıdaki gibidir:
+İşletim sistemi her proses için bir kayıt tutar ve bu kayıtları bir listede toplar. Bu kayda çoğu kaynakta **proses kontrol bloğu** (process control block, PCB) denir. Kaydı bir C `struct`'ı olarak düşünmek en kolayı: birkaç alanı tek kayıtta toplayan bir yapı. `struct` ve işaretçi size yabancıysa [Bu Ders İçin Yeterli C](../00-c-isaretci-ve-struct/not.md) notunun 5. ve 6. bölümleri yeterli. Gerçek bir çekirdekteki yapı çok daha kalabalıktır ama özü aşağıdaki gibidir:
 
 ```c
 enum proses_durumu { YENI, HAZIR, CALISIYOR, BLOKE, BITTI };
