@@ -113,6 +113,8 @@ Tek dosyada `.csproj` olmadığı için ayarlar dosyanın başına `#:` ile baş
 
 Bu satırlar `using` satırlarından **önce** gelir.
 
+> **.NET 9 kullanıyorsanız:** `dotnet run dosya.cs`, `#:` yönergeleri ve `dotnet project convert` .NET 10 ile geldi. .NET 9'da dosyayı bir konsol projesinin `Program.cs` dosyasına koyarak çalıştırırsınız; `#:` satırları silinir, karşılıkları projeye eklenir. Adımlar `kod/README.md` içinde. Aynı sebeple .NET 9'da `dotnet new sln` eski `.sln` biçimini üretir ve paket eklemenin eski biçimi (`dotnet add <proje> package <ad>`) kullanılır.
+
 > **Tek dosya ne zaman yetmez?** Kod birden fazla dosyaya bölünmek istediğinde, başka projeler bu kodu kullanmak istediğinde, ya da test projesi eklemek gerektiğinde. O noktada gerçek projeye geçilir.
 
 ---

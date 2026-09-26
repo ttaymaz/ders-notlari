@@ -25,6 +25,8 @@ dotnet run dosya.cs
 
 Bu komut .NET 10 SDK gerektirir. Kurulu sürümü `dotnet --version` ile görebilirsiniz.
 
+**.NET 9 kullanıyorsanız** (laboratuvar bilgisayarları dahil) örnekleri bir konsol projesinin içinde çalıştırırsınız; adımlar her haftanın `kod/README.md` dosyasında. Bütün örnekler bu yolla da denenmiştir.
+
 ## Haftalık Plan
 
 Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız olarak tutulur. Ders notları yazıldıkça bu tabloya bağlanır.
@@ -32,7 +34,7 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | Hafta | Konu | Ders notu |
 | :---: | ---- | :-------: |
 | 1 | Ders tanıtımı · Profesyonel C# çalışma düzeni: .NET komut satırı, proje yapısı, NuGet, nullable referans tipleri, çözümleyiciler | [not](../../konular/ileri-programlama/01-calisma-duzeni/not.md) · [kod](../../konular/ileri-programlama/01-calisma-duzeni/kod/) |
-| 2 | Tip sistemi ve bellek: değer ve referans tipleri, struct ve record, eşitlik, çöp toplayıcı | — |
+| 2 | Tip sistemi ve bellek: değer ve referans tipleri, struct ve record, eşitlik, çöp toplayıcı | [not](../../konular/ileri-programlama/02-tip-sistemi-ve-bellek/not.md) · [kod](../../konular/ileri-programlama/02-tip-sistemi-ve-bellek/kod/) |
 | 3 | Jenerik programlama: kısıtlar, jenerik arayüzler, kovaryans ve kontravaryans | — |
 | 4 | Delegeler, lambda ifadeleri ve olaylar | — |
 | 5 | Yineleyiciler ve LINQ: `yield`, ertelenmiş yürütme, genişletme metotları | — |

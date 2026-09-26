@@ -31,6 +31,31 @@ görmek için önce `build` kullanın.**
 > yazılmaz — "uyarılar gitti" sanmayın. Yeniden görmek için:
 > `dotnet build 03-nullable-uyarilar.cs --no-incremental`
 
+### .NET 9 kullanıyorsanız
+
+`dotnet run dosya.cs` biçimi .NET 10 ile geldi; .NET 9 bu komutu tanımaz.
+Aynı dosyayı bir konsol projesine koyarak çalıştırın:
+
+```
+dotnet new console -o Deneme
+copy 03-nullable-uyarilar.cs Deneme\Program.cs
+dotnet run --project Deneme
+```
+
+Linux ve macOS'ta `copy` yerine `cp` ve `\` yerine `/` kullanın. Her yeni
+dosya için yalnızca `copy` satırını tekrarlayın; `Program.cs` üzerine yazılır.
+
+Dosyanın başında `#:` ile başlayan satırlar varsa onları **silin** ve
+karşılığını projeye ekleyin:
+
+| Dosyada | .NET 9 projesinde |
+| ------- | ----------------- |
+| `#:package Spectre.Console@0.57.2` | `dotnet add Deneme package Spectre.Console --version 0.57.2` |
+| `#:property AnalysisLevel=latest-recommended` | `Deneme.csproj` içinde `<PropertyGroup>` altına `<AnalysisLevel>latest-recommended</AnalysisLevel>` |
+
+Bu klasördeki örneklerin hepsi bu yolla da denendi (C# 13, proje biçimi);
+çıktılar aşağıdakilerle aynı.
+
 ## Denemeniz için
 
 Her soruda önce **tahmin edin**, sonra çalıştırın.
