@@ -48,10 +48,10 @@ trafik = spark.read.csv(
 `inferSchema=True`, Spark'a "sütun tiplerini sen tahmin et" der. Artık araç
 sayısı tam sayı, hız ondalık sayı olarak gelir ve toplanabilirler.
 
-> **Bedava değil.** Spark tipleri tahmin edebilmek için dosyayı **bir kez
-> fazladan okur.** İlk hücre geçen haftakinden uzun sürecek. Büyük veride bu
-> maliyet ciddidir; profesyonel işlerde tipler elle yazılır. Bizim boyutumuzda
-> tahmin ettirmek makul bir tercih.
+> **Bedava değil.** Tip tahmin etmek için dosyanın içine bakmak gerekir, yani
+> Spark dosyayı **bir kez fazladan okur.** Bizim boyutumuzda bu birkaç saniye;
+> milyarlarca satırda ciddi bir maliyet olur ve profesyonel işlerde tipler
+> elle yazılır. Burada tahmin ettirmek makul bir tercih.
 
 `printSchema()` ile doğrulayın. Tipler değişmediyse sorgular çalışmaz.
 
@@ -217,6 +217,11 @@ kalkışmaz.
 
 > Bir hücre anında bittiyse muhtemelen **hiçbir şey yapmadı.** Sonucu
 > görmediyseniz iş de yapılmamıştır.
+
+**Bu haftanın istisnası:** `inferSchema=True` yazdığımız okuma satırı artık
+anında bitmiyor. Sebebi basit — tipleri tahmin edebilmek için dosyanın içine
+bakması, yani gerçekten okuması gerekiyor. Kuralı bozmuyor, tam tersine
+gösteriyor: **veriye dokunmak gerekiyorsa iş yapılır.**
 
 ---
 

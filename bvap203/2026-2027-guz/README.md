@@ -32,9 +32,9 @@ Ders notu ve not defteri bağlantıları, o hafta yayımlandıkça tabloya eklen
 | 2 | Hizmet modelleri: IaaS, PaaS, SaaS | [not](../../konular/bulut-bilisim/02-hizmet-modelleri/not.md) | — |
 | 3 | Çalışma alanı, not defteri ve nesne depolama | [not](../../konular/bulut-bilisim/03-nesne-depolama/not.md) | [kod](../../konular/bulut-bilisim/03-nesne-depolama/kod/) |
 | 4 | Veriye ilk sorular: Python ve SQL | [not](../../konular/bulut-bilisim/04-veriye-ilk-sorular/not.md) | [kod](../../konular/bulut-bilisim/04-veriye-ilk-sorular/kod/) |
-| 5 | *planlanıyor* | — | — |
-| 6 | *planlanıyor* | — | — |
-| 7 | *planlanıyor* | — | — |
+| 5 | Sonucu görmek: tablo yerine şekil | [not](../../konular/bulut-bilisim/05-sonucu-gormek/not.md) | [kod](../../konular/bulut-bilisim/05-sonucu-gormek/kod/) |
+| 6 | Veri kalitesi: veriye güvenebilir miyiz? | [not](../../konular/bulut-bilisim/06-veri-kalitesi/not.md) | [kod](../../konular/bulut-bilisim/06-veri-kalitesi/kod/) |
+| 7 | Ara sınav öncesi genel tekrar | [not](../../konular/bulut-bilisim/07-ara-sinav-tekrari/not.md) | [kod](../../konular/bulut-bilisim/07-ara-sinav-tekrari/kod/) |
 | 8 | **Ara sınav haftası** | | |
 | 9 | *planlanıyor* | — | — |
 | 10 | *planlanıyor* | — | — |
