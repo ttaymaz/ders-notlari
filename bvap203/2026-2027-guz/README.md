@@ -36,7 +36,7 @@ Ders notu ve not defteri bağlantıları, o hafta yayımlandıkça tabloya eklen
 | 6 | Veri kalitesi: veriye güvenebilir miyiz? | [not](../../konular/bulut-bilisim/06-veri-kalitesi/not.md) | [kod](../../konular/bulut-bilisim/06-veri-kalitesi/kod/) |
 | 7 | Ara sınav öncesi genel tekrar | [not](../../konular/bulut-bilisim/07-ara-sinav-tekrari/not.md) | [kod](../../konular/bulut-bilisim/07-ara-sinav-tekrari/kod/) |
 | 8 | **Ara sınav haftası** | | |
-| 9 | *planlanıyor* | — | — |
+| 9 | Zaman serisi olarak veri | [not](../../konular/bulut-bilisim/09-zaman-serisi/not.md) | [kod](../../konular/bulut-bilisim/09-zaman-serisi/kod/) |
 | 10 | *planlanıyor* | — | — |
 | 11 | *planlanıyor* | — | — |
 | 12 | *planlanıyor* | — | — |
