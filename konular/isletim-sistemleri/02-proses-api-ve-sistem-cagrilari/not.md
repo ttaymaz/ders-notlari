@@ -4,6 +4,8 @@ Geçen hafta prosesi dışarıdan tanımladık: çalışan program, üç durum, 
 
 Bu haftanın C örnekleri `kod/` klasöründedir. Kendi bilgisayarınızda çalıştırmak için [çalışma ortamı](../00-calisma-ortami/not.md) belgesindeki C derleyicisi bölümüne bakın; çalıştırmasanız da her örneğin çıktısı bu notta yazılıdır. Kodlarda geçen `&durum` ve `char *argumanlar[]` gibi ifadeler size yabancıysa [Bu Ders İçin Yeterli C](../00-c-isaretci-ve-struct/not.md) notunun 3. ve 7. bölümlerine bakın.
 
+> **Neden C?** Bu derste iki araç kullanıyoruz ve ikisi farklı işler yapar. OSTEP simülatörleri işletim sisteminin içini **taklit eder**: zamanlayıcı gerçekte çalışmaz, bir politikanın ne karar vereceği hesaplanır. C programları ise **gerçek** programlardır ve **gerçek** çekirdekten iş isterler: `fork` çağrıldığında Linux gerçekten yeni bir proses açar. C'nin seçilmesinin üç sebebi var. İşletim sistemi çekirdekleri büyük ölçüde C ile yazılır. `fork`, `exec`, `wait` gibi sistem çağrıları programlara C fonksiyonu olarak sunulur; başka dillerde program başlatan tek satırlık komutların arkasında da bu adımlar çalışır, ama gizlidir. Son olarak C, bir değişkenin bellekteki adresini gösterebilir — 5. haftanın konusu bunun üzerine kurulu. Bu derste C **yazmayacaksınız**; kısa programları okuyup çıktısını tahmin edeceksiniz.
+
 ---
 
 ## 1. Açılış: Kabuğa `ls` Yazınca Ne Olur?
