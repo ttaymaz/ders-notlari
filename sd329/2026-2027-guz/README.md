@@ -37,8 +37,8 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | 2 | Tip sistemi ve bellek: değer ve referans tipleri, struct ve record, eşitlik, çöp toplayıcı | [not](../../konular/ileri-programlama/02-tip-sistemi-ve-bellek/not.md) · [kod](../../konular/ileri-programlama/02-tip-sistemi-ve-bellek/kod/) |
 | 3 | Jenerik programlama: kısıtlar, jenerik arayüzler, kovaryans ve kontravaryans | — |
 | 4 | Delegeler, lambda ifadeleri ve olaylar | — |
-| 5 | Yineleyiciler ve LINQ: `yield`, ertelenmiş yürütme, genişletme metotları | — |
-| 6 | LINQ ile veri işleme ve desen eşleme | — |
+| 5 | Yineleyiciler ve ertelenmiş yürütme: `IEnumerable`, `yield` | — |
+| 6 | LINQ ile veri işleme: genişletme metotları, sorgu operatörleri · desen eşleme | — |
 | 7 | Hata yönetimi tasarımı ve birim testi | — |
 | 8 | **Ara Sınav Haftası** | |
 | 9 | Bağımlılık enjeksiyonu, yapılandırma ve günlükleme | — |
@@ -48,6 +48,8 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | 13 | Başarım ölçümü ve bellek ayırma | — |
 | 14 | Yeniden düzenleme ve kod incelemesi | — |
 | 15 | Genel tekrar · dönem kapanışı | — |
+
+> **Bu dönem konular bir hafta kaydırılarak işleniyor.** 2. haftanın dersi yapılamadı; 5. konu salı günü yapılacak tek seferlik bir telafi dersinde işlenecek. Ara sınav tarihi ve kapsamı (1–7. konular) değişmedi.
 
 ## Sunumlar
 
