@@ -29,7 +29,30 @@ Sebep tek cümle: **`struct` bir değer tipidir, `class` bir referans tipidir.**
 
 ---
 
-## 2. İki Tip Ailesi
+## 2. Bellekte İki Bölge: Stack ve Heap
+
+Değer ve referans ayrımını anlamak için önce programın belleği nasıl kullandığına bakalım. Çalışan bir .NET programının verisi iki ayrı bölgede durur.
+
+| | **Stack** | **Heap** |
+| - | --------- | -------- |
+| Ne tutar | Metotların yerel değişkenleri ve parametreleri | `new` ile oluşturulan nesneler |
+| Ne zaman yer açılır | Metot çağrılınca | `new` çalışınca |
+| Ne zaman boşalır | Metot bitince, kendiliğinden | Nesneye ulaşan kalmayınca, çöp toplayıcı tarafından |
+| Boyut | Küçük; iş parçacığı başına birkaç megabayt (işletim sistemine göre değişir) | Büyük; programın kullanabildiği belleğin çoğu |
+
+**Stack**, metot çağrılarının üst üste konan çalışma alanlarıdır. Bir metot çağrıldığında yığına yeni bir kat eklenir; metodun yerel değişkenleri o katta durur. Metot bittiğinde kat kendiliğinden kalkar ve içindeki değişkenler yok olur. Bu yüzden bir yerel değişken, tanımlandığı metottan sonra yaşamaz. Kendini sonsuza kadar çağıran bir metot bu katları bitirir ve program `StackOverflowException` ile sonlanır — adın kaynağı budur.
+
+**Heap**, ömrü bir metoda bağlı olmayan veriler içindir. `new` ile oluşturulan bir nesne, onu oluşturan metot bittikten sonra da yaşayabilir; yeter ki bir değişken onu göstermeye devam etsin. Hiçbir değişken göstermediğinde **çöp toplayıcı** onu bir süre sonra temizler (7. bölüm).
+
+> **C bilenler için:** `malloc` ile aldığınız bellek heap'teydi ve onu `free` ile siz geri veriyordunuz. C#'ta referans tipleri için `new` aynı bölgeyi kullanır; `free` yoktur, o işi çöp toplayıcı üstlenir. C'deki yerel değişkenler ve `struct` değerleri ise C#'taki gibi stack'te durur ve atamada kopyalanır.
+
+Bu resmin bu haftaki bütün konulara uzanan bir sonucu var: **referans tipindeki bir değişken, stack'te yalnızca bir adres tutar; nesnenin kendisi heap'tedir.** Açılıştaki `c` ve `d` iki ayrı stack kutusudur, ikisinde de aynı heap nesnesinin adresi yazar.
+
+Bu iki bölge modeli yerel değişkenler için doğrudur. Değer tiplerinin her zaman stack'te durmadığı inceliğine 7. bölümde döneceğiz.
+
+---
+
+## 3. İki Tip Ailesi
 
 ### Günlük hayattan
 
@@ -48,11 +71,11 @@ Bir arkadaşınıza ders notunuzun **fotokopisini** verirseniz, o kendi kopyası
 | `struct` ile tanımlanan her şey | `record` (ya da `record class`) |
 | `record struct` | `List<T>`, `Dictionary<K,V>`, arayüzler, delegeler |
 
-İki şaşırtıcı satır var. **`string` bir referans tipidir** ama çoğu zaman değer tipi gibi davranır; 7. bölümde nedenini göreceğiz. **Dizi her zaman referans tipidir**, elemanları `int` olsa bile.
+İki şaşırtıcı satır var. **`string` bir referans tipidir** ama çoğu zaman değer tipi gibi davranır; 8. bölümde nedenini göreceğiz. **Dizi her zaman referans tipidir**, elemanları `int` olsa bile.
 
 ---
 
-## 3. Atama ve Bellek
+## 4. Atama ve Bellek
 
 ![Atamadan sonra bellek](assets/01-atama-bellek.svg)
 
@@ -79,7 +102,7 @@ Kutudaki kopya, kutulandığı andaki değeri taşır; `a` sonradan değişse de
 
 ---
 
-## 4. Metoda Geçirmek de Bir Atamadır
+## 5. Metoda Geçirmek de Bir Atamadır
 
 C#'ta bir argüman metoda varsayılan olarak **değerle** geçirilir: parametre, çağıran taraftaki değişkenin kopyasıdır. Kopyanın ne olduğu tipe bağlıdır.
 
@@ -103,7 +126,7 @@ void RefDegistir(ref NoktaS n) => n.X = 99;       // değişkenin kendisini değ
 
 ---
 
-## 5. Koleksiyonda `struct`
+## 6. Koleksiyonda `struct`
 
 ```csharp
 NoktaS[] dizi = [new NoktaS(1)];
@@ -128,13 +151,13 @@ p.X = 5;
 liste[0] = p;
 ```
 
-Bu hantallık, değiştirilebilir `struct` tasarlamamak için güçlü bir sebeptir (6. bölümdeki kurala bakın).
+Bu hantallık, değiştirilebilir `struct` tasarlamamak için güçlü bir sebeptir (7. bölümdeki kurala bakın).
 
 ---
 
-## 6. Stack, Heap ve Çöp Toplayıcı
+## 7. Stack, Heap ve Çöp Toplayıcı
 
-### Basit model ve inceliği
+### 2. bölümdeki modelin inceliği
 
 Sık duyacağınız cümle şudur: "Değer tipleri stack'te, referans tipleri heap'te durur." Başlangıç için işe yarar ama tam doğru değildir. Doğrusu:
 
@@ -171,7 +194,7 @@ Değer tipi heap'e gitmediği için çöp toplayıcıya yük olmaz; bu yüzden "
 
 ---
 
-## 7. Eşitlik: İki Ayrı Soru
+## 8. Eşitlik: İki Ayrı Soru
 
 "Bu iki şey eşit mi?" sorusu iki ayrı soruyu saklar:
 
@@ -199,7 +222,7 @@ Console.WriteLine(k1.Equals(k2));   // False
 
 ---
 
-## 8. `record`: Değer Gibi Davranan Sınıf
+## 9. `record`: Değer Gibi Davranan Sınıf
 
 Bir kitabı, bir koordinatı, bir sipariş satırını temsil eden tipler çoğunlukla **veri taşır**: kimlikleri değil içerikleri önemlidir. Bu tipler için C#'ın kısa bir yazımı vardır:
 
@@ -239,7 +262,7 @@ var ikinciCilt = kitap with { Baslik = "İnce Memed 2", Yil = 1969 };
 
 ---
 
-## 9. Eşitlik ve Özet Kodu: Kaybolan Eleman
+## 10. Eşitlik ve Özet Kodu: Kaybolan Eleman
 
 `HashSet<T>` ve `Dictionary<K,V>` elemanları hızlı bulmak için her elemanın **özet kodunu** (`GetHashCode()`) hesaplar ve elemanı o koda karşılık gelen bir "çekmeceye" koyar. Aramada önce çekmece bulunur, sonra içinde `Equals` ile karşılaştırılır.
 
@@ -261,7 +284,7 @@ Kural: **Küme veya sözlük anahtarı olarak kullanılan tipin eşitliğe katı
 
 ---
 
-## 10. Bellek Dışı Kaynaklar: `IDisposable` ve `using`
+## 11. Bellek Dışı Kaynaklar: `IDisposable` ve `using`
 
 Çöp toplayıcı **belleği** geri alır. Ama bir programın tuttuğu tek şey bellek değildir: açık dosyalar, veritabanı bağlantıları, ağ soketleri işletim sisteminden alınan kaynaklardır ve sayıları sınırlıdır. Çöp toplayıcı bunları ne zaman kapatacağını bilmez; bilseydi bile ne zaman çalışacağı belli değildir.
 
@@ -290,11 +313,11 @@ Kapanma sırası açılma sırasının **tersidir**. Mantığı şudur: sonra a�
 
 ---
 
-## 11. İyi Pratikler ve Sık Yapılan Hatalar
+## 12. İyi Pratikler ve Sık Yapılan Hatalar
 
 **İyi pratikler**
 
-- Varsayılan seçim `class`; `struct` yalnızca 6. bölümdeki dört koşul sağlanıyorsa
+- Varsayılan seçim `class`; `struct` yalnızca 7. bölümdeki dört koşul sağlanıyorsa
 - Veri taşıyan tipler için `record`; eşitlik ve `ToString` elle yazılmaz
 - `struct` yazacaksanız değiştirilemez yazın (`readonly struct`, `init`)
 - Küme ve sözlük anahtarları değiştirilemez olsun
@@ -311,7 +334,7 @@ Kapanma sırası açılma sırasının **tersidir**. Mantığı şudur: sonra a�
 
 ---
 
-## 12. Örnek Kodlar
+## 13. Örnek Kodlar
 
 `kod/` klasöründe; çalıştırma, .NET 9 yolu ve Denemeniz için soruları klasördeki `README.md` içinde.
 
@@ -328,7 +351,7 @@ Kapanma sırası açılma sırasının **tersidir**. Mantığı şudur: sonra a�
 
 ---
 
-## 13. İsteğe Bağlı Ev Uygulaması
+## 14. İsteğe Bağlı Ev Uygulaması
 
 1. haftanın `Kutuphane` çözümünde `Kitap` sınıfını konumsal bir `record` yapın. Konsol projesinde aynı başlık ve yazarla iki ayrı `Kitap` oluşturup `==` ile karşılaştırın; değişiklikten önce ve sonra ne yazdığını not edin.
 
