@@ -35,7 +35,7 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | :---: | ---- | :-------: |
 | 1 | Ders tanıtımı · Profesyonel C# çalışma düzeni: .NET komut satırı, proje yapısı, NuGet, nullable referans tipleri, çözümleyiciler | [not](../../konular/ileri-programlama/01-calisma-duzeni/not.md) · [kod](../../konular/ileri-programlama/01-calisma-duzeni/kod/) |
 | 2 | Tip sistemi ve bellek: değer ve referans tipleri, struct ve record, eşitlik, çöp toplayıcı | [not](../../konular/ileri-programlama/02-tip-sistemi-ve-bellek/not.md) · [kod](../../konular/ileri-programlama/02-tip-sistemi-ve-bellek/kod/) |
-| 3 | Jenerik programlama: kısıtlar, jenerik arayüzler, kovaryans ve kontravaryans | — |
+| 3 | Jenerik programlama: kısıtlar, jenerik arayüzler, kovaryans ve kontravaryans | [not](../../konular/ileri-programlama/03-jenerikler/not.md) · [kod](../../konular/ileri-programlama/03-jenerikler/kod/) |
 | 4 | Delegeler, lambda ifadeleri ve olaylar | — |
 | 5 | Yineleyiciler ve ertelenmiş yürütme: `IEnumerable`, `yield` | — |
 | 6 | LINQ ile veri işleme: genişletme metotları, sorgu operatörleri · desen eşleme | — |
