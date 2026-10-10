@@ -241,6 +241,18 @@ record Kitap(string Baslik, string Yazar) : Yayin(Baslik);
 record Dergi(string Baslik, int Sayi) : Yayin(Baslik);
 ```
 
+Kalıtımlı kayıtlarda geçen haftanın iki tanımı yeniden karşımıza çıkar:
+
+```csharp
+Yayin y1 = new Yayin("Çalıkuşu");
+Yayin y2 = new Kitap("Çalıkuşu", "Reşat Nuri Güntekin");
+Console.WriteLine(y1 == y2);                 // False
+Console.WriteLine(y1.Baslik == y2.Baslik);   // True
+Console.WriteLine(y2);   // Kitap { Baslik = Çalıkuşu, Yazar = Reşat Nuri Güntekin }
+```
+
+**Değer eşitliği** (value equality) tipi de kapsar: başlıklar aynı ama biri `Yayin`, diğeri `Kitap` olduğu için kayıtlar eşit değildir. `ToString` ise sanaldır: değişkenin tipi `Yayin` olsa da nesnenin gerçek tipi yazdırılır. **Değiştirilemezliğin** (immutability) sığ olduğunu da unutmayın: konumsal kaydın özellikleri `init`'tir ama bir liste özelliğinin içi değiştirilebilir. İki tanımın ayrıntısı ve sınırları geçen haftanın notunun `record` bölümünde.
+
 Her `Kitap` bir `Yayin`'dır. Öyleyse bir kitap koleksiyonu, bir yayın koleksiyonu yerine kullanılabilir mi? Cevap koleksiyona göre değişir.
 
 ### `IEnumerable<T>`: evet, güvenli

@@ -9,6 +9,7 @@
 | `05-record.cs` | `record`: değer eşitliği, `ToString`, `with` | — |
 | `06-kaybolan-eleman.cs` | `HashSet` içindeki eleman değişirse | — |
 | `07-using-sirasi.cs` | `IDisposable`, `using` ve kapanma sırası | — |
+| `08-record-tanimlari.cs` | Değer eşitliği ve değiştirilemezlik: tanımlar ve sınırları | — |
 | `hatali/01-listede-struct.cs` | **Kasıtlı olarak derlenmez** | — |
 
 ## Çalıştırma
@@ -52,6 +53,14 @@ Her soruda önce **kâğıda tahmininizi yazın**, sonra çalıştırın.
   satır derlenmez? Bu iyi bir şey mi?
 - `07-using-sirasi.cs` içinde `using var` satırlarından `using`
   kelimesini silin. "kapatıldı" satırları ne olur?
+- `08-record-tanimlari.cs` içinde `List<string>` yerine
+  `IReadOnlyList<string>` yazın. `a.Etiketler.Add(...)` satırı ne olur?
+  `a == b` sonucu değişir mi? Neden?
+- `08-record-tanimlari.cs` içindeki yorum satırını (`a.Yil = 1928;`) açın.
+  Hata kodu ne? `Kitap` kaydını `record Kitap { public int Yil { get; set; } ... }`
+  biçiminde yazsaydınız bu satır derlenir miydi?
+- `08-record-tanimlari.cs` içinde `y2` değişkeninin tipini `Yayin` yerine
+  `Roman` yapın. `y1 == y2` derlenir mi, ne yazar?
 
 ## Çıktılar
 
@@ -146,4 +155,20 @@ Günlük dosyası kapatıldı
 Veritabanı kapatıldı
 Calis bitti
 ```
+</details>
+
+<details>
+<summary>08-record-tanimlari.cs</summary>
+
+```
+Kunye ==            : True
+Özet kodları aynı mı: True
+Kitap a == b        : False
+Kitap a == c        : True
+c'nin etiket sayısı : 3
+Yayin == Roman      : False
+```
+
+Yorum satırı açılırsa: `error CS8852` — `init` özelliğe kurulduktan sonra
+atanamaz.
 </details>

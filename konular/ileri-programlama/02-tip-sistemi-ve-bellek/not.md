@@ -198,8 +198,8 @@ Değer tipi heap'e gitmediği için çöp toplayıcıya yük olmaz; bu yüzden "
 
 "Bu iki şey eşit mi?" sorusu iki ayrı soruyu saklar:
 
-- **Referans eşitliği:** Aynı nesne mi? (Aynı adres mi?)
-- **Değer eşitliği:** İçerikleri aynı mı?
+- **Referans eşitliği** (reference equality): Aynı nesne mi? (Aynı adres mi?)
+- **Değer eşitliği** (value equality): İçerikleri aynı mı?
 
 ```csharp
 var k1 = new KitapC("Nutuk", 1927);
@@ -246,6 +246,82 @@ var ikinciCilt = kitap with { Baslik = "İnce Memed 2", Yil = 1969 };
 ```
 
 `with` asıl kaydı **değiştirmez**; yeni bir kayıt üretir. Değiştirilemez veriyle çalışmanın doğal yolu budur.
+
+`record`'un iki sözü vardır: **değer eşitliği** ve **değiştirilemezlik**. İkisi de sık kullanılan, ama sınırları çoğu zaman bilinmeyen kavramlardır.
+
+### Değer eşitliği (value equality)
+
+> **Tanım:** İki nesnenin, aynı nesne olup olmadıklarına değil **içeriklerine** bakılarak eşit sayılmasıdır. `record` için iki kayıt, **tipleri aynıysa ve bütün özellikleri birbirine eşitse** eşittir.
+
+Derleyici bunun için `Equals`, `GetHashCode`, `==` ve `!=` üyelerini sizin yerinize yazar. Eşit iki kaydın özet kodu da aynıdır; bu yüzden kayıtlar `HashSet` ve `Dictionary` içinde güvenle kullanılır.
+
+```csharp
+record Kunye(string Baslik, int Yil);
+
+var k1 = new Kunye("Nutuk", 1927);
+var k2 = new Kunye("Nutuk", 1927);
+Console.WriteLine(k1 == k2);                               // True
+Console.WriteLine(k1.GetHashCode() == k2.GetHashCode());   // True
+```
+
+Tanımdaki iki ayrıntı sürpriz yaratır:
+
+**Her özellik kendi `Equals`'ıyla karşılaştırılır.** `string` ve `int` değerle karşılaştırılır; ama bir `List<string>` özelliği, `List` bir `class` olduğu için **referansla** karşılaştırılır:
+
+```csharp
+record Kitap(string Baslik, int Yil, List<string> Etiketler);
+
+var a = new Kitap("Nutuk", 1927, ["tarih", "anı"]);
+var b = new Kitap("Nutuk", 1927, ["tarih", "anı"]);
+Console.WriteLine(a == b);   // False — iki ayrı liste nesnesi
+```
+
+İçerik harfi harfine aynı, ama listeler iki ayrı nesne olduğu için kayıtlar eşit değil. Değer eşitliği "derinlemesine" değildir; bir kat iner, sonrasını özelliğin kendi tipine bırakır.
+
+**Tip de eşitliğin parçasıdır.** Bir `Roman`, `Yayin`'dan türese ve aynı başlığı taşısa bile bir `Yayin` ile eşit değildir:
+
+```csharp
+record Yayin(string Baslik);
+record Roman(string Baslik, string Yazar) : Yayin(Baslik);
+
+Yayin y1 = new Yayin("Nutuk");
+Yayin y2 = new Roman("Nutuk", "Mustafa Kemal Atatürk");
+Console.WriteLine(y1 == y2);   // False
+```
+
+### Değiştirilemezlik (immutability)
+
+> **Tanım:** Bir nesnenin, oluşturulduktan sonra durumunun değiştirilememesidir. Değişiklik gerekiyorsa eski nesne değiştirilmez, **yeni bir nesne** üretilir.
+
+C#'ta bir özelliğin ne zaman atanabileceğini erişimcisi belirler:
+
+| Yazım | Ne zaman atanabilir |
+| ----- | ------------------- |
+| `{ get; set; }` | Her zaman |
+| `{ get; init; }` | Yalnızca kurulurken: kurucuda veya `new Kitap { Yil = 1927 }` başlatıcısında |
+| `{ get; }` | Yalnızca kurucuda |
+
+Konumsal `record` (`record Kunye(string Baslik, int Yil)`) özelliklerini `init` olarak üretir. Kurulduktan sonra atamaya kalkarsanız derleyici reddeder:
+
+```
+error CS8852: 'Kitap.Yil' yalnızca init özelliği veya dizin oluşturucusu,
+yalnızca bir nesne başlatıcısında ... atanabilir
+```
+
+Değiştirilemez bir nesne güvenle paylaşılır: kimse sizin elinizdeki nesneyi değiştiremez, bu yüzden kopyalamaya gerek kalmaz. 10. bölümdeki kaybolan eleman hatası da değiştirilemez bir anahtarla hiç oluşmaz.
+
+**Ama `record`'un değiştirilemezliği sığdır** (shallow). `init`, özelliğin başka bir nesneye bağlanmasını engeller; özelliğin gösterdiği nesnenin **içini** korumaz:
+
+```csharp
+var c = a with { };          // a'nın kopyası
+Console.WriteLine(a == c);   // True — Etiketler aynı liste nesnesi
+a.Etiketler.Add("klasik");
+Console.WriteLine(c.Etiketler.Count);   // 3
+```
+
+`a.Etiketler = new List<string>()` yazılamaz, ama `a.Etiketler.Add(...)` yazılabilir. Üstelik `with` de sığ kopya yapar: `c` yeni bir kayıt, ama `Etiketler` özelliği **aynı listeyi** gösteriyor. `a`'ya eklenen etiket `c`'de de görünür.
+
+Gerçekten değiştirilemez bir kayıt istiyorsanız özelliklerin tipleri de değiştirilemez olmalıdır: `string`, sayılar, başka konumsal kayıtlar. Koleksiyon gerekiyorsa `System.Collections.Immutable` ad alanındaki `ImmutableList<T>` gibi tipler kullanılır.
 
 ### `record` hâlâ bir sınıftır
 
@@ -328,6 +404,7 @@ Kapanma sırası açılma sırasının **tersidir**. Mantığı şudur: sonra a�
 - "Referans tipleri referansla geçirilir" sanmak. Referans, değerle geçirilir; metot çağıranın değişkenini başka nesneye çeviremez
 - İki `class` nesnesini `==` ile karşılaştırıp içeriklerin karşılaştırıldığını sanmak
 - `record` tipini değer tipi sanmak; `record` atamada paylaşılır
+- `record` içinde `List` tutup kaydı değiştirilemez sanmak; değiştirilemezlik sığdır, `with` de listeyi paylaşır
 - `List<struct>` içindeki elemanı yerinde değiştirmeye çalışmak (`CS1612`)
 - Kümeye eklenmiş bir nesnenin eşitliğe katılan özelliğini değiştirmek
 - Çöp toplayıcının dosyayı kapatacağına güvenmek
@@ -347,6 +424,7 @@ Kapanma sırası açılma sırasının **tersidir**. Mantığı şudur: sonra a�
 | `05-record.cs` | `record`, `with`, ayrıştırma |
 | `06-kaybolan-eleman.cs` | `HashSet` ve değişen eleman |
 | `07-using-sirasi.cs` | `IDisposable` ve kapanma sırası |
+| `08-record-tanimlari.cs` | Değer eşitliği ve değiştirilemezliğin sınırları |
 | `hatali/01-listede-struct.cs` | Kasıtlı olarak derlenmez |
 
 ---
