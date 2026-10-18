@@ -11,7 +11,7 @@ Kısa adres: `tymz.org/ybs403`
 | Değerlendirme | Ağırlık | Tarih | Kapsam / Açıklama |
 | ------------- | :-----: | ----- | ----------------- |
 | **Ara Sınav** | %40 | 09–13 Kasım 2026 | 1.–7. hafta konuları · **Tamamı test** (çoktan seçmeli) |
-| **Teslim 1:** Fizibilite Raporu | — | 4. Hafta | Proje tanımı, kapsam ve 4 boyutlu fizibilite analizi |
+| **Teslim 1:** Fizibilite Raporu | — | 25 Ekim 2026, 13.00 (UES) | Proje tanımı, kapsam ve 4 boyutlu fizibilite analizi |
 | **Teslim 2:** Gereksinim Analizi | — | 9. Hafta | Gereksinim listesi, Use Case, DFD (Bağlam, Seviye 0, en az bir Seviye 1), ERD ve Veri Sözlüğü |
 | **Teslim 3:** Detaylı Tasarım | — | 13. Hafta | Sınıf, Sequence ve Durum, Sistem Mimarisi, Wireframe, Veritabanı şeması ve 3NF |
 | **Dönem Projesi** *(yarıyıl sonu sınavı yok)* | %60 | 14.–15. Hafta | Canlı sunum (15–20 dk), Nihai SGYD Raporu ve Prototip Demosu |
@@ -28,7 +28,7 @@ Ders içeriği [`konular/sistem-analizi-ve-tasarimi/`](../../konular/sistem-anal
 | 1 | Sisteme ve sistem analizine giriş: temel kavramlar, bilgi sistemi türleri | [not](../../konular/sistem-analizi-ve-tasarimi/01-sistem-kavrami-ve-analistin-rolu/not.md) | Problem alanı ve sektör araştırması |
 | 2 | SGYD ve geleneksel süreç modelleri: Şelale, V-Model, Spiral Model | [not](../../konular/sistem-analizi-ve-tasarimi/02-sgyd-ve-geleneksel-modeller/not.md) | Takım ve konu bildirimi |
 | 3 | Modern yaklaşımlar: Çevik (Agile) felsefe ve Scrum çerçevesi | [not](../../konular/sistem-analizi-ve-tasarimi/03-cevik-yaklasimlar-ve-scrum/not.md) | Kullanıcı hikayeleri ve Product Backlog taslağı |
-| 4 | Proje başlatma, paydaş analizi ve fizibilite analizi | [not](../../konular/sistem-analizi-ve-tasarimi/04-proje-baslatma-ve-fizibilite/not.md) | **Teslim 1:** Proje Tanımı ve Fizibilite Raporu |
+| 4 | Proje başlatma, paydaş analizi ve fizibilite analizi | [not](../../konular/sistem-analizi-ve-tasarimi/04-proje-baslatma-ve-fizibilite/not.md) | **Teslim 1:** Proje Tanımı ve Fizibilite Raporu (son teslim 25 Ekim 2026, 13.00) |
 | 5 | Gereksinim analizi 1: UML Use Case diyagramları ve senaryolar | [not](../../konular/sistem-analizi-ve-tasarimi/05-gereksinim-analizi-ve-use-case/not.md) | Aktörler ve Use Case diyagramı |
 | 6 | Gereksinim analizi 2: Süreç modelleme — Veri Akış Diyagramları (DFD) ve süreç mantığı | [not](../../konular/sistem-analizi-ve-tasarimi/06-surec-modelleme-ve-dfd/not.md) | Bağlam (Context) ve Seviye 0 DFD çizimleri |
 | 7 | Gereksinim analizi 3: Veri modelleme — Varlık-İlişki Diyagramları (ERD), Veri Sözlüğü ve Vize Provası | [not](../../konular/sistem-analizi-ve-tasarimi/07-veri-modelleme-ve-erd/not.md) | Mantıksal ERD ve Veri Sözlüğü hazırlığı |

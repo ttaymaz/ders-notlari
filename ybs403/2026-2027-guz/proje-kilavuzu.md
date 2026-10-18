@@ -39,7 +39,7 @@ Dönem projesi son haftada tek seferde yazılan bir ödev değildir; dönem boyu
 
 | Aşama | Teslim Zamanı | Kapsam ve İstenen Belgeler |
 | :---: | :-----------: | -------------------------- |
-| **Teslim 1** | **4. Hafta** | **Proje Başlatma ve Fizibilite Raporu**<br>• Problem tanımı, hedefler, paydaş analizi ve sistem sınırları.<br>• 4 Boyutlu Fizibilite: Teknik, Ekonomik (Maliyet/Fayda & ROI), Operasyonel, Yasal (KVKK). |
+| **Teslim 1** | **4. Hafta**<br>25 Ekim 2026, 13.00 | **Proje Başlatma ve Fizibilite Raporu**<br>• Problem tanımı, hedefler, paydaş analizi ve sistem sınırları.<br>• 4 Boyutlu Fizibilite: Teknik, Ekonomik (Maliyet/Fayda & ROI), Operasyonel, Yasal (KVKK). |
 | **Teslim 2** | **9. Hafta** | **Gereksinim Analizi Paketi**<br>• Fonksiyonel ve fonksiyonel olmayan gereksinim listesi.<br>• UML Use Case diyagramı ve kritik senaryo metinleri.<br>• Veri Akış Diyagramları (Bağlam, Seviye 0 ve en az bir Seviye 1 patlatma).<br>• Mantıksal ERD (Crow's Foot notasyonu) ve Veri Sözlüğü taslağı. |
 | **Teslim 3** | **13. Hafta** | **Detaylı Tasarım Paketi**<br>• UML Sınıf Diyagramı (Nitelikler, metotlar ve ilişkiler).<br>• Davranışsal Modeller: En az bir kritik senaryo için Sıralama (Sequence) ve Durum (State) diyagramları.<br>• Sistem Mimarisi (3-Tier / MVC) tasarımı ve gerekçesi.<br>• Kritik ekranların Wireframe tasarımları.<br>• Fiziksel Veritabanı Şeması ve 3NF Normalizasyon analizi. |
 
