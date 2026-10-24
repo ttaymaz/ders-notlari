@@ -57,6 +57,8 @@ class BagliListe<T>
 }
 ```
 
+`Dugum<T>?` içindeki `?`, 1. haftanın nullable referans tipleridir: "`Sonraki` bir düğüm **ya da `null`** tutabilir." Bağlı listede bu bir zorunluluk: yeni oluşturulan düğümün henüz bir sonrakisi yoktur, son düğümün `Sonraki`'si her zaman `null`'dır, liste boşken `_bas` ve `_son` da `null`'dır. `?` silinirse derleyici `CS8618` uyarısı verir ("`null` olamaz dediğin özellik kurucudan çıkarken boş"); program yine aynı çalışır, çünkü `?` yalnızca derleme zamanı denetimidir. Bu `?`, `int?`'deki ile aynı şey değildir: `int?` gerçekten yeni bir tip (`Nullable<int>`) üretir, `Dugum<T>?` ise yalnızca derleyiciye bir niyet bildirir.
+
 İki şey geçen haftalardan tanıdık. `Dugum<T>` ve `BagliListe<T>` **jenerik** tiplerdir: aynı liste kitap da tutar, sayı da. `Sonraki` bir **referanstır**: düğümler heap'te dağınık durur, aralarındaki bağ yalnızca adreslerdir.
 
 Listeyi gezmek, `null`'a gelene kadar `Sonraki`'yi izlemektir:
@@ -75,8 +77,6 @@ for (var d = _bas; d is not null; d = d.Sonraki)
 **Delege**, "şu imzadaki bir metot" anlamına gelen bir **tiptir.** Bir delege değişkeni, o imzaya uyan herhangi bir metodu tutabilir ve çağırabilir.
 
 ```csharp
-delegate bool Kosul(Kitap k);      // Kitap alıp bool döndüren her metot
-
 bool EskiMi(Kitap k) => k.Yil < 1930;
 bool KisaMi(Kitap k) => k.Baslik.Length <= 10;
 
@@ -85,6 +85,9 @@ Console.WriteLine(kosul(calikusu)); // True — EskiMi çağrıldı
 
 kosul = KisaMi;                    // aynı değişken, başka metot
 Console.WriteLine(kosul(memed));    // True — KisaMi çağrıldı
+
+// Dosyanın altında, diğer tiplerle birlikte:
+delegate bool Kosul(Kitap k);      // Kitap alıp bool döndüren her metot
 ```
 
 İki yazım arasındaki fark bu haftanın anahtarıdır:
@@ -95,6 +98,48 @@ Console.WriteLine(kosul(memed));    // True — KisaMi çağrıldı
 | `EskiMi` | Metodun **kendisi**; çağrılmadı, bir değer gibi taşınabilir |
 
 Delege, metodu çağırmadan bir yere bırakmanın yoludur. Onu alan taraf, ne zaman ve hangi değerle çağıracağına kendisi karar verir.
+
+### Delege bir tip tanımıdır
+
+`delegate bool Kosul(Kitap k);` satırı bir metot değil, `class` ve `record` gibi bir **tip tanımıdır.** Üst düzey ifadelerle yazılan bir programda tip tanımları, çalışan kodun **altında** durmak zorundadır. Satırı yukarıya, örneğin `EskiMi`'nin üstüne yazarsanız derleyici ondan sonraki ilk ifadeyi reddeder:
+
+```
+error CS8803: Üst düzey deyimler ad alanı ve tür bildirimlerinden önce gelmelidir.
+```
+
+Karıştırmak çok doğaldır; iki satır da `bool` ile başlar:
+
+| Satır | Ne | Dosyadaki yeri |
+| ----- | -- | -------------- |
+| `delegate bool Kosul(Kitap k);` | Bir **tip** tanımı | Altta, diğer tiplerle |
+| `bool EskiMi(Kitap k) => ...;` | Bir **yerel fonksiyon**, çalışan kodun parçası | Üstte, ifadelerle |
+
+### Neden delege kullanıyoruz?
+
+Kısa cevap: **bir metoda veri değil, davranış vermek için.** Delege "ne yapılacağını", "ne zaman ve nerede yapılacağından" ayırır.
+
+Delege olmasaydı açılıştaki arama sorununu iki yoldan çözebilirdik, ikisi de kötü. Her arama türü için ayrı bir metot yazmak döngüyü her seferinde tekrar ettirir. Tek bir `Bul(string tur, object deger)` metodunun içine `switch` koymak ise listenin bütün arama türlerini önceden bilmesini gerektirir; yeni bir arama türü her seferinde listenin kodunu değiştirir. Tasarım derslerinden bildiğiniz Açık/Kapalı ilkesinin tam tersi. Delegeyle liste aramanın ne olduğunu hiç bilmez; döngü bir kez yazılır, yeni aramalar listeye dokunmadan eklenir.
+
+Delegenin üç kullanım alanı vardır:
+
+| Kullanım | Anlamı | Örnek |
+| -------- | ------ | ----- |
+| **Davranışı parametre yapmak** | Algoritmanın değişen parçasını dışarıdan almak | `Bul(Func<T, bool>)`, `List<T>.Sort(Comparison<T>)`, LINQ'te `Where` |
+| **Geri çağırma** (callback) | "İş bitince ya da bir şey olunca bunu çağır" | Olaylar, düğme tıklaması, zamanlayıcı, `async` sonrası devam |
+| **Davranışı saklamak** | Bir işi daha sonra çalıştırmak üzere bir değişkende, listede, sözlükte tutmak | `Dictionary<string, Action>` ile menü komutları |
+
+Bu haftanın `Bul`, `HerBiri` ve `EnBuyuk` metotları birinciye, `Eklendi` olayı ikinciye örnektir. Önümüzdeki haftaların LINQ'i birinciye, asenkron programlaması ikinciye dayanır.
+
+> **C bilenler için:** Aynı ihtiyaç C'de **fonksiyon işaretçisiyle** karşılanır. En bilinen örnek `qsort`'tur: sıralamayı nasıl yapacağını bilmez, karşılaştırma fonksiyonunu dışarıdan alır.
+>
+> ```c
+> int karsilastir(const void *a, const void *b) { /* ... */ }
+> qsort(dizi, n, sizeof(int), karsilastir);
+> ```
+>
+> **Delege, fonksiyon işaretçisinin tip güvenli halidir.** C'de `void*` üzerinden her şey geçebilir ve hata çalışırken ortaya çıkar. C#'ta `Func<Kitap, bool>` yalnızca `Kitap` alıp `bool` döndüren metotları kabul eder; uymayan metot derlenirken reddedilir.
+
+**"Arayüzle de yapılmaz mı?"** Yapılır; tasarım derslerinden bildiğiniz Strateji kalıbı tam olarak budur. Değişen şey **tek bir metotsa** delege daha kısadır. Birden çok metot birlikte değişiyorsa ya da davranışın kendi durumunu (alanlarını) tutması gerekiyorsa arayüz doğru araçtır.
 
 ---
 
@@ -111,6 +156,23 @@ Her imza için kendi delege tipinizi yazmanıza gerek yok. .NET, jenerik delege 
 | `Comparison<T>` | İki `T` alır, `int` döndürür | `List<T>.Sort` bunu kabul eder |
 
 Kural: `Func`'ın **son** tip parametresi dönüş tipidir. `Action` hiçbir şey döndürmeyen metotlar içindir. 16'ya kadar parametreli sürümleri vardır.
+
+3. bölümdeki `Kosul` tipini yazmamıza aslında gerek yoktu; aynı imza `Func<Kitap, bool>` ile hazır geliyor:
+
+```csharp
+Func<Kitap, bool> eskiMi = EskiMi;      // Kosul ile aynı imza
+Func<int, int, int> topla = (a, b) => a + b;
+Action<string> yaz = Console.WriteLine; // döndürmüyor → Action
+```
+
+Ama imzaları aynı olsa da `Kosul` ile `Func<Kitap, bool>` **iki ayrı tiptir** ve birbirine atanamaz:
+
+```csharp
+Func<Kitap, bool> f = kosul;
+// error CS0029: 'Kosul' türü örtülü olarak 'System.Func<Kitap, bool>' türüne dönüştürülemez
+```
+
+Bu yüzden .NET'te herkes aynı hazır tipleri kullanır. Kendi delege tipini yazan, başkalarının `Func` bekleyen metotlarıyla uyumsuz kalır. Kural: kendi delege tipinizi yazmadan önce `Func`, `Action` veya `Comparison` yetiyor mu, bakın.
 
 Bu tipler **varyans** taşır (3. haftanın konusu): `Func<in T, out TSonuc>`. Bu yüzden `Yayin` alan bir `Func<Yayin, bool>`, `Kitap` bekleyen bir `Func<Kitap, bool>` yerine kullanılabilir. Delegelerde varyansın anlamı arayüzlerdekiyle aynıdır: `T` girer, `TSonuc` çıkar.
 

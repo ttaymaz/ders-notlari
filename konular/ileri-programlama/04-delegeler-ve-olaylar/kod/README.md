@@ -78,6 +78,15 @@ yere ekler. Denetimlerden biri tam olarak bunu yakalar.
 - `01-bagli-liste.cs` içinde `_son` alanını silip `Ekle` metodunu yalnızca
   `_bas` ile yazın. Ne değişti? Bin elemanlı bir listeye eklemek şimdi kaç
   adım sürüyor?
+- `01-bagli-liste.cs` içinde `Dugum<T>? Sonraki` satırından `?` işaretini
+  silin. Derleniyor mu? Uyarı var mı? Çıktı değişiyor mu? Üç cevabı ayrı
+  ayrı yazın.
+- `02-delege-nedir.cs` içinde en alttaki `delegate bool Kosul(Kitap k);`
+  satırını dosyanın en üstüne taşıyın. Hata hangi satırda çıkıyor, neden
+  o satırda?
+- `02-delege-nedir.cs` içinde `Func<Kitap, bool> eskiMi = EskiMi;`
+  satırını `Func<Kitap, bool> eskiMi = kosul;` yapın. İki tipin imzası
+  aynı; derleniyor mu?
 - `02-delege-nedir.cs` içinde `Kosul kosul = EskiMi;` satırını
   `Kosul kosul = EskiMi(calikusu);` yapın. Hata ne diyor? İki yazım
   arasındaki fark ne?
