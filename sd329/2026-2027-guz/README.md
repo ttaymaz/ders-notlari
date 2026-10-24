@@ -10,7 +10,7 @@ Kısa adres: `tymz.org/sd329`
 
 | Değerlendirme | Ağırlık | Tarih | Kapsam |
 | ------------- | :-----: | ----- | ------ |
-| **Ara Sınav** | %40 | 09–13 Kasım 2026 | 1.–7. hafta · Dilin kendisi |
+| **Ara Sınav** | %40 | 13 Kasım 2026 Cuma, 14.00 | 1.–6. konular · Dilin kendisi |
 | **Yarıyıl Sonu Sınavı** | %60 | 04–15 Ocak 2027 | Dönemin tamamı · ağırlık 9.–14. haftalarda |
 
 İki sınav da yazılı ve kâğıt üzerindedir. Bütünleme sınavı yarıyıl sonu sınavıyla aynı biçimdedir.
@@ -37,9 +37,9 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | 2 | Tip sistemi ve bellek: değer ve referans tipleri, struct ve record, eşitlik, çöp toplayıcı | [not](../../konular/ileri-programlama/02-tip-sistemi-ve-bellek/not.md) · [kod](../../konular/ileri-programlama/02-tip-sistemi-ve-bellek/kod/) |
 | 3 | Jenerik programlama: kısıtlar, jenerik arayüzler, kovaryans ve kontravaryans | [not](../../konular/ileri-programlama/03-jenerikler/not.md) · [kod](../../konular/ileri-programlama/03-jenerikler/kod/) |
 | 4 | Delegeler, lambda ifadeleri ve olaylar | [not](../../konular/ileri-programlama/04-delegeler-ve-olaylar/not.md) · [kod](../../konular/ileri-programlama/04-delegeler-ve-olaylar/kod/) |
-| 5 | Yineleyiciler ve ertelenmiş yürütme: `IEnumerable`, `yield` | — |
-| 6 | LINQ ile veri işleme: genişletme metotları, sorgu operatörleri · desen eşleme | — |
-| 7 | Hata yönetimi tasarımı ve birim testi | — |
+| 5 | Yineleyiciler ve ertelenmiş yürütme: `IEnumerable`, `yield` | [not](../../konular/ileri-programlama/05-yineleyiciler/not.md) · [kod](../../konular/ileri-programlama/05-yineleyiciler/kod/) |
+| 6 | LINQ ile veri işleme: genişletme metotları, sorgu operatörleri · desen eşleme | [not](../../konular/ileri-programlama/06-linq-ve-desen-esleme/not.md) · [kod](../../konular/ileri-programlama/06-linq-ve-desen-esleme/kod/) |
+| 7 | Ara sınav tekrarı ve örnek sorular | — |
 | 8 | **Ara Sınav Haftası** | |
 | 9 | Bağımlılık enjeksiyonu, yapılandırma ve günlükleme | — |
 | 10 | Asenkron programlama: `async`/`await`, iptal, asenkron akışlar | — |
@@ -49,7 +49,7 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | 14 | Yeniden düzenleme ve kod incelemesi | — |
 | 15 | Genel tekrar · dönem kapanışı | — |
 
-> **Bu dönem konular bir hafta kaydırılarak işleniyor.** 2. haftanın dersi yapılamadı; 5. konu salı günü yapılacak tek seferlik bir telafi dersinde işlenecek. Ara sınav tarihi ve kapsamı (1–7. konular) değişmedi.
+> **Bu dönem konular bir hafta kaydırılarak işleniyor.** 2. haftanın dersi yapılamadı; 5. konu salı günü yapılacak tek seferlik bir telafi dersinde işlenecek. Bu yüzden 7. hafta ara sınav tekrarına ayrıldı; ara sınav 1–6. konuları kapsar. Hata yönetimi ara sınavdan sonra işlenecek.
 
 ## Sunumlar
 
