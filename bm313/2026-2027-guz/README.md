@@ -10,8 +10,10 @@ Kısa adres: `tymz.org/bm313`
 
 | Değerlendirme | Ağırlık | Tarih | Kapsam |
 | ------------- | :-----: | ----- | ------ |
-| **Ara Sınav** | %40 | 09–13 Kasım 2026 | 1.–7. hafta · Sanallaştırma |
+| **Ara Sınav** | %40 | **13 Kasım 2026 Cuma, 11.00** | 1.–7. hafta · Sanallaştırma |
 | **Yarıyıl Sonu Sınavı** | %60 | 04–15 Ocak 2027 | Dönemin tamamı · ağırlık 9.–15. haftalarda |
+
+**Ara sınav biçimi:** 25 çoktan seçmeli soru, 5 seçenek, yalnızca biri doğru · **40 dakika** · hesap makinesi kullanılmaz. Bazı sorular ortak bir duruma bağlıdır. Biçimin ayrıntısı ve cevaplı örnek sorular: **[Ara Sınava Hazırlık](../../konular/isletim-sistemleri/08-ara-sinav-hazirlik/not.md)**
 
 ## Çalışma Ortamı
 
@@ -31,7 +33,7 @@ Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/
 | 4 | CPU zamanlama 2: MLFQ, orantılı pay, çok çekirdekli sistemlere bakış | 8–10 | [not](../../konular/isletim-sistemleri/04-mlfq-ve-orantili-pay/not.md) |
 | 5 | Bellek 1: adres uzayı, adres çevirme, segmentasyon | 13, 15, 16 | [not](../../konular/isletim-sistemleri/05-adres-uzayi-ve-segmentasyon/not.md) · [kod](../../konular/isletim-sistemleri/05-adres-uzayi-ve-segmentasyon/kod/) |
 | 6 | Bellek 2: sayfalama ve TLB | 18, 19 | [not](../../konular/isletim-sistemleri/06-sayfalama-ve-tlb/not.md) · [kod](../../konular/isletim-sistemleri/06-sayfalama-ve-tlb/kod/) |
-| 7 | Bellek 3: takas, sayfa hatası, sayfa değiştirme algoritmaları | 21, 22 | [not](../../konular/isletim-sistemleri/07-takas-ve-sayfa-degistirme/not.md) |
+| 7 | Bellek 3: takas, sayfa hatası, sayfa değiştirme algoritmaları · ara sınava hazırlık ve örnek sorular | 21, 22 | [not](../../konular/isletim-sistemleri/07-takas-ve-sayfa-degistirme/not.md) · [hazırlık](../../konular/isletim-sistemleri/08-ara-sinav-hazirlik/not.md) |
 | 8 | **Ara Sınav Haftası** | | |
 | 9 | İş parçacıkları, yarış durumu ve kilitler | 26–28 | — |
 | 10 | Koşul değişkenleri ve semaforlar | 30, 31 | — |

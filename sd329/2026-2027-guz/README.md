@@ -10,10 +10,10 @@ Kısa adres: `tymz.org/sd329`
 
 | Değerlendirme | Ağırlık | Tarih | Kapsam |
 | ------------- | :-----: | ----- | ------ |
-| **Ara Sınav** | %40 | 13 Kasım 2026 Cuma, 14.00 | 1.–6. konular · Dilin kendisi |
+| **Ara Sınav** | %40 | 13 Kasım 2026 Cuma, 14.00 | 1.–6. konular · Dilin kendisi · çoktan seçmeli |
 | **Yarıyıl Sonu Sınavı** | %60 | 04–15 Ocak 2027 | Dönemin tamamı · ağırlık 9.–14. haftalarda |
 
-İki sınav da yazılı ve kâğıt üzerindedir. Bütünleme sınavı yarıyıl sonu sınavıyla aynı biçimdedir.
+İki sınav da kâğıt üzerindedir. **Ara sınavın tamamı çoktan seçmelidir:** her sorunun beş seçeneği vardır, yalnızca biri doğrudur; iki kitapçık grubu kullanılır. Soru sayısı ve soru başına puan sınavdan önce bu sayfada duyurulur. Bütünleme sınavı yarıyıl sonu sınavıyla aynı biçimdedir.
 
 ## Çalışma Ortamı
 
@@ -39,17 +39,17 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | 4 | Delegeler, lambda ifadeleri ve olaylar | [not](../../konular/ileri-programlama/04-delegeler-ve-olaylar/not.md) · [kod](../../konular/ileri-programlama/04-delegeler-ve-olaylar/kod/) |
 | 5 | Yineleyiciler ve ertelenmiş yürütme: `IEnumerable`, `yield` | [not](../../konular/ileri-programlama/05-yineleyiciler/not.md) · [kod](../../konular/ileri-programlama/05-yineleyiciler/kod/) |
 | 6 | LINQ ile veri işleme: genişletme metotları, sorgu operatörleri · desen eşleme | [not](../../konular/ileri-programlama/06-linq-ve-desen-esleme/not.md) · [kod](../../konular/ileri-programlama/06-linq-ve-desen-esleme/kod/) |
-| 7 | Ara sınav tekrarı ve örnek sorular | — |
+| 7 | Ara sınav tekrarı ve örnek sorular | [not](../../konular/ileri-programlama/07-ara-sinav-tekrari/not.md) · [kod](../../konular/ileri-programlama/07-ara-sinav-tekrari/kod/) |
 | 8 | **Ara Sınav Haftası** | |
-| 9 | Bağımlılık enjeksiyonu, yapılandırma ve günlükleme | — |
-| 10 | Asenkron programlama: `async`/`await`, iptal, asenkron akışlar | — |
-| 11 | Eşzamanlılık: yarış durumu, kilitler, eşzamanlı koleksiyonlar, kanallar | — |
-| 12 | Yansıma ve öznitelikler, eklenti mimarisi | — |
-| 13 | Başarım ölçümü ve bellek ayırma | — |
-| 14 | Yeniden düzenleme ve kod incelemesi | — |
+| 9 | Hata yönetimi tasarımı ve birim testi | — |
+| 10 | Bağımlılık enjeksiyonu, yapılandırma ve günlükleme | — |
+| 11 | Asenkron programlama: `async`/`await`, iptal, asenkron akışlar | — |
+| 12 | Eşzamanlılık: yarış durumu, kilitler, eşzamanlı koleksiyonlar, kanallar | — |
+| 13 | Yansıma ve öznitelikler, eklenti mimarisi | — |
+| 14 | Başarım ölçümü ve bellek ayırma | — |
 | 15 | Genel tekrar · dönem kapanışı | — |
 
-> **Bu dönem konular bir hafta kaydırılarak işleniyor.** 2. haftanın dersi yapılamadı; 5. konu salı günü yapılacak tek seferlik bir telafi dersinde işlenecek. Bu yüzden 7. hafta ara sınav tekrarına ayrıldı; ara sınav 1–6. konuları kapsar. Hata yönetimi ara sınavdan sonra işlenecek.
+> **Bu dönem konular bir hafta kaydırılarak işleniyor.** 2. haftanın dersi yapılamadı; 5. konu salı günü yapılacak tek seferlik bir telafi dersinde işlenecek. Bu yüzden 7. hafta ara sınav tekrarına ayrıldı; ara sınav 1–6. konuları kapsar. Hata yönetimi 9. haftaya alındı; yeniden düzenleme ve kod incelemesi ayrı bir hafta olarak işlenmeyecek, 9–14. haftaların örneklerine dağıtılacak.
 
 ## Sunumlar
 
