@@ -28,7 +28,7 @@ Bu projede temel ölçüt, sadece "diyagram çizmiş olmak" değildir. Asıl bek
    - **Veri Mimarı:** Mantıksal ERD, Veri Sözlüğü standartları, fiziksel dönüşüm ve 3NF normalizasyon.
    - **Yazılım & Sistem Mimarı:** UML Sınıf diyagramı, Sequence/State diyagramları, 3-Tier/MVC katman tasarımı.
    - **Kullanıcı Deneyimi (UI/UX) Tasarımcısı:** Bilgi mimarisi, kritik ekran Wireframe tasarımları ve prototip demosu.
-3. **Bireysel Katkı İlkesi:** Nihai raporda her bölümün altında o bölümü hazırlayan üyenin adı belirtilir. Sunumda **her üye** kendi sorumlu olduğu bölümü sunar ve soru-cevapta söz alır. Bireysel notlandırma takım notundan farklılaşabilir.
+3. **Bireysel Katkı İlkesi:** Nihai raporda her bölümün altında o bölümü hazırlayan üyenin adı belirtilir. Sunumda **her üye** kendi sorumlu olduğu bölümü sunar ve soru-cevapta söz alır. Bireysel notlandırma takım notundan farklılaşabilir: Teslim 2'den itibaren, iş bölümünde bir üyeye ait bir bölüm raporda yoksa o bölümün puanı **yalnızca o üyeye** yansır; diğer üyeler kendi bölümleri üzerinden notlandırılır.
 4. **Konu Seçimi ve Onay:** Her takım gerçek hayatta karşılığı olan bir iş problemi seçer (Örn: Lojistik Takip, Sağlık Randevu, E-Ticaret Sipariş Yönetimi, Restoran Otomasyonu, Dijital İçerik Platformu vb.). Derste örnek vaka olarak işlenen kütüphane otomasyonu proje konusu olarak seçilemez. Takım listesi ve konu, 2. haftanın sonuna kadar (**5 Ekim 2026, 23.59**) takım sorumlusu tarafından çevrim içi form ile bildirilir; form bağlantısı UES üzerinden duyurulur.
 
 ---
@@ -111,4 +111,5 @@ Dönem projesi notu aşağıdaki bileşenlerden oluşur. Dönem projesi, ders ba
 
 - Her teslim yalnızca o teslimde eklenen **yeni bölümlerden** puanlanır; önceki bölümler yeniden puanlanmaz.
 - Teslim puanının **%10'u geri bildirime uyumdur**: değişiklik tablosu ve tabloda gösterilen düzeltmeler.
+- Teslim 2'den itibaren, iş bölümünde bir üyeye ait bir bölüm raporda yoksa o bölümün puanı yalnızca o üyeye yansır; diğer üyelerin notu o bölüm dışındaki puan üzerinden hesaplanır (örnek: 10 puanlık bölüm yoksa ve takım kalan 90 puandan 63 aldıysa diğer üyelerin notu 63 / 90 × 100 = 70). Teslim 1'de takımdaki herkes aynı notu alır.
 - Bireysel soru-cevapta her üyeye, bölüm altlarında adının yazılı olduğu bölümlerden soru sorulur.
