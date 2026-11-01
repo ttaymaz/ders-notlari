@@ -41,13 +41,13 @@ Dönem projesi son haftada tek seferde yazılan bir ödev değildir; dönem boyu
 | :---: | :-----------: | -------------------------- |
 | **Teslim 1** | **4. Hafta**<br>25 Ekim 2026, 13.00 | **Proje Başlatma ve Fizibilite Raporu**<br>• Problem tanımı, hedefler, paydaş analizi ve sistem sınırları.<br>• 4 Boyutlu Fizibilite: Teknik, Ekonomik (Maliyet/Fayda & ROI), Operasyonel, Yasal (KVKK). |
 | **Teslim 2** | **9. Hafta**<br>22 Kasım 2026, 13.00 | **Gereksinim Analizi Paketi**<br>• Teslim 1 bölümleri, geri bildirime göre düzeltilmiş ve eksikleri tamamlanmış olarak.<br>• Fonksiyonel ve fonksiyonel olmayan gereksinim listesi.<br>• UML Use Case diyagramı ve kritik senaryo metinleri.<br>• Veri Akış Diyagramları (Bağlam, Seviye 0 ve en az bir Seviye 1 patlatma).<br>• Süreç tanımlamaları (karar tablosu / karar ağacı).<br>• Mantıksal ERD (Crow's Foot notasyonu) ve Veri Sözlüğü taslağı. |
-| **Teslim 3** | **13. Hafta** | **Nihai Rapor: Detaylı Tasarım Paketi eklenmiş tam rapor**<br>• Teslim 2 bölümleri, geri bildirime göre düzeltilmiş olarak.<br>• UML Sınıf Diyagramı (Nitelikler, metotlar ve ilişkiler).<br>• Davranışsal Modeller: En az bir kritik senaryo için Sıralama (Sequence) ve Durum (State) diyagramları.<br>• Sistem Mimarisi (3-Tier / MVC) tasarımı ve gerekçesi.<br>• Kritik ekranların Wireframe tasarımları.<br>• Fiziksel Veritabanı Şeması ve 3NF Normalizasyon analizi.<br>• Test planı, canlıya geçiş stratejisi ve takım içi iş bölümü (5. bölümdeki şablonun tamamı). |
+| **Teslim 3** | **13. Hafta**<br>20 Aralık 2026, 13.00 | **Nihai Rapor: Detaylı Tasarım Paketi eklenmiş tam rapor**<br>• Teslim 2 bölümleri, geri bildirime göre düzeltilmiş olarak.<br>• UML Sınıf Diyagramı (Nitelikler, metotlar ve ilişkiler).<br>• Davranışsal Modeller: En az bir kritik senaryo için Sıralama (Sequence) ve Durum (State) diyagramları.<br>• Sistem Mimarisi (3-Tier / MVC) tasarımı ve gerekçesi.<br>• Kritik ekranların Wireframe tasarımları.<br>• Fiziksel Veritabanı Şeması ve 3NF Normalizasyon analizi.<br>• Test planı, canlıya geçiş stratejisi ve takım içi iş bölümü (5. bölümdeki şablonun tamamı). |
 
 **Değişiklik tablosu:** Teslim 2'den itibaren raporun başına, içindekilerden önce, bir değişiklik tablosu konur. Her satır bir geri bildirim maddesini, yapılan düzeltmeyi ve düzeltmenin bulunduğu bölüm ve sayfayı gösterir. Uygun bulunmayan bir düzeltme varsa gerekçesi aynı tabloya yazılır.
 
 ---
 
-## 4. Proje Sunumu Kuralları (14. ve 15. Haftalar)
+## 4. Proje Sunumu Kuralları (14. ve 15. Haftalar: 22 ve 29 Aralık 2026)
 
 Toplam 10–11 takım iki haftaya dengeli biçimde paylaştırılır (Hafta başına 5 veya 6 takım). Her takıma **15–20 dakika** (12–15 dk sunum + 5 dk soru-cevap) süre ayrılmıştır.
 
@@ -67,7 +67,7 @@ Toplam 10–11 takım iki haftaya dengeli biçimde paylaştırılır (Hafta baş
 
 ## 5. Nihai Rapor Şablonu (SGYD Akışı)
 
-Teslim 3 ile 13. haftada PDF olarak yüklenecek nihai teknik rapor şu ana başlıkları eksiksiz içermelidir. Sunumdan sonra ayrıca rapor yüklenmez.
+Teslim 3 ile 13. haftada (son teslim 20 Aralık 2026, 13.00) PDF olarak yüklenecek nihai teknik rapor şu ana başlıkları eksiksiz içermelidir. Sunumdan sonra ayrıca rapor yüklenmez.
 
 ```markdown
 1. GİRİŞ VE PLANLAMA
