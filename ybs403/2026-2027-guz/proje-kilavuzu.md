@@ -35,13 +35,15 @@ Bu projede temel ölçüt, sadece "diyagram çizmiş olmak" değildir. Asıl bek
 
 ## 3. Ara Teslimler (Kilometre Taşları)
 
-Dönem projesi son haftada tek seferde yazılan bir ödev değildir; dönem boyunca adım adım inşa edilir:
+Dönem projesi son haftada tek seferde yazılan bir ödev değildir; dönem boyunca adım adım inşa edilir. Teslimler ayrı ödevler değil, **aynı raporun sürümleridir**: her teslimde raporun o güne kadarki tamamı yüklenir ve bir önceki teslime verilen geri bildirim bu sürümde düzeltilmiş olur.
 
 | Aşama | Teslim Zamanı | Kapsam ve İstenen Belgeler |
 | :---: | :-----------: | -------------------------- |
 | **Teslim 1** | **4. Hafta**<br>25 Ekim 2026, 13.00 | **Proje Başlatma ve Fizibilite Raporu**<br>• Problem tanımı, hedefler, paydaş analizi ve sistem sınırları.<br>• 4 Boyutlu Fizibilite: Teknik, Ekonomik (Maliyet/Fayda & ROI), Operasyonel, Yasal (KVKK). |
-| **Teslim 2** | **9. Hafta** | **Gereksinim Analizi Paketi**<br>• Fonksiyonel ve fonksiyonel olmayan gereksinim listesi.<br>• UML Use Case diyagramı ve kritik senaryo metinleri.<br>• Veri Akış Diyagramları (Bağlam, Seviye 0 ve en az bir Seviye 1 patlatma).<br>• Mantıksal ERD (Crow's Foot notasyonu) ve Veri Sözlüğü taslağı. |
-| **Teslim 3** | **13. Hafta** | **Detaylı Tasarım Paketi**<br>• UML Sınıf Diyagramı (Nitelikler, metotlar ve ilişkiler).<br>• Davranışsal Modeller: En az bir kritik senaryo için Sıralama (Sequence) ve Durum (State) diyagramları.<br>• Sistem Mimarisi (3-Tier / MVC) tasarımı ve gerekçesi.<br>• Kritik ekranların Wireframe tasarımları.<br>• Fiziksel Veritabanı Şeması ve 3NF Normalizasyon analizi. |
+| **Teslim 2** | **9. Hafta**<br>22 Kasım 2026, 13.00 | **Gereksinim Analizi Paketi**<br>• Teslim 1 bölümleri, geri bildirime göre düzeltilmiş ve eksikleri tamamlanmış olarak.<br>• Fonksiyonel ve fonksiyonel olmayan gereksinim listesi.<br>• UML Use Case diyagramı ve kritik senaryo metinleri.<br>• Veri Akış Diyagramları (Bağlam, Seviye 0 ve en az bir Seviye 1 patlatma).<br>• Süreç tanımlamaları (karar tablosu / karar ağacı).<br>• Mantıksal ERD (Crow's Foot notasyonu) ve Veri Sözlüğü taslağı. |
+| **Teslim 3** | **13. Hafta** | **Nihai Rapor: Detaylı Tasarım Paketi eklenmiş tam rapor**<br>• Teslim 2 bölümleri, geri bildirime göre düzeltilmiş olarak.<br>• UML Sınıf Diyagramı (Nitelikler, metotlar ve ilişkiler).<br>• Davranışsal Modeller: En az bir kritik senaryo için Sıralama (Sequence) ve Durum (State) diyagramları.<br>• Sistem Mimarisi (3-Tier / MVC) tasarımı ve gerekçesi.<br>• Kritik ekranların Wireframe tasarımları.<br>• Fiziksel Veritabanı Şeması ve 3NF Normalizasyon analizi.<br>• Test planı, canlıya geçiş stratejisi ve takım içi iş bölümü (5. bölümdeki şablonun tamamı). |
+
+**Değişiklik tablosu:** Teslim 2'den itibaren raporun başına, içindekilerden önce, bir değişiklik tablosu konur. Her satır bir geri bildirim maddesini, yapılan düzeltmeyi ve düzeltmenin bulunduğu bölüm ve sayfayı gösterir. Uygun bulunmayan bir düzeltme varsa gerekçesi aynı tabloya yazılır.
 
 ---
 
@@ -65,7 +67,7 @@ Toplam 10–11 takım iki haftaya dengeli biçimde paylaştırılır (Hafta baş
 
 ## 5. Nihai Rapor Şablonu (SGYD Akışı)
 
-Dönemin son haftası olan 15. haftanın sonunda teslim edilecek ciltli/PDF nihai teknik rapor şu ana başlıkları eksiksiz içermelidir:
+Teslim 3 ile 13. haftada PDF olarak yüklenecek nihai teknik rapor şu ana başlıkları eksiksiz içermelidir. Sunumdan sonra ayrıca rapor yüklenmez.
 
 ```markdown
 1. GİRİŞ VE PLANLAMA
@@ -95,12 +97,18 @@ Dönemin son haftası olan 15. haftanın sonunda teslim edilecek ciltli/PDF niha
 
 ---
 
-## 6. Değerlendirme Rubriği
+## 6. Değerlendirme
 
-| Ölçüt | Ağırlık | Değerlendirme Odakları |
-| ----- | :-----: | ---------------------- |
-| **Problem ve Fizibilite** | %15 | Problemin derinliği, sınırların netliği, gerçekçi maliyet-fayda analizi |
-| **Analiz ve Modelleme Tutarlılığı** | %30 | Use Case, DFD ve ERD arasındaki uyum; DFD seviye kurallarına uygunluk |
-| **Tasarım ve Mimari Derinliği** | %25 | Sınıf ilişkileri (kalıtım/aggregation), Sequence akışı, katmanlı mimari gerekçesi |
-| **Veritabanı ve Veri Sözlüğü** | %15 | 3NF kurallarına uygunluk, veri sözlüğünün eksiksizliği |
-| **Sunum, Süre ve Soru-Cevap** | %15 | Ayrılan sürenin etkin kullanımı, tüm üyelerin hakimiyeti, sorulara net yanıtlar |
+Dönem projesi notu aşağıdaki bileşenlerden oluşur. Dönem projesi, ders başarı notunun %60'ıdır.
+
+| Bileşen | Ağırlık | Not türü | Değerlendirme Odakları |
+| ------- | :-----: | :------: | ---------------------- |
+| **Teslim 1:** Proje Başlatma ve Fizibilite | %10 | Takım | Problemin derinliği, sınırların netliği, paydaş analizi, gerçekçi ve hesabı gösterilmiş maliyet-fayda analizi |
+| **Teslim 2:** Gereksinim Analizi Paketi | %20 | Takım | Use Case, DFD ve ERD arasındaki uyum; DFD seviye kurallarına uygunluk; veri sözlüğünün eksiksizliği |
+| **Teslim 3:** Nihai Rapor | %30 | Takım | Sınıf ilişkileri, Sequence akışı, katmanlı mimari gerekçesi, 3NF kurallarına uygunluk; raporun bütün olarak tutarlılığı |
+| **Proje Sunumu** | %20 | Takım | Ayrılan sürenin etkin kullanımı, akışın anlaşılırlığı, varsa prototip demosu |
+| **Bireysel Soru-Cevap** | %20 | Bireysel | Üyenin kendi hazırladığı bölüme hâkimiyeti ve sorulara net yanıtı |
+
+- Her teslim yalnızca o teslimde eklenen **yeni bölümlerden** puanlanır; önceki bölümler yeniden puanlanmaz.
+- Teslim puanının **%10'u geri bildirime uyumdur**: değişiklik tablosu ve tabloda gösterilen düzeltmeler.
+- Bireysel soru-cevapta her üyeye, bölüm altlarında adının yazılı olduğu bölümlerden soru sorulur.
