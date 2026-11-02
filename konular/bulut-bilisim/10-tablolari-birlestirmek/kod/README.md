@@ -52,6 +52,7 @@ haftanın not defterini çalıştırmış olmanız gerekmiyor.
 | Ölçülen gün sayısı | **56** — ölçüldü |
 | Eksik gün listesi | **6 satır**: 17, 18, 22, 28, 29, 30 Aralık |
 | `tam_seri` satır sayısı | **62** — boşluklar `NULL` satır olarak yazıldı |
+| En az ölçümlü gün | **21 Aralık** — eksik listesinde olmayan, kapsaması çökmüş gün |
 | `ozel_gunler` anahtar denetimi | 2 satır, 2 farklı gün |
 | `gunluk` ve `zengin` satır sayısı | **ikisi de 56** |
 

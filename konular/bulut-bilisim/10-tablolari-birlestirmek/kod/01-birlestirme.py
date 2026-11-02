@@ -23,7 +23,8 @@ spark.sql("""
     CREATE OR REPLACE TEMP VIEW gunluk AS
     SELECT to_date(zaman) AS gun,
            SUM(NUMBER_OF_VEHICLES) AS toplam_arac,
-           ROUND(AVG(AVERAGE_SPEED), 1) AS ortalama_hiz
+           ROUND(AVG(AVERAGE_SPEED), 1) AS ortalama_hiz,
+           COUNT(*) AS olcum_sayisi
     FROM trafik
     GROUP BY gun
 """)
@@ -81,7 +82,27 @@ display(spark.sql("""
 
 # COMMAND ----------
 
-# 3b) BOŞLUKLARI TABLOYA YAZMAK
+# 3b) BİRLEŞTİRMENİN BULAMADIĞI
+# IS NULL yalnizca HIC SATIRI OLMAYAN gunu yakalar. Satiri olan ama
+# kapsamasi cokmus bir gun bu yontemin kor noktasidir: eksik listesinde
+# gorunmez. Gun basina olcum sayisina bakinca ortaya cikiyor.
+display(spark.sql("""
+    SELECT gun, olcum_sayisi, toplam_arac
+    FROM gunluk
+    ORDER BY olcum_sayisi
+    LIMIT 10
+"""))
+
+# COMMAND ----------
+
+# 21 Aralik eksik listesinde YOK ama normal bir cumartesinin yuzde ucu
+# kadar arac sayilmis (156.826 / ~5.000.000). 19 Aralik da benzer.
+# Altinci haftanin ayrimina dorduncu bir durum ekleniyor: satir var,
+# deger var, ama kac olcumden geldigi cok az.
+
+# COMMAND ----------
+
+# 3c) BOŞLUKLARI TABLOYA YAZMAK
 # Geçen haftanın hareketli ortalaması ROWS BETWEEN 6 PRECEDING kullanıyordu.
 # ROWS SATIR sayar, gün saymaz: altı gün eksik olduğu için 31 Aralık'ın
 # "yedi günlük ortalaması" aslında 21-31 Aralık aralığından, yani on bir

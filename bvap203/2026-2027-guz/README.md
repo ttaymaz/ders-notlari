@@ -38,7 +38,7 @@ Ders notu ve not defteri bağlantıları, o hafta yayımlandıkça tabloya eklen
 | 8 | **Ara sınav haftası** | | |
 | 9 | Zaman serisi olarak veri | [not](../../konular/bulut-bilisim/09-zaman-serisi/not.md) | [kod](../../konular/bulut-bilisim/09-zaman-serisi/kod/) |
 | 10 | İki tabloyu birleştirmek | [not](../../konular/bulut-bilisim/10-tablolari-birlestirmek/not.md) | [kod](../../konular/bulut-bilisim/10-tablolari-birlestirmek/kod/) |
-| 11 | *planlanıyor* | — | — |
+| 11 | Bölümleme ve maliyet | [not](../../konular/bulut-bilisim/11-bolumleme-ve-maliyet/not.md) | [kod](../../konular/bulut-bilisim/11-bolumleme-ve-maliyet/kod/) |
 | 12 | *planlanıyor* | — | — |
 | 13 | *planlanıyor* | — | — |
 | 14 | *planlanıyor* | — | — |

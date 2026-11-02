@@ -121,6 +121,28 @@ izi. Bir cihazın rastgele veri kaçırması böyle görünmez; birkaç gün sü
 > dersi burada bir kez daha geçerli: sebebi öğrenmek için veriye değil,
 > verinin nasıl toplandığına bakmak gerekir.
 
+### Listede Olmayan Gün
+
+Altı günü bulduk. Şimdi günlük serinin o bölgesine bakın:
+
+| Gün | Toplam araç |
+| --- | ----------: |
+| 20 Aralık (Cuma) | 5.265.893 |
+| **21 Aralık (Cumartesi)** | **156.826** |
+| 23 Aralık (Pazartesi) | 4.751.025 |
+
+21 Aralık eksik listesinde **yok** — çünkü o güne ait satırlar var. Ama normal
+bir cumartesinin **yüzde üçü** kadar araç sayılmış. 19 Aralık (Perşembe) de
+benzer: 2.657.108, Ocak'ın en düşük hafta içi gününün yarısından az.
+
+> **Birleştirme eksik günü bulur, eksik ölçümü bulmaz.** `IS NULL` yalnızca
+> hiç satırı olmayan günü yakalar. Satırı olan ama kapsaması çökmüş bir gün
+> bu yöntemin **kör noktasıdır.**
+
+Altıncı haftanın ayrımı bir kez daha karşımızda, ve bu kez dördüncü bir durum
+var: satır var, değer var, ama kaç ölçümden geldiği çok az. Görmek için gün
+başına **ölçüm sayısını** da saymak gerekir — eksik gün listesi bunu söylemez.
+
 > **`IS NULL` denetimini anahtar sütununda yapın.** Yukarıda `g.gun` yazdık,
 > `g.toplam_arac` yazmadık. Ölçülmüş bir sütun gerçekten boş olabilir; o sütuna
 > bakarsanız var olan bir günü eksik sanarsınız.
@@ -180,6 +202,13 @@ demektir, çünkü her gün bir satır.
 `AVG` boş değerleri atlar: pencere yedi gün olur, ortalama o yedi günün
 **ölçülenlerinden** alınır. Eksik günler ortalamayı bozmaz, yalnızca onu
 daha az ölçüme dayandırır — ve siz bunu bilerek bakarsınız.
+
+Bu çıktıda görünür. 28 ve 29 Aralık'ın yedi günlük ortalaması **birebir aynı:**
+4.912.647. İkisi de aynı beş ölçülmüş günden hesaplandı, çünkü pencereye yeni
+bir ölçüm girmedi. 30 Aralık'ta ortalama yalnızca **dört** günden alınıyor.
+
+> Arka arkaya aynı hareketli ortalama değeri, pencereye yeni ölçüm
+> girmediğinin işaretidir; grafikte düz bir yatay parça olarak görünür.
 
 > Pencereyi doğrudan güne bağlamanın başka bir yolu `ROWS` yerine `RANGE`
 > kullanmaktır. Bu haftanın ev uygulamasında deneyeceksiniz.
@@ -296,6 +325,7 @@ Dönem sonundaki projenin beşinci parçası.
 - Birleştirme sonrası satır sayısını, beklediğiniz sayıyla karşılaştırın.
 - Pencere fonksiyonunda `ROWS` satır sayar: seride boşluk varsa ya pencereyi
   güne bağlayın ya da boşlukları takvimle birleştirip tabloya yazın.
+- Eksik gün listesini yeterli saymayın: gün başına ölçüm sayısına da bakın.
 
 **Sık yapılan hatalar**
 
@@ -307,6 +337,8 @@ Dönem sonundaki projenin beşinci parçası.
   aynı görünür, eşleşmede her zaman aynı davranmaz.
 - **Referans tabloyu ölçüm sanmak.** Takvimdeki 62, ölçümün değil tanımın
   sayısıdır.
+- **Eksik gün listesini tam sanmak.** `IS NULL` yalnızca hiç satırı olmayan
+  günü bulur; kapsaması çökmüş gün listede görünmez.
 - **Boşluklu seride `ROWS` kullanmak.** Yedi satır yedi gün demek değildir;
   sonuç doğru hesaplanır ama adı yanlış olur.
 - **`ON` koşulunu yazmayı unutmak.** Koşulsuz birleştirme her satırı her satırla
