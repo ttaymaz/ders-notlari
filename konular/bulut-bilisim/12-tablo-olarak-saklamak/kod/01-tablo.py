@@ -38,8 +38,10 @@ SORGU_CSV = """
     GROUP BY GEOHASH
 """
 
+# Olculdu: 1,00 ve 1,00 saniye. (Gecen hafta ayni sorgu 1,28 ve 1,54
+# olculmustu -- oturumlar arasi sapma bu kadar.)
 olc(SORGU_CSV, "csv - 1. olcum")
-olc(SORGU_CSV, "csv - 2. olcum")
+olc(SORGU_CSV, "csv - 2. olcum");
 
 # COMMAND ----------
 
@@ -62,8 +64,12 @@ print("tablo kuruldu:", TABLO)
 
 # 3) TABLO NE OLDU?
 # Üç sütuna bakın: format (Delta olmalı), numFiles, sizeInBytes.
-# CSV 232 MB idi. sizeInBytes bundan belirgin biçimde küçük çıkacak:
-# aynı sütunun değerleri birbirine benzer ve yan yana olunca iyi sıkışır.
+# Olculdu: format=delta, numFiles=3, sizeInBytes=8.029.833 (7,7 MB).
+# CSV 231,8 MB idi -> yaklasik 30 kat kucuk.
+#
+# DURUST OKUYUN: kazancin tamami sikismadan gelmiyor. CSV'nin sekiz sutunu
+# var, tabloya DORDUNU aldik. Hangisinin payi ne kadar? Denemeler-2 bunu
+# olcuyor. Ozelliklerde sikistirma algoritmasi da yazili: zstd.
 display(spark.sql(f"DESCRIBE DETAIL {TABLO}"))
 
 # COMMAND ----------
@@ -76,6 +82,12 @@ display(spark.sql(f"DESCRIBE TABLE {TABLO}"))
 
 # 4) ŞİMDİ TABLO ÜZERİNDEN ÖLÇ
 # ÇALIŞTIRMADAN ÖNCE TAHMİN YAZIN: kaç kat hızlanmasını bekliyorsunuz?
+#
+# Olculdu: 0,85 ve 0,74 saniye. Yani boyut 30 kat kuculdu, sure 1,35 kat
+# iyilesti. Bu ucurum haftanin asil dersi: bu olcekte zamanin cogu okumaya
+# degil sabit giderlere gidiyor (plan, gorev baslatma, karistirma).
+# Ustelik CSV'nin kendi olcumleri 1,00 ile 1,54 arasinda degisiyor; sapma
+# kazancla ayni mertebede.
 SORGU_TABLO = f"""
     SELECT GEOHASH, COUNT(*) AS olcum
     FROM {TABLO}
@@ -83,7 +95,7 @@ SORGU_TABLO = f"""
 """
 
 olc(SORGU_TABLO, "tablo - 1. olcum")
-olc(SORGU_TABLO, "tablo - 2. olcum")
+olc(SORGU_TABLO, "tablo - 2. olcum");
 
 # COMMAND ----------
 
@@ -91,25 +103,58 @@ olc(SORGU_TABLO, "tablo - 2. olcum")
 # Geçen hafta CSV planında iki satır görmüştük:
 #   Batched: false
 #   PhotonRowToColumnar
-# Sütunlu biçimde o çevirme adımı gerekmiyor. Tablo planında var mı?
+# Sutunlu bicimde o cevirme adimi gerekmiyor. Olculdu: ikisi de gitti,
+# yerine tek satir geldi -> PhotonScan parquet
+#
+# IKI ADA DIKKAT, neredeyse ayni yaziliyor:
+#   PhotonRowToColumnar -> GIRISTE satiri sutuna cevirir. KAYBOLDU.
+#   PhotonColumnarToRow -> CIKISTA sonucu satira cevirir. IKI PLANDA DA VAR.
+#
+# Planin sonunda yeni bir bolum var: Optimizer Statistics, full =
+# trafik_tablo. Somut sonucu: karistirma hedefi CSV'de 231 bolum iken
+# tabloda 16 bolum -- hashpartitioning(GEOHASH, 16).
 spark.sql(f"EXPLAIN {SORGU_TABLO}").show(truncate=False)
 
 # COMMAND ----------
 
-# 6) DOSYA ATLAMA
-# Tablo her dosya için en küçük ve en büyük değeri saklar. Bir dosyadaki en
-# büyük zaman 2024-12-20 ise, 2025 Ocak soran bir sorgu o dosyayı hiç açmaz.
-# CSV'de bu mümkün değildi: içinde ne olduğunu anlamanın tek yolu okumaktı.
-olc(f"SELECT COUNT(*) AS satir FROM {TABLO}", "tablo - tamami")
-olc(f"SELECT COUNT(*) AS satir FROM {TABLO} WHERE zaman >= '2025-01-15'",
-    "tablo - son iki hafta")
+# 6) DOSYA ATLAMA -- VE ATLAMANIN OLMADIGI DURUM
+# Tablo her dosya icin en kucuk ve en buyuk degeri saklar. Bir dosyadaki en
+# buyuk zaman 2024-12-20 ise, 2025 Ocak soran bir sorgu o dosyayi hic acmaz.
+#
+# DIKKAT: COUNT(*) bir tabloda VERIYI HIC OKUMAZ; tablo dosya basina satir
+# sayisini zaten biliyor. Bu yuzden karsilastirma icin kotu bir baslangic
+# noktasidir -- olctugunuz sey okuma degil, muhasebe. (Olculdu: tamami
+# 0,58 sn, suzulmusu 0,78 sn; yani SUZULMUS OLAN DAHA YAVAS.)
+olc(f"SELECT COUNT(*) AS satir FROM {TABLO}", "tablo - COUNT(*) tamami");
 
 # COMMAND ----------
 
-# Fark küçük çıktıysa sebebi şu olabilir: dosya atlama verinin SIRALI
-# olmasına bağlıdır. Zaman değerleri bütün dosyalara karışık dağılmışsa her
-# dosyanın aralığı bütün dönemi kapsar ve atlanacak dosya kalmaz.
-# İstatistik vardır, ama işe yaramaz.
+# Dogru karsilastirma ayni sorguyu iki bicimde olcmektir.
+SUZME_TABLO = f"""
+    SELECT GEOHASH, COUNT(*) AS olcum
+    FROM {TABLO}
+    WHERE zaman >= '2025-01-15'
+    GROUP BY GEOHASH
+"""
+
+SUZME_CSV = """
+    SELECT GEOHASH, COUNT(*) AS olcum
+    FROM ham
+    WHERE to_timestamp(DATE_TIME, 'yyyy-MM-dd HH:mm:ss') >= '2025-01-15'
+    GROUP BY GEOHASH
+"""
+
+olc(SUZME_CSV, "suzme - csv")
+olc(SUZME_TABLO, "suzme - tablo");
+
+# COMMAND ----------
+
+# Fark kucuk ciktiysa sebebi su: dosya atlama verinin SIRALI olmasina
+# baglidir. Tabloyu siralamadan yazdik ve yalnizca UC dosya var; zaman
+# degerleri ucune de karisik dagildigi icin her dosyanin araligi butun
+# donemi kapsiyor. Istatistik vardir, ama atlanacak dosya kalmaz.
+#
+# Bicim secmek yetmiyor; DUZEN de secmek gerekiyor. Denemeler-1 bunu olcuyor.
 
 # COMMAND ----------
 

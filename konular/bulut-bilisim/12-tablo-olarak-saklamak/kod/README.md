@@ -40,22 +40,39 @@ yazılıyor da. Bir kerelik maliyet.
 
 ## Beklenen çıktılar
 
-| Hücre | Beklenen |
-| ----- | -------- |
-| `DESCRIBE DETAIL` → `format` | `delta` |
-| `DESCRIBE DETAIL` → `sizeInBytes` | CSV'nin 232 MB'ından **belirgin biçimde küçük** |
+| Hücre | Ölçülen |
+| ----- | ------- |
+| `format` · `numFiles` | `delta` · **3** dosya |
+| `sizeInBytes` | **8.029.833** = 7,7 MB — CSV'nin 231,8 MB'ına karşı **~30 kat** |
 | `DESCRIBE TABLE` | Tipler yazılı; `inferSchema` gerekmiyor |
-| Tablo sorgusunun süresi | CSV'den **kısa** — kaç kat olduğunu siz ölçeceksiniz |
-| Tablo planı | `PhotonRowToColumnar` **yok**, `Batched: false` yok |
+| CSV sorgusu | 1,00 ve 1,00 sn |
+| Tablo sorgusu | 0,85 ve **0,74** sn — yaklaşık **1,35 kat** |
+| Tablo planı | `PhotonScan parquet`; `PhotonRowToColumnar` **yok** |
+| Karıştırma bölümü | CSV'de `231`, tabloda **`16`** |
+| `COUNT(*)` tamamı / süzülmüşü | 0,58 sn / 0,78 sn — **süzülmüş daha yavaş** |
 
-> **Çalıştırmadan önce tahmininizi yazın.** Kaç kat hızlanmasını
-> bekliyorsunuz, boyut kaça düşer? Ölçümden sonra yazılan tahmin tahmin
-> değildir.
+> **Çalıştırmadan önce tahmininizi yazın.** Ölçümden sonra yazılan tahmin
+> tahmin değildir.
 
-Dosya atlama ölçümünde fark küçük çıkabilir. Sebebi şu: atlama verinin
-**sıralı** olmasına bağlıdır ve biz tabloyu sıralamadan yazdık. İstatistik
-var ama atlanacak dosya kalmamış olabilir — bu da bir bulgudur, ve
-denemelerin birincisi tam bunu ölçüyor.
+**Boyut 30 kat, süre 1,35 kat.** Aradaki uçurum bu haftanın asıl dersi: bu
+ölçekte zamanın çoğu okumaya değil sabit giderlere gidiyor. Üstelik aynı CSV
+sorgusu geçen hafta 1,28 ve 1,54 sn ölçülmüştü — **sapma, kazançla aynı
+mertebede.** Yani "tablo 1,35 kat hızlı" demek bile bu ölçümle ispatlanmış
+sayılmaz.
+
+**30 katı dürüst okuyun:** CSV'nin sekiz sütunu var, tabloya dördünü aldık.
+Kazancın bir kısmı sıkışma, bir kısmı atılan sütun. Denemelerin ikincisi
+payları ayırıyor.
+
+**`COUNT(*)` satırı iki şey söylüyor.** Birincisi: o sorgu veriyi hiç
+okumuyor, tablo satır sayısını zaten biliyor — bu yüzden karşılaştırma için
+kötü bir başlangıç noktası. İkincisi: atlanacak dosya yok, çünkü tabloyu
+sıralamadan yazdık ve üç dosyanın üçü de bütün dönemi kapsıyor. İstatistik
+var ama işe yaramıyor; denemelerin birincisi bunu ölçüyor.
+
+**İstatistiğin işe yaradığı yer** karıştırma bölüm sayısı: 231 yerine 16.
+Planın sonundaki `Optimizer Statistics — full = trafik_tablo` satırı bunun
+kanıtı.
 
 ## Denemeniz için
 

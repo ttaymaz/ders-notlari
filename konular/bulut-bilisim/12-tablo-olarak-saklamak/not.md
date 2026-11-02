@@ -72,8 +72,23 @@ Tablonun ne olduğunu sorabilirsiniz:
 DESCRIBE DETAIL workspace.default.trafik_tablo
 ```
 
-Çıktıda üç şeye bakın: `format`, `numFiles`, `sizeInBytes`. Biçim **Delta**
-olacak — Databricks'in tablo biçimi. Boyut ise sizi şaşırtacak.
+Çıktıda üç şeye bakın: `format`, `numFiles`, `sizeInBytes`. Ölçtüğümüzde:
+
+| Alan | Değer |
+| ---- | ----- |
+| `format` | `delta` — Databricks'in tablo biçimi |
+| `numFiles` | **3** dosya |
+| `sizeInBytes` | **8.029.833** — yani 7,7 MB |
+
+CSV 231,8 MB idi. Tablo **7,7 MB.** Yaklaşık **30 kat** küçük.
+
+> **Ama bu sayıyı dürüst okumak gerekiyor.** Kazancın tamamı sıkışmadan
+> gelmiyor: CSV'nin sekiz sütunu var, tabloya **dördünü** aldık. Yani 30
+> katın bir kısmı atılan sütunlar, bir kısmı sütunlu sıkışma. Hangisinin
+> payı ne kadar? Ev uygulamasının ikinci maddesi bunu ölçüyor.
+
+Tablonun özelliklerinde sıkıştırma algoritması da yazılı:
+`delta.parquet.compression.codec: zstd`.
 
 ---
 
@@ -92,12 +107,21 @@ değerleri birbirine benzer — `GEOHASH` sütununda binlerce kez aynı önekler
 `AVERAGE_SPEED` sütununda birbirine yakın sayılar. Benzer değerler yan yana
 olduğunda çok daha iyi sıkışır.
 
-> Bu yüzden `sizeInBytes` değeri CSV'nin 232 MB'ından **belirgin biçimde
-> küçük** çıkar. Veri aynı; yerleşim farklı.
+> Bu, 231,8 MB'ın 7,7 MB'a düşmesinin bir sebebi. Diğer sebep sekiz
+> sütundan dördünü almamız — ikisini karıştırmayın.
 
 Üçüncü sonuç geçen haftanın planında eksik olan şey: sütunlu biçim **toplu**
-okunabilir. `PhotonRowToColumnar` adımı artık gerekmiyor, çünkü veri zaten
-sütunlu.
+okunabilir. Ölçtük, plan değişti:
+
+| | CSV planı | Tablo planı |
+| --- | --------- | ----------- |
+| Okuma | `FileScan csv` · `Batched: false` | `PhotonScan parquet` |
+| Çevirme | `PhotonRowToColumnar` | **yok** |
+
+> **İki ada dikkat, neredeyse aynı yazılıyor.** `PhotonRowToColumnar`
+> *girişte* satırları sütuna çeviriyordu ve kayboldu — aradığımız buydu.
+> `PhotonColumnarToRow` ise *çıkışta* sonucu satıra çeviriyor ve **iki
+> planda da var;** ekrana tablo basmak için gerekiyor.
 
 ---
 
@@ -122,14 +146,47 @@ okumaktı.
 > Geçen haftanın cümlesi hâlâ geçerli ama bir adım derinleşti: maliyet
 > taşımadadır — ve **hiç okunmayan veri hiç taşınmaz.**
 
-### Sıralama atlamayı mümkün kılar
+### Ölçtük, atlama olmadı
 
-Dosya atlama, verinin **sıralı** olmasına bağlıdır. Zaman değerleri bütün
-dosyalara karışık dağılmışsa her dosyanın aralığı bütün dönemi kapsar ve
-atlanacak dosya kalmaz.
+Beklenti şuydu: tarih süzen bir sorgu daha hızlı olur. Ölçüm tersini verdi.
 
-İstatistik vardır, ama işe yaramaz. Veriyi hangi sütuna göre düzenlediğiniz,
-hangi sorguların hızlanacağını belirler.
+| Sorgu | Süre |
+| ----- | ---: |
+| `SELECT COUNT(*) FROM trafik_tablo` | **0,58 sn** |
+| Aynısı, `WHERE zaman >= '2025-01-15'` ile | **0,78 sn** |
+
+Süzülmüş sorgu **daha yavaş.** İki sebep var ve ikisi de öğretici.
+
+**Birincisi: `COUNT(*)` veriyi hiç okumuyor.** Tablo her dosyada kaç satır
+olduğunu zaten biliyor; sorgu bu bilgiden cevaplanıyor. Süzme girdiği anda
+veriyi gerçekten okumak gerekiyor.
+
+> Bu yüzden `COUNT(*)` bir karşılaştırma için **kötü bir başlangıç
+> noktasıdır.** Ölçtüğünüz şey okuma değil, muhasebe.
+
+**İkincisi: atlanacak dosya yok.** Tabloyu sıralamadan yazdık ve yalnızca
+üç dosya var. Zaman değerleri üçüne de karışık dağıldığı için her dosyanın
+aralığı bütün dönemi kapsıyor.
+
+İstatistik vardır, ama **işe yaramaz.** Veriyi hangi sütuna göre
+düzenlediğiniz, hangi sorguların hızlanacağını belirler — ev uygulamasının
+birinci maddesi bunu ölçüyor.
+
+### İstatistiğin işe yaradığı yer
+
+Yine de istatistik boşa durmuyor. Planın sonunda yeni bir bölüm var:
+
+```
+== Optimizer Statistics ==
+  full = trafik_tablo
+```
+
+Ve bunun somut bir sonucu oldu. CSV planında karıştırma hedefi
+`hashpartitioning(GEOHASH, 231)` yazıyordu; tablo planında **16.**
+
+Optimize edici tablonun gerçek boyutunu bildiği için 231 bölüm yerine 16
+bölüm seçti. CSV'de bu bilgi olmadığı için varsayılan değeri kullanmak
+zorundaydı.
 
 ---
 
@@ -173,23 +230,44 @@ Bilmeniz yeterli: bölme bir araçtır, her zaman doğru cevap değil.
 
 ---
 
-## 7. Ölçmeden Önce Tahmin Edin
+## 7. Ölçtük: 30 Kat Küçük, 1,3 Kat Hızlı
 
-Geçen haftanın dersi burada da geçerli. Tabloyu kurduktan sonra aynı sorguyu
-iki biçimde çalıştıracaksınız:
+Aynı sorguyu iki biçimde çalıştırdık — `GROUP BY GEOHASH`, biri CSV
+üzerinden biri tablo üzerinden:
 
-- CSV üzerinden (`ham` görünümü)
-- Tablo üzerinden (`trafik_tablo`)
+| | Boyut | 1. ölçüm | 2. ölçüm |
+| --- | ----: | -------: | -------: |
+| CSV | 231,8 MB | 1,00 sn | 1,00 sn |
+| Tablo | **7,7 MB** | 0,85 sn | **0,74 sn** |
 
-**Çalıştırmadan önce tahmin yazın.** Kaç kat hızlanmasını bekliyorsunuz?
-Sonra ölçün ve tahmininizle karşılaştırın.
+Boyut **30 kat** küçüldü. Süre **1,35 kat** iyileşti.
 
-Geçen hafta "önce süz" kuralının bu veride kazandırmadığını ölçerek
-görmüştük. Bu hafta beklenti yönünde çıkabilir de çıkmayabilir de — önemli
-olan **sayıyı yazmak.**
+Bu ikisi arasındaki uçurum bu haftanın asıl dersi. Neden 30 kat küçük veri
+30 kat hızlı değil?
 
-> Ölçerken sonucu sürücüye çekmeyin. Küçük sonuç döndüren bir sorgu seçin,
-> yoksa ölçtüğünüz şey taşıma olur.
+Çünkü bu ölçekte zamanın çoğu veriyi okumakla geçmiyor. Sorgu planlanıyor,
+görevler başlatılıyor, karıştırma koordine ediliyor — bunlar veri 232 MB da
+olsa 8 MB da olsa aynı. Bir saniye, bu ortamda herhangi bir sorgu için
+yaklaşık **taban süre.**
+
+> **Dürüst olmak gerekiyor:** aynı CSV sorgusu geçen hafta 1,28 ve 1,54
+> saniye ölçülmüştü, bu hafta 1,00. Oturumlar arası sapma, tablonun
+> kazandırdığı farkla **aynı mertebede.** Yani "tablo 1,35 kat hızlı"
+> demek bile bu ölçümle ispatlanmış sayılmaz.
+
+Peki tablo işe yaramadı mı? Yaradı, ama kazanç başka yerde:
+
+- **Depolama 30 kat azaldı** — bu tartışmasız ve ölçülmüş.
+- **Şema ve tipler yazılı** oldu; fazladan tarama yok, üstüne sözleşme var.
+- **İstatistik var:** karıştırma 231 bölüm yerine 16 bölümle yapıldı.
+- Dört haftadır her not defterinde yazdığımız `to_timestamp` satırı gitti.
+
+Süre kazancının görünmesi için verinin **çok daha büyük** olması gerekir.
+232 MB'da ölçtüğünüz şey biçim değil, sabit giderler.
+
+> **Yanlış ölçekte yapılan ölçüm yanlış sonuç verir.** Bir iyileştirmenin
+> işe yarayıp yaramadığını anlamak için onu işe yarayacağı boyutta
+> denemeniz gerekir — ve o boyut her zaman elinizde olmaz.
 
 ---
 
@@ -198,15 +276,22 @@ olan **sayıyı yazmak.**
 Dönem sonundaki projenin yedinci parçası.
 
 1. Tabloyu kurun ve `DESCRIBE DETAIL` ile **boyutunu** not edin. CSV'nin
-   232 MB'ı neye düştü?
-2. Proje sorgularınızdan birini seçin. Süresini **CSV üzerinden** ölçün.
-3. Aynı sorguyu **tablo üzerinden** ölçün. Önce tahmininizi yazın.
-4. İki `EXPLAIN` çıktısını karşılaştırın: `PhotonRowToColumnar` adımı tablo
-   planında da var mı?
-5. Projenizin **veri hazırlama** adımını yazın: ham CSV'den tabloya nasıl
+   231,8 MB'ı neye düştü?
+2. Proje sorgularınızdan birini seçin. Süresini **CSV üzerinden** ölçün —
+   **iki kez.**
+3. Aynı sorguyu **tablo üzerinden** iki kez ölçün. Önce tahmininizi yazın.
+4. Dört sayıya birlikte bakın. Tablonun kazancı, **aynı biçimin iki ölçümü
+   arasındaki farktan** büyük mü? Değilse doğru cümle nedir?
+5. İki `EXPLAIN` çıktısını karşılaştırın: `PhotonRowToColumnar` tablo
+   planında da var mı? Karıştırma bölüm sayısı değişti mi?
+6. Projenizin **veri hazırlama** adımını yazın: ham CSV'den tabloya nasıl
    geçtiniz, hangi sütunları aldınız, tarihi nerede çevirdiniz?
 
-> Beşinci madde projenin parçası ve bundan sonraki bütün analizlerin
+> Dördüncü madde bu haftanın ölçüm disiplini. Bir kazancın gürültüden
+> büyük olduğunu göstermeden "hızlandı" demek, ölçüm yapmamakla aynı
+> kapıya çıkar.
+
+> Altıncı madde projenin parçası ve bundan sonraki bütün analizlerin
 > başlangıç noktası. Projenizde artık CSV değil tablo okuyun.
 
 ---
@@ -222,7 +307,10 @@ Dönem sonundaki projenin yedinci parçası.
 - Tabloya yalnızca kullandığınız sütunları alın.
 - Tablo kurduktan sonra `DESCRIBE DETAIL` ile boyutuna ve dosya sayısına
   bakın.
-- Hızlanmayı **ölçün**; tahminle yetinmeyin.
+- Hızlanmayı **ölçün**; tahminle yetinmeyin — ve ölçümü en az iki kez
+  yapıp gürültüyü görün.
+- Bir biçim değişikliğini karşılaştırırken `COUNT(*)` kullanmayın; o sorgu
+  veriyi okumuyor.
 
 **Sık yapılan hatalar**
 
@@ -236,6 +324,10 @@ Dönem sonundaki projenin yedinci parçası.
 - **Tablo adını yolla karıştırmak.** Tabloya ad ile ulaşılır
   (`katalog.şema.tablo`), yol ile değil.
 - **Ölçümde sonucu sürücüye çekmek.** Geçen haftanın hatası; tekrar etmeyin.
+- **Boyut kazancını süre kazancı sanmak.** 30 kat küçük veri 30 kat hızlı
+  değil; bu ölçekte zamanın çoğu sabit giderlere gidiyor.
+- **Gürültüyü kazanç saymak.** Tek ölçüm arasındaki 0,2 saniyelik fark
+  çoğu zaman hiçbir şey anlatmaz.
 
 ---
 
@@ -243,8 +335,9 @@ Dönem sonundaki projenin yedinci parçası.
 
 1. Tabloyu `zaman` sütununa göre sıralı yazıp (`ORDER BY zaman`) tarih
    süzen bir sorguyu yeniden ölçün. Sıralama atlamayı mümkün kıldı mı?
-2. Yalnızca iki sütunlu ikinci bir tablo kurun. Boyutu, dört sütunlunun
-   kaçta kaçı?
+2. Yalnızca iki sütunlu ikinci bir tablo kurun. Boyutu, dört sütunlu
+   tablonun 7,7 MB'ının kaçta kaçı? Bu sayı, 30 katlık kazancın ne kadarının
+   **atılan sütunlardan** geldiğini söyler.
 3. `DESCRIBE HISTORY workspace.default.trafik_tablo` çalıştırın. Tablo
    kendi geçmişini tutuyor; kaç sürüm görüyorsunuz?
 4. `OPTIMIZE workspace.default.trafik_tablo` çalıştırıp `DESCRIBE DETAIL`e

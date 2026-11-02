@@ -40,7 +40,7 @@ Ders notu ve not defteri bağlantıları, o hafta yayımlandıkça tabloya eklen
 | 10 | İki tabloyu birleştirmek | [not](../../konular/bulut-bilisim/10-tablolari-birlestirmek/not.md) | [kod](../../konular/bulut-bilisim/10-tablolari-birlestirmek/kod/) |
 | 11 | Bölümleme ve maliyet | [not](../../konular/bulut-bilisim/11-bolumleme-ve-maliyet/not.md) | [kod](../../konular/bulut-bilisim/11-bolumleme-ve-maliyet/kod/) |
 | 12 | Tablo olarak saklamak ve sorgu hızı | [not](../../konular/bulut-bilisim/12-tablo-olarak-saklamak/not.md) | [kod](../../konular/bulut-bilisim/12-tablo-olarak-saklamak/kod/) |
-| 13 | *planlanıyor* | — | — |
+| 13 | Dağıtım modelleri, güvenlik ve erişim | [not](../../konular/bulut-bilisim/13-dagitim-ve-guvenlik/not.md) | [kod](../../konular/bulut-bilisim/13-dagitim-ve-guvenlik/kod/) |
 | 14 | *planlanıyor* | — | — |
 | 15 | *planlanıyor* | — | — |
 
