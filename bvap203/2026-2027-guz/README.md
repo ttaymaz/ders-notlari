@@ -39,7 +39,7 @@ Ders notu ve not defteri bağlantıları, o hafta yayımlandıkça tabloya eklen
 | 9 | Zaman serisi olarak veri | [not](../../konular/bulut-bilisim/09-zaman-serisi/not.md) | [kod](../../konular/bulut-bilisim/09-zaman-serisi/kod/) |
 | 10 | İki tabloyu birleştirmek | [not](../../konular/bulut-bilisim/10-tablolari-birlestirmek/not.md) | [kod](../../konular/bulut-bilisim/10-tablolari-birlestirmek/kod/) |
 | 11 | Bölümleme ve maliyet | [not](../../konular/bulut-bilisim/11-bolumleme-ve-maliyet/not.md) | [kod](../../konular/bulut-bilisim/11-bolumleme-ve-maliyet/kod/) |
-| 12 | *planlanıyor* | — | — |
+| 12 | Tablo olarak saklamak ve sorgu hızı | [not](../../konular/bulut-bilisim/12-tablo-olarak-saklamak/not.md) | [kod](../../konular/bulut-bilisim/12-tablo-olarak-saklamak/kod/) |
 | 13 | *planlanıyor* | — | — |
 | 14 | *planlanıyor* | — | — |
 | 15 | *planlanıyor* | — | — |

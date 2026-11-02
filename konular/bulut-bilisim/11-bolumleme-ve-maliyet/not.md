@@ -31,6 +31,9 @@ ORDER BY bolum
 Bu sorgu her bölümde kaç satır olduğunu gösterir. İki şeye bakın: kaç bölüm
 var, ve bölümler **birbirine yakın büyüklükte mi.**
 
+Ölçtüğümüzde **8 bölüm** çıkıyor. Her birinde yaklaşık 382.000 satır, en
+küçüğünde 355.940. Sekiz sayının toplamı 3.030.359 — yani bütün veri.
+
 > Paralelliğin tamamı buradan geliyor. Üç milyon satırlık bir sayma işi 12
 > saniyede bitiyorsa, sebep makinenin hızlı olması değil; işin bölünmüş
 > olmasıdır.
@@ -42,6 +45,11 @@ işini bitirir ve **bekler.** Sorgu, en yavaş bölüm kadar sürer.
 
 Bu, dağıtık işlemenin en sık sorunudur ve adı vardır: **çarpıklık** (skew).
 Sorgunuz yavaşsa ve sebebini bulamıyorsanız bölüm boyutlarına bakın.
+
+> **Bizim verimizde çarpıklık yok.** Bölümler neredeyse eşit, çünkü Spark
+> CSV'yi satır sayısına göre değil **bayt sayısına göre** bölüyor ve
+> satırlarımız hemen hemen aynı uzunlukta. Bu bir şans; her veri kümesi
+> böyle gelmez.
 
 ---
 
@@ -86,10 +94,23 @@ toplama, ortalama — bunların yanında neredeyse bedavadır.
 > tahmin etmek istiyorsanız kaç satır işlendiğine değil, **ne kadar veri
 > taşındığına** bakın.
 
-Bu, bütün dönem gördüğünüz süreleri açıklıyor. `COUNT(*)` hızlıydı: her
-bölüm kendi satırlarını sayar, sonunda yalnızca bölüm sayısı kadar sayı
-toplanır. `GROUP BY` ile aynı veriyi gruplamak daha uzun sürdü: önce bütün
-satırlar yeniden dağıtıldı.
+### Ama her karıştırma uzun sürmez
+
+Üç milyon satırı `GEOHASH`e göre gruplamak bu ortamda **1,3 saniye** sürüyor.
+Neden bu kadar kısa?
+
+Çünkü karıştırmada taşınan şey üç milyon satır **değil.** Gruplama iki
+aşamada yapılıyor: önce her bölüm kendi içinde sayar, sonra yalnızca bu
+**kısmi sayılar** karıştırılır. Planda ikisini de göreceksiniz —
+`partial_count` karıştırmadan önce, `finalmerge_count` sonra.
+
+Karıştırma bölüm sayısını da değiştirir. Okuma 8 bölümle başlıyor; planda
+karıştırmanın hedefi `hashpartitioning(GEOHASH, 231)` yazıyor, yani 231
+bölüm.
+
+> Karıştırmanın gerçekten pahalı olduğu durum, taşınacak şeyin büyük olduğu
+> durumdur: anahtar sayısı çok yüksekse, ya da gruplama değil **iki büyük
+> tablonun birleştirilmesi** yapılıyorsa.
 
 ---
 
@@ -112,6 +133,13 @@ Exchange
 `Exchange` karıştırmanın plandaki adıdır. Varsa veri taşınacak; yoksa
 taşınmayacak.
 
+> **Düğüm adları `Photon` ile başlıyor.** Çalıştığımız ortam sorguları
+> **Photon** adlı hızlandırılmış motorla yürütüyor, bu yüzden plan satırları
+> `PhotonFilter`, `PhotonGroupingAgg`, `PhotonShuffleExchangeSink` gibi
+> görünür. Aradığınız kelime bu adların **içinde** geçiyor; `Exchange` diye
+> aramak yeterli. Çıktının sonundaki *"The query is fully supported by
+> Photon"* satırı da buradan gelir.
+
 Şimdi aynı şeyi dar bir sorguyla deneyin:
 
 ```sql
@@ -120,6 +148,22 @@ SELECT GEOHASH FROM trafik WHERE AVERAGE_SPEED > 100
 ```
 
 `Exchange` yok. Plan tek bir okuma ve bir süzmeden oluşuyor.
+
+Aynı plandan iki şey daha okunabilir:
+
+```
+PushedFilters: [IsNotNull(AVERAGE_SPEED), GreaterThan(AVERAGE_SPEED,100)]
+ReadSchema:    struct<GEOHASH:string,AVERAGE_SPEED:int>
+```
+
+**`PushedFilters`** süzmenin okuma adımına kadar indiğini söyler: satır
+okunurken zaten eleniyor. **`ReadSchema`** ise hangi sütunların okunduğunu
+söyler — sekiz sütunlu dosyadan yalnızca ikisi. Sütun budama tahmin değil,
+planda yazılı bir gerçek.
+
+Bir satır da uyarı niteliğinde: `Batched: false`. CSV toplu okunamıyor;
+Spark satırları Photon'un işleyebilmesi için sütunlara çevirmek zorunda
+(`PhotonRowToColumnar`). Bu, gelecek haftanın konusu.
 
 > Plan okumayı öğrenmek, tahmin etmekten kurtulmaktır. "Bu sorgu pahalı
 > galiba" demek yerine `EXPLAIN` yazıp bakabilirsiniz.
@@ -140,8 +184,16 @@ FROM gunluk g LEFT JOIN ozel_gunler o ON g.gun = o.gun
 Planda şunu göreceksiniz:
 
 ```
-BroadcastHashJoin
+PhotonBroadcastHashJoin ... LeftOuter, BuildRight
 ```
+
+`BuildRight` sağdaki tablonun yayınlandığını söyler — yani küçük olanın.
+Küçük tablo için `LocalTableScan` yazar: `VALUES` ile yazdığımız tablo
+depolamadan hiç okunmuyor, doğrudan bellekte duruyor.
+
+> **Bu planda `Exchange` de var** — ama birleştirmeden değil. `gunluk`
+> görünümünün kendisi bir `GROUP BY`; o karıştırma ona ait. Planı okurken
+> hangi satırın hangi işe ait olduğunu ayırt etmek gerekiyor.
 
 **Yayınlama** (broadcast) budur: küçük tablo bütün makinelere gönderilir ve
 eşleme yerinde yapılır. Büyük tablonun satırları hiç taşınmaz.
@@ -160,13 +212,13 @@ Son satır önemli: yayınlama ancak küçük tablo gerçekten küçükse işe y
 
 ---
 
-## 6. İki Ayrı Maliyet
+## 6. Üç Ayrı Maliyet
 
 Dönemin başında bir ölçüm yaptık: veriye dokunan ilk komut **42 saniye**
 sürdü, aynı komut hemen ardından **12 saniye.** Aradaki 30 saniye veri
 taşıma değildi.
 
-İki maliyet kalemini ayırmak gerekiyor:
+Üç maliyet kalemini ayırmak gerekiyor:
 
 **Kaynak tahsisi.** Sunucusuz ortamda ilk komut çalışırken arkada makineler
 ayrılıyor, Spark oturumu kuruluyor. Bu bir kerelik bir bedel ve sorgunuzun
@@ -175,8 +227,16 @@ nasıl yazıldığıyla ilgisi yok.
 **Veri taşıma.** Her karıştırma yeniden ödenir ve bu, sorgunuzun nasıl
 yazıldığına bağlıdır.
 
+**Sürücüye toplama.** Sonucu kendi tarafınıza çekmek de bir maliyettir ve en
+sinsi olanıdır. Ölçtük: `GROUP BY` sonucunu — 2.460 satır — çekmek 1,3
+saniye. Üç milyon satırın tamamını çekmek **48,63 saniye.**
+
+Beşinci haftanın `toPandas()` tuzağı tam olarak bu. Aradaki fark hesaptan
+değil, tek bir makineye akıtılan satır sayısından geliyor.
+
 > Bir sorguyu ilk kez çalıştırıp "yavaş" demek yanlış ölçümdür. İki kez
 > çalıştırın; ikinci süre sorgunun gerçek maliyetine daha yakındır.
+> Ölçtüğümüzde 1,54 ve 1,28 saniye çıktı.
 
 Maliyet neden önemli? Çünkü işlem gücü sınırsız değil. Bulutta ödediğiniz
 şey makine değil, **makine zamanı**: aynı işi yarı sürede yapan bir sorgu
@@ -187,12 +247,22 @@ başkasının beklediği zamandır.
 
 ## 7. Maliyeti Azaltmanın Yolları
 
-**Önce süzün.** Bir milyon satırı gruplamak, on milyon satırı gruplamaktan
-ucuzdur. `WHERE` koşulunu `GROUP BY`dan önce çalıştırın — Spark bunu çoğu
-zaman kendisi yapar ama her zaman yapamaz.
+**Önce süzün — ama ölçün.** Süzmek, pahalı adıma giren satırı azaltıyorsa
+kazandırır. **Bu veride kazandırmadı:** süzmeden 1,25 saniye, önce süzerek
+1,42 saniye. Süzmek işi biraz **uzattı.**
 
-**Az sütun okuyun.** `SELECT *` ihtiyacınız olmayan sütunları da taşır.
-Üç sütun kullanıyorsanız üç sütun isteyin.
+Sebebi plandan okunuyor. Pahalı adım dosyayı okumaktı ve süzmek okunan satır
+sayısını azaltmıyor — bütün satırlar yine okunup bakılıyor. Gruplama ise
+zaten 2.460 gruba düşüyordu; karıştırılacak veri baştan küçüktü. Üstüne bir
+de üç milyon satırda koşul değerlendirme maliyeti eklendi.
+
+> **Kural değil, ölçüm.** "Önce süz" iyi bir başlangıç tahminidir ama bir
+> yasa değildir. Hangi adımın pahalı olduğunu bilmiyorsanız yaptığınız
+> iyileştirme bir tahmindir — ve bu ölçümde tahmin yanlış çıktı.
+
+**Az sütun okuyun.** `ReadSchema` satırı hangi sütunların okunduğunu
+gösteriyor; iki sütun istediğinizde planda iki sütun yazıyor. Sekiz sütunlu
+bir dosyadan üçünü kullanıyorsanız üçünü isteyin.
 
 **Küçük tabloyu küçük tutun.** Yayınlanabilir bir tablo ucuzdur;
 büyüdüğünde plan sessizce karıştırmaya döner.
@@ -217,9 +287,13 @@ Dönem sonundaki projenin altıncı parçası.
 2. Proje sorgularınızdan **birini** seçin. `EXPLAIN` çalıştırın ve
    çıktıda kaç `Exchange` olduğunu sayın.
 3. Aynı sorguyu **iki kez** çalıştırıp iki süreyi de not edin.
-4. Sorguyu bir kez de **önce süzerek** yazın. Süre değişti mi? Sayı verin.
+4. Sorguyu bir kez de **önce süzerek** yazın. Süre değişti mi, ve
+   **beklediğiniz yönde mi?** Sayı verin.
 5. Projenize bir **maliyet notu** yazın: analiziniz kaç karıştırma
    içeriyor, en pahalı adım hangisi ve neden?
+
+> Dördüncü maddede "beklediğim gibi çıkmadı" geçerli bir cevaptır — hatta
+> en öğretici olanıdır. Önemli olan sayıyı yazmak ve sebebini aramak.
 
 > Beşinci madde projenin parçası. İki cümle yeter ama gerekçeli olmalı:
 > "`GROUP BY GEOHASH` en pahalı adım, çünkü üç milyon satır anahtara göre
@@ -233,6 +307,9 @@ Dönem sonundaki projenin altıncı parçası.
 
 - Süre ölçerken sorguyu **iki kez** çalıştırın; ilk süre kaynak tahsisini
   de içerir.
+- Bir iyileştirmeyi uygulamadan önce **ölçün.** İyi bilinen kurallar bile
+  her veride kazandırmaz.
+- Süre ölçerken sonucu sürücüye çekmeyin; ölçtüğünüz şey taşıma olur.
 - Bir sorgunun pahalı olup olmadığını tahmin etmek yerine `EXPLAIN` yazın.
 - `GROUP BY`dan önce süzün, `ORDER BY`ı en sona bırakın.
 - İhtiyacınız olan sütunları adıyla isteyin.
@@ -248,7 +325,8 @@ Dönem sonundaki projenin altıncı parçası.
   diğeri küçük tabloyu kopyalar.
 - **Bölüm dengesini hiç kontrol etmemek.** Sorgu en yavaş bölüm kadar sürer.
 - **`toPandas()` ile maliyeti çözdüğünü sanmak.** O, veriyi tek makineye
-  toplamaktır; beşinci haftada konuştuk.
+  toplamaktır; beşinci haftada konuştuk ve bu hafta ölçtük: 48,63 saniye.
+- **Ölçmeden iyileştirmek.** "Önce süz" kuralı bu veride işi uzattı.
 
 ---
 
@@ -269,10 +347,14 @@ mı? Hangi noktada hızlanmayı bırakır ve neden?
 
 ## Gelecek Hafta
 
-Bu hafta bir şeyi fark ettiniz: her sorguda 232 MB'lık CSV **baştan**
-okunuyor. Üç sütun kullansak da dosyanın tamamı taranıyor, çünkü CSV satır
-satır yazılmış düz bir metin dosyası — hangi sütunun nerede olduğunu
-önceden bilmenin yolu yok.
+Planda bir satır vardı ve üstünde durmadık: `Batched: false`.
+
+CSV toplu okunamıyor. Spark her satırı okuyup Photon'un işleyebilmesi için
+sütunlara çevirmek zorunda — planda `PhotonRowToColumnar` olarak görünen
+adım bu. Dosyada hiçbir istatistik de yok: hangi değerin hangi aralıkta
+olduğunu önceden bilmenin yolu olmadığı için her sorgu **baştan** tarıyor.
+
+Sebep basit: CSV satır satır yazılmış düz bir metin dosyası.
 
 Gelecek hafta veriyi **tablo olarak** saklayacağız. Aynı veri, farklı
 biçim — ve sorgu süreleri bu yüzden değişecek.

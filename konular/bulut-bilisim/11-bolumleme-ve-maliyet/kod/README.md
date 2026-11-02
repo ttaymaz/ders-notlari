@@ -43,23 +43,37 @@ haftanın not defterini çalıştırmış olmanız gerekmiyor.
 
 ## Beklenen çıktılar
 
-| Hücre | Beklenen |
-| ----- | -------- |
-| Bölüm listesi | Birden fazla bölüm, boyutları birbirine yakın |
+| Hücre | Ölçülen |
+| ----- | ------- |
+| Bölüm listesi | **8 bölüm**, her birinde ~382.000 satır, toplam 3.030.359 |
 | Dar sorgunun planı | `Exchange` **yok** |
-| Gruplamanın planı | `Exchange` **var** |
-| Birleştirmenin planı | `BroadcastHashJoin` |
-| İki süre ölçümü | İkinci ölçüm **belirgin biçimde** daha kısa |
+| Gruplamanın planı | `PhotonShuffleExchangeSink hashpartitioning(GEOHASH, 231)` |
+| Birleştirmenin planı | `PhotonBroadcastHashJoin ... BuildRight` |
+| İki süre ölçümü | 1,54 sn ve 1,28 sn |
+| Önce süzerek | 1,42 sn — süzmeden 1,25 sn'den **daha uzun** |
 
 Dördüncü satır geçen haftanın iddiasının kanıtı: küçük tablo her makineye
 kopyalanıyor, büyük tablonun satırları taşınmıyor.
 
+**Altıncı satır bu haftanın sürprizi.** "Önce süz" kuralı bu veride
+kazandırmadı. Sebebi pahalı adımın dosyayı okumak olması; süzmek okunan
+satır sayısını azaltmıyor. Dersi şu: ölçmeden iyileştirme yapılmaz.
+
+> **Düğüm adları `Photon` ile başlıyor.** Ortam sorguları Photon motoruyla
+> yürütüyor: `PhotonFilter`, `PhotonGroupingAgg`,
+> `PhotonShuffleExchangeSink`. Aradığınız kelime adın **içinde** geçtiği
+> için `Exchange` diye aramak yeterli.
+
 > Süreler ortamdan ortama ve günden güne değişir. Mutlak sayıyı değil,
-> **iki ölçüm arasındaki farkı** okuyun.
+> **ölçümler arasındaki farkı** okuyun — ve fark küçükse "fark yok" demeyi
+> de bir sonuç sayın.
 
 ## Denemeniz için
 
 1. `EXPLAIN` çıktısını `ORDER BY` ve `DISTINCT` için de alın. Kaç `Exchange`?
+   Gruplamanın planında `partial_count` ve `finalmerge_count` satırlarını da
+   bulun: gruplama iki aşamada yapılıyor ve karıştırmada taşınan şey satırlar
+   değil, kısmi sayılar.
 2. Süre ölçümünü üçüncü, dördüncü kez çalıştırın. Düşmeye devam ediyor mu,
    bir yerde duruyor mu?
 3. `inferSchema=True` olmadan okuyup süreyi karşılaştırın.
