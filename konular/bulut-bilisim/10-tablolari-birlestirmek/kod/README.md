@@ -48,10 +48,19 @@ haftanın not defterini çalıştırmış olmanız gerekmiyor.
 
 | Hücre | Beklenen |
 | ----- | -------- |
-| Takvim ve ölçülen gün sayısı | 62 ve 62 |
-| Eksik gün listesi | boş (62 = 62 ise) |
+| Takvim gün sayısı | **62** — takvim tanımından |
+| Ölçülen gün sayısı | **56** — ölçüldü |
+| Eksik gün listesi | **6 satır**: 17, 18, 22, 28, 29, 30 Aralık |
+| `tam_seri` satır sayısı | **62** — boşluklar `NULL` satır olarak yazıldı |
 | `ozel_gunler` anahtar denetimi | 2 satır, 2 farklı gün |
-| `gunluk` ve `zengin` satır sayısı | **ikisi de aynı** |
+| `gunluk` ve `zengin` satır sayısı | **ikisi de 56** |
+
+Üçüncü satır bu dersin gerçek bulgusu ve kurgulanmış bir örnek değil: geçen
+hafta "cevaplayamıyoruz" dediğimiz soru burada cevaplanıyor.
+
+Dördüncü satır geçen haftanın hareketli ortalamasını düzeltiyor. `ROWS` satır
+sayar, gün saymaz; altı gün eksik olduğu için 31 Aralık'ın "yedi günlük
+ortalaması" aslında on bir güne yayılıyordu.
 
 Son satır bu haftanın disiplini: birleştirme sonrası satır sayısı sol
 tablodan fazla çıkarsa **satır çoğalması** var ve sorgu bunu size söylemez.

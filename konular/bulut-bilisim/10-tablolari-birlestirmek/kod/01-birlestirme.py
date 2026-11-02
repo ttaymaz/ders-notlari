@@ -74,8 +74,37 @@ display(spark.sql("""
 
 # COMMAND ----------
 
-# Hiç satır dönmediyse seride boşluk yok. "Eksik yok" da bir bulgudur;
-# bakmadan bilemezdiniz.
+# Beklenen çıktı: ALTI satır.
+#   2024-12-17, 2024-12-18, 2024-12-22, 2024-12-28, 2024-12-29, 2024-12-30
+# Üç küme hâlinde (2 gün, 1 gün, 3 gün), hepsi Aralık'ın ikinci yarısında;
+# Ocak'ta tek bir eksik gün yok. Neden kesildiğini veri söylemiyor.
+
+# COMMAND ----------
+
+# 3b) BOŞLUKLARI TABLOYA YAZMAK
+# Geçen haftanın hareketli ortalaması ROWS BETWEEN 6 PRECEDING kullanıyordu.
+# ROWS SATIR sayar, gün saymaz: altı gün eksik olduğu için 31 Aralık'ın
+# "yedi günlük ortalaması" aslında 21-31 Aralık aralığından, yani on bir
+# günden alınıyordu. Takvimle birleştirince seri 62 satır olur ve yedi
+# satır gerçekten yedi gün demeye başlar.
+spark.sql("""
+    CREATE OR REPLACE TEMP VIEW tam_seri AS
+    SELECT t.gun, g.toplam_arac
+    FROM takvim t
+    LEFT JOIN gunluk g ON t.gun = g.gun
+""")
+
+# AVG boş değerleri atlar: pencere yedi gün olur, ortalama o yedi günün
+# ÖLÇÜLENLERİNDEN alınır.
+display(spark.sql("""
+    SELECT gun,
+           toplam_arac,
+           ROUND(AVG(toplam_arac) OVER (
+               ORDER BY gun ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
+           ), 0) AS yedi_gun_ortalama
+    FROM tam_seri
+    ORDER BY gun
+"""))
 
 # COMMAND ----------
 
@@ -149,3 +178,6 @@ display(fig)
 #    saat bekliyoruz; kaç saat eksik çıktı?
 # 4. 2) numaralı hücredeki JOIN'i LEFT JOIN yapın. Satır sayısı değişti mi?
 #    Değişmediyse bu veri hakkında ne söylüyor?
+# 5. tam_seri üzerinden aldığınız hareketli ortalamayı, geçen haftanın
+#    gunluk görünümünden aldığınızla karşılaştırın. Aralık sonunda iki eğri
+#    ayrışıyor mu? Ayrışıyorsa hangisi doğru ve neden?

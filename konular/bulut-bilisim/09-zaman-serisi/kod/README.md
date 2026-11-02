@@ -33,9 +33,9 @@ azaltmaz**, her satıra komşularından hesaplanan bir değer ekler. Fark budur.
 **İlk hücredeki `VERI` satırına bakın.** Volume'unuzun adı `trafik` değilse
 yalnızca o satırı düzeltin.
 
-Günlük seride **62 satır** bekliyoruz (Aralık 31 + Ocak 31). Daha az çıkarsa
-bazı günler hiç ölçülmemiş demektir; hangilerinin eksik olduğunu bulmak
-gelecek haftanın konusu.
+Günlük seride **62 satır** bekliyoruz (Aralık 31 + Ocak 31). Ölçümde **56**
+çıkıyor: altı gün beklenenin altında. Hangi günlerin eksik olduğunu bulmak
+tek tabloyla yapılamaz; gelecek haftanın konusu tam olarak bu.
 
 ## Denemeniz için
 

@@ -47,8 +47,8 @@ neyi göreceğimizi belirliyor.
 | Çözünürlük | Satır | Görünen | Kaybolan |
 | ---------- | ----: | ------- | -------- |
 | Saatlik | 3.030.359 | Gün içi zirveler | — |
-| Günlük | 62 | Hafta ritmi | Gün içi dalgalanma |
-| Haftalık | 9 | Eğilim | Hafta içi ve hafta sonu farkı |
+| Günlük | 56 | Hafta ritmi | Gün içi dalgalanma |
+| Haftalık | 10 | Eğilim | Hafta içi ve hafta sonu farkı |
 
 Her basamakta bir şey görünür hâle gelir, bir şey kaybolur. **Çözünürlük
 seçmek, ne göreceğinizi seçmektir** — ve bu bir analiz kararıdır, teknik bir
@@ -70,7 +70,7 @@ satırda toplanır.
 
 ## 3. Seriyi Çizmek
 
-62 satırlık bir seri artık rahatça çizilir. Ve çizildiğinde saatlik tabloda
+56 satırlık bir seri artık rahatça çizilir. Ve çizildiğinde saatlik tabloda
 hiç görünmeyen bir şey ortaya çıkar: **haftanın ritmi.** Beş yüksek gün, iki
 düşük gün, tekrar tekrar.
 
@@ -96,8 +96,14 @@ O hâlde saymak gerekiyor. Aralık 31, Ocak 31 gün: **62 gün bekliyoruz.**
 SELECT COUNT(*) AS gun_sayisi FROM gunluk
 ```
 
-Sayı 62 ise seride boşluk yok. Daha azsa bazı günler hiç ölçülmemiş demektir
-ve çizdiğiniz grafik o günlerin üstünden düz bir çizgiyle geçmiştir.
+Sayı **56** çıkıyor. **Altı gün eksik.**
+
+Demek ki az önce çizdiğimiz grafik altı günün üstünden düz bir çizgiyle geçti
+ve biz bunu grafiğe bakarak fark etmedik. Haftanın ritmini doğru okuduk, ama
+eksik bir seride okuduk.
+
+> Bu kurgulanmış bir örnek değil; ölçtüğümüz veri bu. Altıncı haftada
+> konuştuğumuz "hiç ölçülmemiş" boşluk gerçekten karşımıza çıktı.
 
 **Peki hangi günler eksik?** Bu soruyu şu anda cevaplayamıyoruz. Elimizde
 olmayan bir şeyi aramak için, olması gerekenlerin listesine ihtiyaç var —
@@ -138,6 +144,10 @@ kalırdı, otuz gün seçseydiniz eğilim de silinirdi.
 > **İlk altı gün eksiktir.** Birinci günün "yedi günlük ortalaması" yalnızca
 > bir günden, ikincisininki iki günden alınır. Serinin başındaki bu bölüm
 > güvenilir değildir; grafikte gösterirken bilmeniz gerekir.
+
+> **`ROWS` satır sayar, gün saymaz.** Seride boşluk yoksa ikisi aynı şeydir.
+> Bizim serimizde boşluk var: yedi satır, yedi günden uzun bir aralığa
+> yayılabilir. Pencereyi gerçekten güne bağlamak gelecek haftanın konusu.
 
 ---
 
@@ -225,7 +235,7 @@ beklentinizin mi sorunu?
 
 ## Gelecek Hafta
 
-Bu hafta bir soruyu cevaplayamadık: **hangi günler eksik?**
+Bu hafta bir soruyu cevaplayamadık: **eksik olan altı gün hangileri?**
 
 Elimizde olan bir listeyi (ölçülen günler), olması gereken bir listeyle
 (takvimdeki bütün günler) karşılaştırmak gerekiyor. Bu, tek bir tabloyla

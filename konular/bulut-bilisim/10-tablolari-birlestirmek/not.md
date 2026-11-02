@@ -96,9 +96,30 @@ WHERE g.gun IS NULL
 ORDER BY t.gun
 ```
 
+Bu sorgu altı satır döndürüyor:
+
+```
+2024-12-17   2024-12-18   2024-12-22   2024-12-28   2024-12-29   2024-12-30
+```
+
 Altıncı haftada `NULL` sorunun kendisiydi: güvenilmez bir boşluk. Burada
 **cevabın kendisi.** Aynı şey, farklı rol — çünkü bu kez boşluğu veri değil
 birleştirme üretti ve ne anlama geldiğini biliyoruz.
+
+### Listeye Bakmak
+
+Altı tarih rastgele dağılmamış. Üç küme hâlinde: **17–18**, **22**,
+**28–30** Aralık. Hepsi aynı ayda, hepsi ayın ikinci yarısında, ve Ocak'ta
+tek bir eksik gün yok.
+
+Bu biçim bir şey anlatıyor: eksiklik tek tek günlerin değil, **kesintilerin**
+izi. Bir cihazın rastgele veri kaçırması böyle görünmez; birkaç gün süren
+üç kesinti böyle görünür.
+
+> **Ama neden kesildiğini veri söylemiyor.** Cihaz mı durdu, kayıt mı
+> yayımlanmadı, aktarım mı bozuldu — üçü de aynı görünür. Altıncı haftanın
+> dersi burada bir kez daha geçerli: sebebi öğrenmek için veriye değil,
+> verinin nasıl toplandığına bakmak gerekir.
 
 > **`IS NULL` denetimini anahtar sütununda yapın.** Yukarıda `g.gun` yazdık,
 > `g.toplam_arac` yazmadık. Ölçülmüş bir sütun gerçekten boş olabilir; o sütuna
@@ -120,7 +141,52 @@ değiştirerek aynı sonucu alırsınız. Bu yüzden pratikte `LEFT JOIN` yeter.
 
 ---
 
-## 5. Birleştirmenin İkinci İşi: Dışarıdan Bilgi Eklemek
+## 5. Geçen Haftanın Ortalaması: Satır mı, Gün mü?
+
+Dokuzuncu haftada yedi günlük hareketli ortalama aldık:
+
+```sql
+AVG(toplam_arac) OVER (ORDER BY gun ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)
+```
+
+`ROWS` **satır** sayar, gün saymaz. Seride boşluk yoksa ikisi aynı şeydir —
+ve biz boşluk olmadığını varsaymıştık.
+
+Şimdi biliyoruz ki yok değil. 31 Aralık satırına bakın: kendisinden önceki
+altı satır 27, 26, 25, 24, 23 ve 21 Aralık'tır. Yedi satır, **21–31 Aralık
+aralığına** yayılıyor — yani on bir güne.
+
+O değer doğru hesaplandı. Ama adı "yedi günlük ortalama" değildi.
+
+> **Doğru çalışan bir sorgu, yanlış bir cümle kurabilir.** Hata hesapta
+> değil, hesabın adındaydı. Ve bunu fark etmenin tek yolu veriye değil,
+> verinin tamam olup olmadığına bakmaktı.
+
+### Boşlukları Tabloya Yazmak
+
+Çözüm bu haftanın aracı. Takvimle birleştirip eksik günleri seriye `NULL`
+satır olarak koyarsanız seri 56 değil **62 satır** olur:
+
+```sql
+CREATE OR REPLACE TEMP VIEW tam_seri AS
+SELECT t.gun, g.toplam_arac
+FROM takvim t
+LEFT JOIN gunluk g ON t.gun = g.gun
+```
+
+Artık `ROWS BETWEEN 6 PRECEDING AND CURRENT ROW` gerçekten yedi **gün**
+demektir, çünkü her gün bir satır.
+
+`AVG` boş değerleri atlar: pencere yedi gün olur, ortalama o yedi günün
+**ölçülenlerinden** alınır. Eksik günler ortalamayı bozmaz, yalnızca onu
+daha az ölçüme dayandırır — ve siz bunu bilerek bakarsınız.
+
+> Pencereyi doğrudan güne bağlamanın başka bir yolu `ROWS` yerine `RANGE`
+> kullanmaktır. Bu haftanın ev uygulamasında deneyeceksiniz.
+
+---
+
+## 6. Birleştirmenin İkinci İşi: Dışarıdan Bilgi Eklemek
 
 Eksik bulmak birleştirmenin bir kullanımı. Günlük hayatta daha sık
 kullanılanı şu: veriye, **veride olmayan bilgiyi** eklemek.
@@ -142,7 +208,9 @@ LEFT JOIN ozel_gunler o ON g.gun = o.gun
 ORDER BY g.gun
 ```
 
-Sonuç yine 62 satır: iki satırda `aciklama` dolu, altmışında `NULL`. Artık
+Sonuç yine **56 satır**: ikisinde `aciklama` dolu, elli dördünde `NULL`.
+Yılbaşı gecesi ve yılbaşı günü eksik günler arasında değil, ikisi de veride
+var. Artık
 grafiği okurken o iki günü işaretleyebilir, "burada ne olmuş?" sorusuna cevap
 verebilirsiniz.
 
@@ -152,14 +220,14 @@ verebilirsiniz.
 
 ---
 
-## 6. Tuzak: Satır Çoğalması
+## 7. Tuzak: Satır Çoğalması
 
 Birleştirmenin en sık ve en sessiz hatası. Sağdaki tabloda anahtar
 **tekrarlıyorsa**, soldaki satır her eşleşme için bir kez çıkar.
 
 `ozel_gunler` tablosuna 1 Ocak'ı yanlışlıkla iki kez yazdığınızı düşünün.
-Birleştirmeden sonra 1 Ocak **iki satır** olur. Tablo 62 değil 63 satırdır ve o
-günün araçlarını toplarsanız iki kez sayarsınız.
+Birleştirmeden sonra 1 Ocak **iki satır** olur. Tablo sol tablodan **bir satır
+fazla** olur ve o günün araçlarını toplarsanız iki kez sayarsınız.
 
 Sorgu hata vermez. Sayılar yalnızca büyür.
 
@@ -180,7 +248,7 @@ sayısını sayın: `LEFT JOIN` sonucu sol tablodan fazlaysa çoğalma var.
 
 ---
 
-## 7. Maliyet: Küçük ile Büyük, Büyük ile Büyük
+## 8. Maliyet: Küçük ile Büyük, Büyük ile Büyük
 
 Bu hafta hiç beklemedik. 62 satırlık takvimi ve iki satırlık özel gün tablosunu
 birleştirmek anında bitti. Sebebi şu: küçük tablo **her makineye kopyalanır** ve
@@ -195,7 +263,7 @@ belirlendiği **gelecek haftanın konusu.**
 
 ---
 
-## 8. Laboratuvar: Veriyi Zenginleştirin
+## 9. Laboratuvar: Veriyi Zenginleştirin
 
 Dönem sonundaki projenin beşinci parçası.
 
@@ -208,13 +276,15 @@ Dönem sonundaki projenin beşinci parçası.
 4. Zenginleştirilmiş tabloda bir soru cevaplayın: işaretlediğiniz günler
    diğerlerinden farklı mı? **Sayı verin.**
 5. Referans tablonuzdaki bilginin **kaynağını** yazın.
+6. Dokuzuncu haftada yazdığınız **eğilim ifadesine dönün.** Hareketli
+   ortalamayı `tam_seri` üzerinden yeniden hesaplayın: cümleniz değişiyor mu?
 
 > Beşinci madde en önemlisi. Kendi yazdığınız bir tabloyu kaynak göstermeden
 > kullanmak, veriyi uydurmaktan bir adım uzaktır. Nereden bildiğinizi yazın.
 
 ---
 
-## 9. İyi Pratikler ve Sık Yapılan Hatalar
+## 10. İyi Pratikler ve Sık Yapılan Hatalar
 
 **İyi pratikler**
 
@@ -224,6 +294,8 @@ Dönem sonundaki projenin beşinci parçası.
 - Tablolara takma ad verin ve her sütunu `t.gun` biçiminde yazın.
 - Referans tabloların kaynağını not edin — kendi yazdıklarınız dahil.
 - Birleştirme sonrası satır sayısını, beklediğiniz sayıyla karşılaştırın.
+- Pencere fonksiyonunda `ROWS` satır sayar: seride boşluk varsa ya pencereyi
+  güne bağlayın ya da boşlukları takvimle birleştirip tabloya yazın.
 
 **Sık yapılan hatalar**
 
@@ -235,12 +307,14 @@ Dönem sonundaki projenin beşinci parçası.
   aynı görünür, eşleşmede her zaman aynı davranmaz.
 - **Referans tabloyu ölçüm sanmak.** Takvimdeki 62, ölçümün değil tanımın
   sayısıdır.
+- **Boşluklu seride `ROWS` kullanmak.** Yedi satır yedi gün demek değildir;
+  sonuç doğru hesaplanır ama adı yanlış olur.
 - **`ON` koşulunu yazmayı unutmak.** Koşulsuz birleştirme her satırı her satırla
   eşler; üç milyon satırda bu sorgu bitmez.
 
 ---
 
-## 10. İsteğe Bağlı Ev Uygulaması
+## 11. İsteğe Bağlı Ev Uygulaması
 
 1. Takvimi **saat** çözünürlüğünde kurun (`INTERVAL 1 HOUR`). 62 × 24 = 1488
    saat bekliyoruz. Kaç saat eksik çıktı?
@@ -250,6 +324,16 @@ Dönem sonundaki projenin beşinci parçası.
    kaç oldu ve neden?
 4. `ozel_gunler` tablosuna aynı günü **bilerek** iki kez yazın. Birleştirmeden
    sonra satır sayısı kaç oldu? Toplam araç sayısı değişti mi?
+5. Hareketli ortalamayı `ROWS` yerine `RANGE` ile yazmayı deneyin:
+
+   ```sql
+   AVG(toplam_arac) OVER (
+       ORDER BY gun RANGE BETWEEN INTERVAL 6 DAYS PRECEDING AND CURRENT ROW
+   )
+   ```
+
+   Çalışıyorsa sonucu `tam_seri` üzerinden aldığınız değerle karşılaştırın:
+   aynı mı? Aynıysa iki yolun da neden aynı yere çıktığını yazın.
 
 **Düşündürücü soru:** Takvim tablosu 62 gün üretti, çünkü biz "1 Aralık –
 31 Ocak" dedik. Veride 29 Kasım'a ait ölçümler de olsaydı, bu yöntemle fark
