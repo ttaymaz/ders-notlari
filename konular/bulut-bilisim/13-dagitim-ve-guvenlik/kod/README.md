@@ -28,21 +28,29 @@ dokunmanıza gerek yok; tablo adınız farklıysa yalnızca onu düzeltin.
 
 ## Beklenen çıktılar
 
-| Hücre | Beklenen |
-| ----- | -------- |
+| Hücre | Ölçülen |
+| ----- | ------- |
 | `current_user()` | Hesabınızın e-posta adresi |
-| `SHOW CATALOGS` | Az sayıda katalog; `workspace` aralarında |
-| `SHOW GRANTS` | **Kısa bir liste** — paylaşacak ikinci kullanıcı yok |
-| `location` | `s3://...` ile başlayan bir yol; **ülke yazmıyor** |
+| `SHOW CATALOGS` | **4 katalog:** `workspace`, `samples`, `system` + 1 |
+| `SHOW SCHEMAS IN workspace` | `default` ve `information_schema` |
+| `SHOW GRANTS ON TABLE` | **Boş** — hiçbir satır yok |
+| `DESCRIBE DETAIL` → `location` | **Boş** — konum soyutlanmış |
+| `EXPLAIN` → `Location:` | `s3://...` ile başlayan yol; **ülke yazmıyor** |
 | `SELECT * LIMIT 3` | Satır birimi: bölge ve saat, birey değil |
 
-Üçüncü satır bu haftanın kısıtı ve kısıtın kendisi ders: ücretsiz bir genel
-bulut hesabı **tek kişiliktir**, yani çok kullanıcılı yetkilendirme
-denenemez. Bu bir eksiklik değil, **dağıtım modelinin** sonucu.
+**Dördüncü satır bu haftanın en kolay yanlış okunan sonucu.** Boş liste
+"kimse erişemiyor" demek **değil** — siz erişiyorsunuz. Sebebi tablonun
+**sahibi** olmanız; sahiplik bir yetki kaydı değil, `SHOW GRANTS` yalnızca
+açıkça verilmiş yetkileri listeler. Sahibin hakları verilmemiş, baştan var.
 
-Dördüncü satır haftanın sürprizi. Tablonuz üçüncü haftada öğrendiğiniz yerde
-— bir nesne depolama kovasında — ama hangi ülkede olduğunu o satır
-söylemiyor ve orayı siz seçmediniz.
+**Beşinci satır da bir hata değil.** Kurduğunuz tablo **yönetilen** bir
+tablodur; nerede durduğuna platform karar verir ve bilmeniz gerekmez. Konum
+bilerek soyutlanmış. Tek göründüğü yer sorgu planı — yani planı okuduğunuz
+için görüyorsunuz.
+
+> **`samples` kataloğunu siz kurmadınız.** Okuyabiliyorsunuz çünkü size
+> **verilmiş.** "Bu ortamda yetki verme pratiği yapamayız" derken bir şeyi
+> atlamışız: siz zaten bir yetkinin **alıcı** tarafındasınız.
 
 > **Çalıştırmayacağımız bir satır var:**
 > `GRANT SELECT ON TABLE ... TO ...`

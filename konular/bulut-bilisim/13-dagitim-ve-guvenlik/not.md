@@ -119,6 +119,21 @@ SHOW TABLES IN workspace.default;
 SHOW GRANTS ON TABLE workspace.default.trafik_tablo;
 ```
 
+Ölçtüğümüzde **dört katalog** çıkıyor. Üçü hazır geliyor:
+
+| Katalog | Ne var içinde |
+| ------- | ------------- |
+| `workspace` | Sizin kurduğunuz şemalar ve tablolar |
+| `samples` | Databricks'in örnek veri kümeleri |
+| `system` | Platformun kendi kayıtları |
+
+> **`samples` kataloğunu siz kurmadınız.** Orada duruyor ve okuyabiliyorsunuz,
+> çünkü size **verilmiş.** Yani "bu ortamda yetki verme pratiği yapamayız"
+> derken bir şeyi atlamıştık: siz zaten bir yetkinin **alıcı** tarafındasınız.
+
+`workspace` kataloğunun içinde iki şema var: sizin `default` şemanız ve
+`information_schema` — kataloğun kendi kayıtlarını tuttuğu yer.
+
 Yetki vermenin sözdizimi de şudur:
 
 ```sql
@@ -130,6 +145,25 @@ Tek satır. **Ve sorun tam olarak bu kadar kolay olması.**
 > Bu satırı bu ortamda çalıştıramayacaksınız; verecek ikinci bir kullanıcı
 > yok. Ama sözdizimini bilmek ve nereye yazıldığını görmek, yetkinin
 > kodun içinde değil **katalogda** yaşadığını anlamak için yeterli.
+
+### Liste Boş — Peki Erişim Var mı?
+
+`SHOW GRANTS` çalıştırdığınızda sonuç **boş** gelecek. Hiçbir satır yok.
+
+Bu ne demek? "Bu tabloya kimse erişemiyor" demek **değil.** Siz erişiyorsunuz
+ve rahatça sorguluyorsunuz.
+
+Sebebi şu: tablonun **sahibi** sizsiniz, ve sahiplik bir yetki kaydı değil.
+`SHOW GRANTS` yalnızca **açıkça verilmiş** yetkileri listeler. Sahibin hakları
+listede görünmez, çünkü verilmemiş — baştan var.
+
+> **Boş bir yetki listesi, erişimin olmadığının kanıtı değildir.** "Bu
+> tabloyu kim görebiliyor?" sorusunu cevaplamak için yetki listesine bakmak
+> yetmez; sahibi kim, hangi şemanın içinde, o şemaya kim erişebiliyor —
+> üçünü birlikte bilmek gerekir.
+
+Bu, en az yetki ilkesinin neden uygulamada zor olduğunun da cevabı: soru tek
+bir komutla cevaplanmıyor.
 
 ### Bir yetki hiyerarşisinde yanlışlık nasıl görünür?
 
@@ -195,17 +229,37 @@ eklenecek tabloları kapsamaz.
 
 ## 7. Veri Nerede Duruyor?
 
-Geçen hafta `EXPLAIN` çıktısında bir satır vardı ve üstünde durmadık:
+Önce doğrudan soralım:
+
+```sql
+DESCRIBE DETAIL workspace.default.trafik_tablo
+```
+
+Çıktıda `location` adlı bir alan var. Ölçtük: **boş geliyor.**
+
+Bu bir hata değil. Kurduğunuz tablo **yönetilen** bir tablodur: nerede
+durduğuna platform karar verir ve bunu bilmeniz gerekmez. Konum bilerek
+**soyutlanmış.**
+
+Peki hiç mi görünmüyor? Geçen haftanın `EXPLAIN` çıktısında bir satır vardı
+ve üstünde durmadık:
 
 ```
 Location: ... s3://dbstorage-prod-.../uc/6c6dee90-...
 ```
 
 Tablonuz bir nesne depolama kovasında duruyor. Üçüncü haftada nesne
-depolamayı öğrenmiştiniz; işte orada.
+depolamayı öğrenmiştiniz; işte orada. Ama bunu size kimse söylemedi —
+**sorgu planını okuduğunuz için** gördünüz.
 
-Şimdi dikkat edin: **bu satır hangi ülkede olduğunu söylemiyor.** Ve siz
-orayı seçmediniz. Hesabı açarken böyle bir soru sorulmadı.
+Şimdi dikkat edin: bu satır hangi **ülkede** olduğunu da söylemiyor. Ve siz
+orayı seçmediniz; hesabı açarken böyle bir soru sorulmadı.
+
+> **Platform söylemeyi atlamıyor, söylememeyi seçiyor.** Yönetilen tabloda
+> konum bir ayrıntı olarak gizlenir ve çoğu zaman bu doğru tercihtir.
+> Mevzuatın konumu şart koştuğu bir işte ise aynı tercih bir **engeldir** —
+> ve o zaman tablonun nerede duracağını kendiniz belirleyebileceğiniz bir
+> kurulum gerekir.
 
 Ücretsiz bir hesap için bu kabul edilebilir. Gerçek bir kurumda değildir.
 
@@ -243,8 +297,10 @@ Dönem sonundaki projenin sekizinci parçası.
 2. `SHOW CATALOGS`, `SHOW SCHEMAS`, `SHOW TABLES` ile hiyerarşiyi gezin.
    Kaç katalog görüyorsunuz?
 3. `SHOW GRANTS ON TABLE` ile tablonuzun yetkilerine bakın. Listede kim var?
-4. Tablonuzun **nerede durduğunu** `DESCRIBE DETAIL` çıktısındaki
-   `location` alanından okuyun ve not edin.
+4. Tablonuzun **nerede durduğunu** bulmaya çalışın. İki yere bakın:
+   `DESCRIBE DETAIL` çıktısındaki `location` alanı (boş gelecek) ve tabloya
+   sorulan bir sorgunun `EXPLAIN` planındaki `Location:` satırı. İkisi
+   arasındaki farkı bir cümleyle yazın.
 5. Projenize bir **erişim ve veri notu** yazın, üç başlıkta:
    - Veriniz nerede duruyor ve ülkesini biliyor musunuz?
    - Veriniz kişisel veri mi? **Gerekçesiyle.**
@@ -266,6 +322,8 @@ Dönem sonundaki projenin sekizinci parçası.
 - Veri kümesini ilk aldığınızda "bu kişisel veri mi?" diye sorun.
 - Verinin **nerede** durduğunu bilin; bilmiyorsanız bunu bir eksik olarak
   not edin.
+- Yetki listesi boş diye "erişim yok" demeyin; sahibi ve üst basamakları da
+  sorun.
 - Not defterine şifre, anahtar veya kişisel veri yazmayın; not defterleri
   paylaşılır ve sürüm geçmişinde kalır.
 - Kimliksizleştirilmiş özet dışarı çıkabiliyorsa ham veriyi dışarı
@@ -283,6 +341,8 @@ Dönem sonundaki projenin sekizinci parçası.
   genişliği gerekçe değildir.
 - **Verinin konumunu hiç sormamak.** Ücretsiz hesapta sorun değil, kurumda
   sorun.
+- **Boş yetki listesini güvenlik sanmak.** Sahibin hakları o listede
+  görünmez; liste boşken de tablo okunabiliyordur.
 - **Kişisel veri sorusunu hukuka bırakmak.** Soruyu soran analist olmalı.
 
 ---
