@@ -294,7 +294,8 @@ belirlendiği **gelecek haftanın konusu.**
 
 ## 9. Laboratuvar: Veriyi Zenginleştirin
 
-Dönem sonundaki projenin beşinci parçası.
+Dönem sonundaki projenin beşinci parçası. Parçaların nasıl birleşeceği, not defterinin bölüm yapısı ve
+teslim biçimi **proje yönergesinde** tanımlıdır; ders sayfasından okuyun.
 
 1. `takvim` tablosunu kurun. `LEFT JOIN` ve `IS NULL` ile eksik gün olup
    olmadığını bulun. Çıktıyı — **boş çıksa bile** — kaydedin; "eksik yok" da

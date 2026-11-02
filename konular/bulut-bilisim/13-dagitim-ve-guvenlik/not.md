@@ -291,7 +291,8 @@ ilgilendirdiği** de analizin parçası.
 
 ## 8. Laboratuvar: Erişimi Haritalamak
 
-Dönem sonundaki projenin sekizinci parçası.
+Dönem sonundaki projenin sekizinci parçası. Parçaların nasıl birleşeceği, not defterinin bölüm yapısı ve
+teslim biçimi **proje yönergesinde** tanımlıdır; ders sayfasından okuyun.
 
 1. `current_user()` ile kimliğinizi yazdırın.
 2. `SHOW CATALOGS`, `SHOW SCHEMAS`, `SHOW TABLES` ile hiyerarşiyi gezin.

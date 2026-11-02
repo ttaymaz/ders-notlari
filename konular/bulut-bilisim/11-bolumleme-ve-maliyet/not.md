@@ -281,7 +281,8 @@ göstermek için sıralamak gerekiyorsa küçültmeden sonra sıralayın.
 
 ## 8. Laboratuvar: Sorgunuzun Maliyet Notu
 
-Dönem sonundaki projenin altıncı parçası.
+Dönem sonundaki projenin altıncı parçası. Parçaların nasıl birleşeceği, not defterinin bölüm yapısı ve
+teslim biçimi **proje yönergesinde** tanımlıdır; ders sayfasından okuyun.
 
 1. Bölüm sayısını ve bölüm boyutlarını yazdırın. Dengeli mi?
 2. Proje sorgularınızdan **birini** seçin. `EXPLAIN` çalıştırın ve

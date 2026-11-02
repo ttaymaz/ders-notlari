@@ -5,8 +5,17 @@ dosyası olarak okunabilirler, ama asıl yerleri çalışma alanınızdır.
 
 ## İçe aktarma
 
-Sol menü → **Workspace** → klasörünüzün sağındaki **üç nokta** → **Import** →
-**File** → dosyayı seçin. Not defteri hücrelere bölünmüş olarak açılır.
+**Önce dosyayı indirin:** GitHub'da dosyayı açın → **Raw** düğmesi →
+tarayıcıda **Ctrl+S** ile kaydedin. Uzantısı `.py` kalsın.
+
+Sonra çalışma alanına aktarın: sol menü → **Workspace** → **Users** →
+**kendi e-posta adresiniz** → o satırın sağındaki **üç nokta** →
+**Import** → **File** → indirdiğiniz dosyayı seçin.
+Not defteri hücrelere bölünmüş olarak açılır.
+
+> **Üstteki `Workspace` satırına değil, kendi klasörünüze aktarın.** Kök
+> `Workspace` düğümünde içe aktarma hata verir; oraya yazma yetkiniz yok.
+> Kendi e-posta adresinizi taşıyan klasör sizindir.
 
 Dosyayı indirmeden, içeriğini kopyalayıp boş bir not defterine
 yapıştırarak da çalışabilirsiniz; `# COMMAND ----------` satırları hücre

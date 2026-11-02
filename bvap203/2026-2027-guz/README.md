@@ -10,14 +10,21 @@ Kısa adres: `tymz.org/bvap203`
 
 ## Sınav Takvimi
 
-| Sınav | Ağırlık | Tarih | Biçim |
-| ----- | :-----: | ----- | ----- |
+| Değerlendirme | Ağırlık | Tarih | Biçim |
+| ------------- | :-----: | ----- | ----- |
 | Ara Sınav | %40 | 09–13 Kasım 2026 | Tamamı test |
-| Final | %60 | 04–15 Ocak 2027 | Uygulama projesi |
+| Dönem Projesi | %60 | Teslim **27 Aralık 2026**, Pazar 23.59 | Bireysel, tek dosya |
 
-Ara ödev yoktur. **Final projesi dönem içinde birikir:** her haftanın
-laboratuvarı projenin bir parçasını üretir, teslim tek seferde yapılır.
-Projenin nasıl değerlendirileceği ve teslim biçimi dönem ortasında duyurulur.
+Ara ödev yoktur. **Proje dönem içinde birikir:** her haftanın laboratuvarı
+projenin bir parçasını üretir, teslim tek seferde yapılır.
+
+Yönerge, bölüm yapısı ve puanlama tablosu:
+**[proje-kilavuzu.md](proje-kilavuzu.md)** — okumadan başlamayın.
+
+Değerlendirmeniz **29 Aralık 2026** Salı günü son derste size iletilir;
+bu bir bilgilendirmedir. **Resmî not ilanı** final döneminde (04–15 Ocak
+2027) OBS üzerinden yapılır. Teslim bilinçli olarak final döneminden önceye
+alınmıştır ki dönemin son dersinde geri bildirim verilebilsin.
 
 ## Haftalık Plan
 
@@ -41,8 +48,8 @@ Ders notu ve not defteri bağlantıları, o hafta yayımlandıkça tabloya eklen
 | 11 | Bölümleme ve maliyet | [not](../../konular/bulut-bilisim/11-bolumleme-ve-maliyet/not.md) | [kod](../../konular/bulut-bilisim/11-bolumleme-ve-maliyet/kod/) |
 | 12 | Tablo olarak saklamak ve sorgu hızı | [not](../../konular/bulut-bilisim/12-tablo-olarak-saklamak/not.md) | [kod](../../konular/bulut-bilisim/12-tablo-olarak-saklamak/kod/) |
 | 13 | Dağıtım modelleri, güvenlik ve erişim | [not](../../konular/bulut-bilisim/13-dagitim-ve-guvenlik/not.md) | [kod](../../konular/bulut-bilisim/13-dagitim-ve-guvenlik/kod/) |
-| 14 | *planlanıyor* | — | — |
-| 15 | *planlanıyor* | — | — |
+| 14 | Parçaları birleştirmek: raporlama | [not](../../konular/bulut-bilisim/14-proje-butunlestirme/not.md) | [kod](../../konular/bulut-bilisim/14-proje-butunlestirme/kod/) |
+| 15 | Değerlendirme, geri bildirim ve dönem özeti | [not](../../konular/bulut-bilisim/15-donem-ozeti/not.md) | — |
 
 > Tanıtım ve 1. hafta **aynı oturumda** işlenir: ilk dersin ikinci yarısı
 > hesap açma ve ilk not defteri için ayrılmıştır.

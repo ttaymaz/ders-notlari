@@ -4,9 +4,18 @@ Bu klasördeki `.py` dosyaları **Databricks not defteri kaynağıdır.**
 
 ## İçe aktarma
 
-Sol menü → **Workspace** → klasörünüzün sağındaki **üç nokta** → **Import** →
-**File** → dosyayı seçin. `# COMMAND ----------` satırları hücre sınırlarını
-gösterir.
+**Önce dosyayı indirin:** GitHub'da dosyayı açın → **Raw** düğmesi →
+tarayıcıda **Ctrl+S** ile kaydedin. Uzantısı `.py` kalsın.
+
+Sonra çalışma alanına aktarın: sol menü → **Workspace** → **Users** →
+**kendi e-posta adresiniz** → o satırın sağındaki **üç nokta** →
+**Import** → **File** → indirdiğiniz dosyayı seçin.
+`# COMMAND ----------` satırları hücre sınırlarını gösterir.
+
+> **Üstteki `Workspace` satırına değil, kendi klasörünüze aktarın.** Kök
+> `Workspace` düğümünde içe aktarma hata verir; oraya yazma yetkiniz yok.
+> Kendi e-posta adresinizi taşıyan klasör sizindir, içe aktarma orada
+> çalışır.
 
 ## Dosyalar
 

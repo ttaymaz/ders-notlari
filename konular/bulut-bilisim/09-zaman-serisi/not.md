@@ -176,7 +176,8 @@ karşılaştırması baştan yanlı olurdu.
 
 ## 7. Laboratuvar: Kendi Zaman Sorunuz
 
-Dönem sonundaki projenin dördüncü parçası.
+Dönem sonundaki projenin dördüncü parçası. Parçaların nasıl birleşeceği, not defterinin bölüm yapısı ve
+teslim biçimi **proje yönergesinde** tanımlıdır; ders sayfasından okuyun.
 
 1. Veriye **zamanla ilgili bir soru** sorun — önce Türkçe. ("Ocak ayında
    trafik aralıktan yoğun mu?" gibi.)

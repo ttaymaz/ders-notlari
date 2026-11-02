@@ -183,6 +183,10 @@ Bu haftanın laboratuvarı bir tekrar değil, bir **prova**.
 ürettiğiniz üç parçayı (analiz, grafik, veri künyesi) bu iskelete
 yerleştirin.
 
+> **Proje yönergesi yayımlandı.** Not defterinin hangi bölümlerden
+> oluşacağı, nasıl puanlanacağı ve nasıl teslim edileceği orada yazılı;
+> ders sayfasından okuyun. Bu haftanın çıktısı o yapının iskeleti.
+
 > Sınavdan sonra proje ikinci yarıda büyüyecek. Bu hafta elinizde çalışan bir
 > iskelet olması, ikinci yarıyı çok kolaylaştırır.
 

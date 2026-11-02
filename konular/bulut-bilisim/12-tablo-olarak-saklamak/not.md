@@ -273,7 +273,8 @@ Süre kazancının görünmesi için verinin **çok daha büyük** olması gerek
 
 ## 8. Laboratuvar: Aynı Soru, İki Biçim
 
-Dönem sonundaki projenin yedinci parçası.
+Dönem sonundaki projenin yedinci parçası. Parçaların nasıl birleşeceği, not defterinin bölüm yapısı ve
+teslim biçimi **proje yönergesinde** tanımlıdır; ders sayfasından okuyun.
 
 1. Tabloyu kurun ve `DESCRIBE DETAIL` ile **boyutunu** not edin. CSV'nin
    231,8 MB'ı neye düştü?
