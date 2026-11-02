@@ -37,7 +37,7 @@ Ders notu ve not defteri bağlantıları, o hafta yayımlandıkça tabloya eklen
 | 7 | Ara sınav öncesi genel tekrar | [not](../../konular/bulut-bilisim/07-ara-sinav-tekrari/not.md) | [kod](../../konular/bulut-bilisim/07-ara-sinav-tekrari/kod/) |
 | 8 | **Ara sınav haftası** | | |
 | 9 | Zaman serisi olarak veri | [not](../../konular/bulut-bilisim/09-zaman-serisi/not.md) | [kod](../../konular/bulut-bilisim/09-zaman-serisi/kod/) |
-| 10 | *planlanıyor* | — | — |
+| 10 | İki tabloyu birleştirmek | [not](../../konular/bulut-bilisim/10-tablolari-birlestirmek/not.md) | [kod](../../konular/bulut-bilisim/10-tablolari-birlestirmek/kod/) |
 | 11 | *planlanıyor* | — | — |
 | 12 | *planlanıyor* | — | — |
 | 13 | *planlanıyor* | — | — |
