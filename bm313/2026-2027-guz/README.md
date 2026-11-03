@@ -37,7 +37,7 @@ Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/
 | 8 | **Ara Sınav Haftası** | | |
 | 9 | İş parçacıkları, yarış durumu ve kilitler | 26–28 | [not](../../konular/isletim-sistemleri/09-is-parcaciklari-ve-kilitler/not.md) · [kod](../../konular/isletim-sistemleri/09-is-parcaciklari-ve-kilitler/kod/) |
 | 10 | Koşul değişkenleri ve semaforlar | 30, 31 | [not](../../konular/isletim-sistemleri/10-kosul-degiskenleri-ve-semaforlar/not.md) · [kod](../../konular/isletim-sistemleri/10-kosul-degiskenleri-ve-semaforlar/kod/) |
-| 11 | Kilitlenme: koşulları, önleme, kaçınma, tespit | 32 | — |
+| 11 | Kilitlenme: koşulları, önleme, kaçınma, tespit | 32 | [not](../../konular/isletim-sistemleri/11-kilitlenme/not.md) · [kod](../../konular/isletim-sistemleri/11-kilitlenme/kod/) |
 | 12 | G/Ç aygıtları, disk ve disk zamanlama | 36–38 | — |
 | 13 | Dosya sistemleri ve günlükleme | 39, 40, 42 | — |
 | 14 | Koruma ve güvenlik | 53–55 | — |
