@@ -35,7 +35,7 @@ Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/
 | 6 | Bellek 2: sayfalama ve TLB | 18, 19 | [not](../../konular/isletim-sistemleri/06-sayfalama-ve-tlb/not.md) · [kod](../../konular/isletim-sistemleri/06-sayfalama-ve-tlb/kod/) |
 | 7 | Bellek 3: takas, sayfa hatası, sayfa değiştirme algoritmaları · ara sınava hazırlık ve örnek sorular | 21, 22 | [not](../../konular/isletim-sistemleri/07-takas-ve-sayfa-degistirme/not.md) · [hazırlık](../../konular/isletim-sistemleri/08-ara-sinav-hazirlik/not.md) |
 | 8 | **Ara Sınav Haftası** | | |
-| 9 | İş parçacıkları, yarış durumu ve kilitler | 26–28 | — |
+| 9 | İş parçacıkları, yarış durumu ve kilitler | 26–28 | [not](../../konular/isletim-sistemleri/09-is-parcaciklari-ve-kilitler/not.md) · [kod](../../konular/isletim-sistemleri/09-is-parcaciklari-ve-kilitler/kod/) |
 | 10 | Koşul değişkenleri ve semaforlar | 30, 31 | — |
 | 11 | Kilitlenme: koşulları, önleme, kaçınma, tespit | 32 | — |
 | 12 | G/Ç aygıtları, disk ve disk zamanlama | 36–38 | — |
