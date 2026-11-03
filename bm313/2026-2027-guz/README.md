@@ -39,7 +39,7 @@ Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/
 | 10 | Koşul değişkenleri ve semaforlar | 30, 31 | [not](../../konular/isletim-sistemleri/10-kosul-degiskenleri-ve-semaforlar/not.md) · [kod](../../konular/isletim-sistemleri/10-kosul-degiskenleri-ve-semaforlar/kod/) |
 | 11 | Kilitlenme: koşulları, önleme, kaçınma, tespit | 32 | [not](../../konular/isletim-sistemleri/11-kilitlenme/not.md) · [kod](../../konular/isletim-sistemleri/11-kilitlenme/kod/) |
 | 12 | G/Ç aygıtları, disk ve disk zamanlama | 36–38 | [not](../../konular/isletim-sistemleri/12-gc-aygitlari-ve-disk/not.md) |
-| 13 | Dosya sistemleri ve günlükleme | 39, 40, 42 | — |
+| 13 | Dosya sistemleri ve günlükleme | 39, 40, 42 | [not](../../konular/isletim-sistemleri/13-dosya-sistemleri/not.md) · [kod](../../konular/isletim-sistemleri/13-dosya-sistemleri/kod/) |
 | 14 | Koruma ve güvenlik | 53–55 | — |
 | 15 | Sanal makineler ve konteynerler · dönem kapanışı | Ek: VM | — |
 
