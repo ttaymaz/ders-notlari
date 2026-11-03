@@ -40,7 +40,7 @@ Ders içeriği [`konular/isletim-sistemleri/`](../../konular/isletim-sistemleri/
 | 11 | Kilitlenme: koşulları, önleme, kaçınma, tespit | 32 | [not](../../konular/isletim-sistemleri/11-kilitlenme/not.md) · [kod](../../konular/isletim-sistemleri/11-kilitlenme/kod/) |
 | 12 | G/Ç aygıtları, disk ve disk zamanlama | 36–38 | [not](../../konular/isletim-sistemleri/12-gc-aygitlari-ve-disk/not.md) |
 | 13 | Dosya sistemleri ve günlükleme | 39, 40, 42 | [not](../../konular/isletim-sistemleri/13-dosya-sistemleri/not.md) · [kod](../../konular/isletim-sistemleri/13-dosya-sistemleri/kod/) |
-| 14 | Koruma ve güvenlik | 53–55 | — |
+| 14 | Koruma ve güvenlik | 53–55 | [not](../../konular/isletim-sistemleri/14-koruma-ve-guvenlik/not.md) · [kod](../../konular/isletim-sistemleri/14-koruma-ve-guvenlik/kod/) |
 | 15 | Sanal makineler ve konteynerler · dönem kapanışı | Ek: VM | — |
 
 ## Sunumlar
