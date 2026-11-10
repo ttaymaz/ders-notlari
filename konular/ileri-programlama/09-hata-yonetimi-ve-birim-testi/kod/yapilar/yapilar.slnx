@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Yapilar.Testler/Yapilar.Testler.csproj" />
+  <Project Path="Yapilar/Yapilar.csproj" />
+</Solution>

@@ -41,7 +41,7 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | 6 | LINQ ile veri işleme: genişletme metotları, sorgu operatörleri · desen eşleme | [not](../../konular/ileri-programlama/06-linq-ve-desen-esleme/not.md) · [kod](../../konular/ileri-programlama/06-linq-ve-desen-esleme/kod/) |
 | 7 | Ara sınav tekrarı ve örnek sorular | [not](../../konular/ileri-programlama/07-ara-sinav-tekrari/not.md) · [kod](../../konular/ileri-programlama/07-ara-sinav-tekrari/kod/) |
 | 8 | **Ara Sınav Haftası** | |
-| 9 | Hata yönetimi tasarımı ve birim testi | — |
+| 9 | Hata yönetimi tasarımı ve birim testi: istisna ailesi, koruma cümleleri, Try kalıbı, sonuç tipi · xUnit | [not](../../konular/ileri-programlama/09-hata-yonetimi-ve-birim-testi/not.md) · [kod](../../konular/ileri-programlama/09-hata-yonetimi-ve-birim-testi/kod/) |
 | 10 | Bağımlılık enjeksiyonu, yapılandırma ve günlükleme | — |
 | 11 | Asenkron programlama: `async`/`await`, iptal, asenkron akışlar | — |
 | 12 | Eşzamanlılık: yarış durumu, kilitler, eşzamanlı koleksiyonlar, kanallar | — |

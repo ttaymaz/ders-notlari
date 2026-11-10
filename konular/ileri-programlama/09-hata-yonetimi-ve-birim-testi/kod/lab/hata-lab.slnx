@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="HataLab.Testler/HataLab.Testler.csproj" />
+  <Project Path="HataLab/HataLab.csproj" />
+</Solution>
