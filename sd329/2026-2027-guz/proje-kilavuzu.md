@@ -16,7 +16,7 @@ yazılı final sınavı yapılmaz. **Bütünleme sınavı yazılıdır** (kod ok
 | **Çalışma biçimi** | Bireysel |
 | **Ne** | Kendi seçtiğiniz bir alanda, katmanlı bir C# konsol uygulaması |
 | **Nerede** | Kendi GitHub hesabınızda, ortak şablondan açılan bir repo |
-| **Alan seçimi** | **27 Kasım 2026** Cuma, 23.59 — form |
+| **Alan seçimi** | **27 Kasım 2026** Cuma, 23.59 — form: **`forms.gle/ofa94FXi2wfR2uHj6`** |
 | **Ara teslim** | **10 Aralık 2026** Perşembe, 23.59 — notlanmaz, geri bildirim 18 Aralık dersinde |
 | **Son teslim** | **2 Ocak 2027** Cumartesi, 23.59 — repo public olur |
 | **Değişiklik isteği** | 4 Ocak 2027'de reponuza açılan issue; **48 saat** içinde pull request |
@@ -59,7 +59,8 @@ kodun kendisi.
 
 ### 2.2 Formu doldurun
 
-Alan seçimi formu ders sayfasında duyurulur. Formda adınız, numaranız,
+Alan seçimi formu: **<https://forms.gle/ofa94FXi2wfR2uHj6>** (27 Kasım
+23.59'da kendiliğinden kapanır). Formda adınız, numaranız,
 GitHub kullanıcı adınız, repo adresiniz ve alanınız sorulur.
 
 **Alanlar ilk gelen alır.** Bir alanı biri seçtiğinde listeden düşer.
