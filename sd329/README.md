@@ -38,6 +38,6 @@ Her haftanın ders notu Türkçe ve kendi başına yeterlidir; kitaplar ikinci a
 ## Değerlendirme
 
 - **Ara Sınav (%40):** 8. hafta. Kâğıt üzerinde, çoktan seçmeli. Kapsam ve tarih dönem sayfasında.
-- **Yarıyıl Sonu Sınavı (%60):** Dönemin tamamını kapsar; ağırlık 9–14. haftalardadır. Yazılı, kâğıt üzerinde.
+- **Yarıyıl Sonu (%60):** Dönem projesi. Dönemin konularını bir arada kullanan, kendi GitHub reponuzda geliştirdiğiniz bir C# uygulaması; yönerge dönem sayfasındaki proje kılavuzunda.
 
 Sorularda ağırlık **kod okumadadır**: verilen bir kodun ne yazdıracağını ve nedenini açıklamak, hatayı bulmak, kısa kod yazmak.

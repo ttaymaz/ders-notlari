@@ -11,9 +11,14 @@ Kısa adres: `tymz.org/sd329`
 | Değerlendirme | Ağırlık | Tarih | Kapsam |
 | ------------- | :-----: | ----- | ------ |
 | **Ara Sınav** | %40 | 13 Kasım 2026 Cuma, 14.00 | 1.–6. konular · Dilin kendisi · çoktan seçmeli |
-| **Yarıyıl Sonu Sınavı** | %60 | 04–15 Ocak 2027 | Dönemin tamamı · ağırlık 9.–14. haftalarda |
+| **Yarıyıl Sonu: Dönem Projesi** | %60 | Son teslim 2 Ocak 2027, 23.59 · değişiklik isteği 4–6 Ocak | Dönemin tamamı · [proje kılavuzu](proje-kilavuzu.md) |
+| **Bütünleme** | %60 | Akademik takvime göre | Dönemin tamamı · yazılı, kod okuma |
 
-İki sınav da kâğıt üzerindedir. **Ara sınavın tamamı çoktan seçmelidir:** her sorunun beş seçeneği vardır, yalnızca biri doğrudur; iki kitapçık grubu kullanılır. Soru sayısı ve soru başına puan sınavdan önce bu sayfada duyurulur. Bütünleme sınavı yarıyıl sonu sınavıyla aynı biçimdedir.
+**Ara sınav** kâğıt üzerindedir ve tamamı çoktan seçmelidir: her sorunun beş seçeneği vardır, yalnızca biri doğrudur; iki kitapçık grubu kullanılır.
+
+**Yarıyıl sonu notu bir dönem projesinden gelir;** yazılı final sınavı yapılmaz. Herkes ortak bir şablondan başlar, kendi seçtiği alanda katmanlı ve birim testli bir C# konsol uygulaması yazar. Yapay zekâ araçlarını kullanmak serbesttir. Ayrıntılar, takvim ve değerlendirme: [**proje kılavuzu**](proje-kilavuzu.md).
+
+**Bütünleme sınavı yazılıdır** (kod okuma, 100 puan) ve projenin yerine geçer.
 
 ## Çalışma Ortamı
 
