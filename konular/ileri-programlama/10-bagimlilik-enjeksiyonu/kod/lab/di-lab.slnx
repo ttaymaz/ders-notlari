@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DiLab.Testler/DiLab.Testler.csproj" />
+  <Project Path="DiLab/DiLab.csproj" />
+</Solution>
