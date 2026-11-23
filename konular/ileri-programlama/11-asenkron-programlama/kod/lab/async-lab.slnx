@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AsyncLab.Testler/AsyncLab.Testler.csproj" />
+  <Project Path="AsyncLab/AsyncLab.csproj" />
+</Solution>
