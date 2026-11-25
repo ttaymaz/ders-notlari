@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="YansimaLab.Testler/YansimaLab.Testler.csproj" />
+  <Project Path="YansimaLab/YansimaLab.csproj" />
+</Solution>

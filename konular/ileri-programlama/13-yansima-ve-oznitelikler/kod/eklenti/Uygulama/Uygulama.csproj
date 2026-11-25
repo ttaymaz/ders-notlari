@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sozlesme\Sozlesme.csproj" />
+
+    <!-- Uygulama eklentileri TANIMAZ: bu başvuru yalnızca derleme sırasını
+         sağlar (önce eklentiler derlensin). ReferenceOutputAssembly="false"
+         olduğu için uygulamanın kodu eklenti tiplerini göremez. -->
+    <ProjectReference Include="..\RaporEklentileri\RaporEklentileri.csproj"
+                      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <!-- Derlemeden sonra eklenti DLL'ini çıktının eklentiler/ klasörüne
+       kopyala. Gerçek bir uygulamada bu klasöre kullanıcı DLL bırakır. -->
+  <Target Name="EklentileriKopyala" AfterTargets="Build">
+    <MSBuild Projects="..\RaporEklentileri\RaporEklentileri.csproj"
+             Targets="GetTargetPath"
+             Properties="Configuration=$(Configuration)">
+      <Output TaskParameter="TargetOutputs" ItemName="EklentiDll" />
+    </MSBuild>
+    <Copy SourceFiles="@(EklentiDll)" DestinationFolder="$(OutDir)eklentiler" SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

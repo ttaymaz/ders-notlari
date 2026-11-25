@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RaporEklentileri/RaporEklentileri.csproj" />
+  <Project Path="Sozlesme/Sozlesme.csproj" />
+  <Project Path="Testler/Testler.csproj" />
+  <Project Path="Uygulama/Uygulama.csproj" />
+</Solution>

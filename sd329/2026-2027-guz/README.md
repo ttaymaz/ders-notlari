@@ -50,7 +50,7 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | 10 | Bağımlılık enjeksiyonu, yapılandırma ve günlükleme · servisi sahte saat ve bellekte depoyla sınamak | [not](../../konular/ileri-programlama/10-bagimlilik-enjeksiyonu/not.md) · [kod](../../konular/ileri-programlama/10-bagimlilik-enjeksiyonu/kod/) |
 | 11 | Asenkron programlama: `async`/`await`, birlikte beklemek, iptal, asenkron akışlar · uzaktaki grafı gezmek | [not](../../konular/ileri-programlama/11-asenkron-programlama/not.md) · [kod](../../konular/ileri-programlama/11-asenkron-programlama/kod/) |
 | 12 | Eşzamanlılık: yarış durumu, kilitler, eşzamanlı koleksiyonlar, kanallar · üretici–tüketici | [not](../../konular/ileri-programlama/12-eszamanlilik/not.md) · [kod](../../konular/ileri-programlama/12-eszamanlilik/kod/) |
-| 13 | Yansıma ve öznitelikler, eklenti mimarisi | — |
+| 13 | Yansıma ve öznitelikler, eklenti mimarisi · kendi test koşucumuz, kaynak üreteçleri | [not](../../konular/ileri-programlama/13-yansima-ve-oznitelikler/not.md) · [kod](../../konular/ileri-programlama/13-yansima-ve-oznitelikler/kod/) |
 | 14 | Başarım ölçümü ve bellek ayırma | — |
 | 15 | Genel tekrar · dönem kapanışı | — |
 
