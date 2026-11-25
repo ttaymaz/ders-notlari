@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EsLab.Testler/EsLab.Testler.csproj" />
+  <Project Path="EsLab/EsLab.csproj" />
+</Solution>

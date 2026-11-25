@@ -49,7 +49,7 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | 9 | Hata yönetimi tasarımı ve birim testi: istisna ailesi, koruma cümleleri, Try kalıbı, sonuç tipi · xUnit | [not](../../konular/ileri-programlama/09-hata-yonetimi-ve-birim-testi/not.md) · [kod](../../konular/ileri-programlama/09-hata-yonetimi-ve-birim-testi/kod/) |
 | 10 | Bağımlılık enjeksiyonu, yapılandırma ve günlükleme · servisi sahte saat ve bellekte depoyla sınamak | [not](../../konular/ileri-programlama/10-bagimlilik-enjeksiyonu/not.md) · [kod](../../konular/ileri-programlama/10-bagimlilik-enjeksiyonu/kod/) |
 | 11 | Asenkron programlama: `async`/`await`, birlikte beklemek, iptal, asenkron akışlar · uzaktaki grafı gezmek | [not](../../konular/ileri-programlama/11-asenkron-programlama/not.md) · [kod](../../konular/ileri-programlama/11-asenkron-programlama/kod/) |
-| 12 | Eşzamanlılık: yarış durumu, kilitler, eşzamanlı koleksiyonlar, kanallar | — |
+| 12 | Eşzamanlılık: yarış durumu, kilitler, eşzamanlı koleksiyonlar, kanallar · üretici–tüketici | [not](../../konular/ileri-programlama/12-eszamanlilik/not.md) · [kod](../../konular/ileri-programlama/12-eszamanlilik/kod/) |
 | 13 | Yansıma ve öznitelikler, eklenti mimarisi | — |
 | 14 | Başarım ölçümü ve bellek ayırma | — |
 | 15 | Genel tekrar · dönem kapanışı | — |
