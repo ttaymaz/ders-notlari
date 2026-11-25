@@ -51,7 +51,7 @@ Ders içeriği `konular/ileri-programlama/` altında ders kodundan bağımsız o
 | 11 | Asenkron programlama: `async`/`await`, birlikte beklemek, iptal, asenkron akışlar · uzaktaki grafı gezmek | [not](../../konular/ileri-programlama/11-asenkron-programlama/not.md) · [kod](../../konular/ileri-programlama/11-asenkron-programlama/kod/) |
 | 12 | Eşzamanlılık: yarış durumu, kilitler, eşzamanlı koleksiyonlar, kanallar · üretici–tüketici | [not](../../konular/ileri-programlama/12-eszamanlilik/not.md) · [kod](../../konular/ileri-programlama/12-eszamanlilik/kod/) |
 | 13 | Yansıma ve öznitelikler, eklenti mimarisi · kendi test koşucumuz, kaynak üreteçleri | [not](../../konular/ileri-programlama/13-yansima-ve-oznitelikler/not.md) · [kod](../../konular/ileri-programlama/13-yansima-ve-oznitelikler/kod/) |
-| 14 | Başarım ölçümü ve bellek ayırma | — |
+| 14 | Başarım ölçümü ve bellek ayırma · BenchmarkDotNet, `Span<T>`, koleksiyon seçimi | [not](../../konular/ileri-programlama/14-basarim-ve-bellek/not.md) · [kod](../../konular/ileri-programlama/14-basarim-ve-bellek/kod/) |
 | 15 | Genel tekrar · dönem kapanışı | — |
 
 > **Bu dönem konular bir hafta kaydırılarak işleniyor.** 2. haftanın dersi yapılamadı; 5. konu salı günü yapılacak tek seferlik bir telafi dersinde işlenecek. Bu yüzden 7. hafta ara sınav tekrarına ayrıldı; ara sınav 1–6. konuları kapsar. Hata yönetimi 9. haftaya alındı; yeniden düzenleme ve kod incelemesi ayrı bir hafta olarak işlenmeyecek, 9–14. haftaların örneklerine dağıtılacak.
